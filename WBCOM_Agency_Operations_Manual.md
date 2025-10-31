@@ -1,4 +1,4 @@
-# WBCOM DESIGNS - AGENCY PROJECT OPERATIONS MANUAL (FINAL EDITION)
+# WBCOM DESIGNS - AGENCY PROJECT OPERATIONS MANUAL
 
 This document defines the complete management, communication, and evaluation system for Wbcom Designs. It ensures consistent operations, quality assurance, accountability, and transparent client communication for all projects.
 
