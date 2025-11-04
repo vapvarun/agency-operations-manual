@@ -168,14 +168,27 @@ PM responds (4 hrs)
 
 ---
 
+## 🔄 KEY PROCESSES
+
+**New Project?** → Section 14 (Project Onboarding Checklist)
+**Ready to Deploy?** → Section 15 (Deployment Process - needs PM approval)
+**Client Wants Changes?** → Section 16 (Scope Change - don't commit immediately)
+**Site Down?** → Section 17 (Emergency Response - post in #emergencies)
+**Git Branching?** → Section 18 (Use feature/*, bugfix/*, hotfix/*)
+**New Team Member?** → Section 19 (Onboarding - mentor assigned, first day/week/month)
+
+---
+
 ## ⚠️ RED FLAGS
 
-**Report to PM immediately:**
+**Report to PM immediately (Slack/WhatsApp):**
 - Security issue
-- Site down
+- Site down (post in #emergencies + follow Section 17)
 - Client escalation
 - Stuck >2 hours on urgent task
 - Missing credentials to start work
+
+**After hours:** Message PM on Slack/WhatsApp, if no response in 15 min → Message Lead Dev
 
 ---
 
