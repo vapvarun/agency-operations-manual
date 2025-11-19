@@ -150,7 +150,7 @@ When PM is unavailable (sick/leave/meeting/off-hours), the following backup prot
 → Inform PM immediately (WhatsApp/Phone even if on leave)
 
 **PM Responsibilities Before Leave:**
-1. Announce in Slack #general: "On leave [dates], contact @Lead-Dev for urgent issues"
+1. Announce in Slack #wbcomers: "On leave [dates], contact @Lead-Dev for urgent issues"
 2. Update Slack status: "🏖️ On Leave [dates] - Contact @Lead-Dev"
 3. Brief Lead Dev on active client issues/concerns
 4. Delegate time-sensitive approvals to backup
@@ -514,13 +514,11 @@ When PM is unavailable (sick/leave/meeting/off-hours), the following backup prot
 
 | Channel | Purpose | Who Posts |
 |---------|---------|-----------|
-| **#dailymeeting** | End-of-day progress updates | All team members (mandatory) |
+| **#dailymeeting** | Daily updates, technical questions, team chat | All team members (mandatory for daily updates) |
 | **#attendance** | Daily in/out, leave requests | All team members |
 | **#emergencies** | Site down, critical bugs, urgent issues | Anyone (tag @PM @Lead-Dev) |
-| **#general** | Team announcements, company updates | PM, Management |
-| **#dev-questions** | Technical Q&A, code help | Developers |
-| **#project-[name]** | Project-specific internal discussion | Project team members |
-| **#random** | Non-work chat, team bonding | Anyone |
+| **#wbcomers** | Team announcements, company updates | PM, Management |
+| **#proj-[name]** | Project-specific internal discussion | Project team members (e.g., #proj-clientxyz) |
 
 **⏰ Response Time:**
 - Urgent/tagged messages: Within 2 hours
@@ -586,7 +584,7 @@ When PM is unavailable (sick/leave/meeting/off-hours), the following backup prot
 | Meeting summary (MOM) | Basecamp (message board) | ✅ Client sees |
 | Project milestone completed | Basecamp (message board) | ✅ Client sees |
 | Requesting client feedback | Basecamp (message board or to-do) | ✅ Client sees |
-| "I'm stuck on this task" | Slack (#dev-questions or DM Lead Dev) | ❌ Internal only |
+| "I'm stuck on this task" | Slack (#dailymeeting or DM Lead Dev) | ❌ Internal only |
 | "Client keeps changing scope" | Slack (DM to PM) | ❌ Internal only |
 | "This code is messy" | Slack or Basecamp Campfire | ❌ Internal only |
 | Daily standup update | Slack (#dailymeeting) | ❌ Internal only |
@@ -613,7 +611,7 @@ When PM is unavailable (sick/leave/meeting/off-hours), the following backup prot
 
 #### Example 3: Stuck on a Task
 1. **Try yourself for 30 min max**
-2. **Post in Slack #dev-questions:** "Stuck on [task]: [what I tried], [specific question]"
+2. **Post in Slack #dailymeeting:** "Stuck on [task]: [what I tried], [specific question]"
 3. **Lead Dev responds in Slack** with guidance
 4. **Update Basecamp task** (client-visible): "In progress, implementing [solution approach]"
 
@@ -1076,7 +1074,7 @@ Every task in Basecamp MUST include:
 
 **When developers can self-assign:**
 - PM posts task as "Unassigned"
-- PM announces in Slack #dev-questions: "Task available for pickup: [link]"
+- PM announces in Slack #dailymeeting: "Task available for pickup: [link]"
 - Developer can claim it if they have capacity
 
 **Process:**
@@ -4320,7 +4318,7 @@ Before marking task **"Ready for QA"**, developer MUST:
 **If Credentials Don't Work:**
 1. QA notifies Lead Dev in Slack
 2. Lead Dev updates credentials
-3. Lead Dev posts update in #general: "Environment credentials updated"
+3. Lead Dev posts update in #wbcomers: "Environment credentials updated"
 4. Team checks credentials work
 
 ---

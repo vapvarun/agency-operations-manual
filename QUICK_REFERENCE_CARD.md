@@ -206,9 +206,11 @@ Backup: [Name]
 | **Plugin Checker** | Plugin standards |
 
 **Slack Channels:**
-- **#dailymeeting** - End-of-day progress (mandatory)
+- **#dailymeeting** - Daily updates, technical questions, team chat
 - **#attendance** - Daily in/out, leave requests
 - **#emergencies** - Site down, critical bugs
+- **#wbcomers** - Team announcements, company updates
+- **#proj-[name]** - Project-specific discussions
 
 ---
 
