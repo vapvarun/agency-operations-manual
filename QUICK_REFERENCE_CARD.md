@@ -3,35 +3,51 @@
 
 ---
 
-## ✅ THE 3 RULES
+## NEW TO THE TEAM? START HERE
+
+**Read these 8 sections FIRST for daily clarity:**
+
+**FOUNDATION:**
+1. **Section 2A** - Who reports to whom? What's my role? Daily responsibilities?
+2. **Section 2B** - When to use Slack vs Basecamp? What's client-visible?
+3. **Section 4A** - How do I get tasks? Which one first? What questions to ask when unclear?
+4. **Section 9A** - Can I decide this or escalate? Who do I ask?
+
+**DAILY CHECKLISTS:**
+5. **Section 4B** - Is this billable time? How to log time?
+6. **Section 9B** - Is this bug urgent (P0) or can it wait (P3)?
+7. **Section 21** - Is this task ready to start? (Definition of Ready)
+8. **Section 21A** - What do I check in code review? What does QA test?
+
+**These 8 sections = Everything you need for daily work.**
+
+---
+
+## THE 3 RULES
 
 ### Rule 1: What "Done" Means
 
 **Developer:**
-□ WPCS passes (0 errors)
-□ Tested + screenshot attached
-□ Time logged
+- WPCS passes (0 errors)
+- Tested + screenshot attached
+- Time logged
 
 **QA:**
-□ No critical bugs
-□ Screenshots attached
+- No critical bugs
+- Screenshots attached
 
 **PM:**
-□ Client approved
-
----
+- Client approved
 
 ### Rule 2: When Stuck
 
 **If blocked >30 min:**
-→ Post in Slack: "Stuck on [X], tried [Y], need help with [Z]"
+Post in Slack: "Stuck on [X], tried [Y], need help with [Z]"
 
 **Who to ask:**
 - Technical → @Lead-Dev
 - Task unclear → @PM
 - Client question → @PM (never client directly)
-
----
 
 ### Rule 3: Response Times
 
@@ -45,11 +61,12 @@
 
 ---
 
-## 📅 DAILY ROUTINE
+## DAILY ROUTINE
 
-### For Developers:
+### For Developers
 
 **Morning (10:00 AM)**
+- Mark attendance: Post "✅ In - [time]" in #attendance
 - Check Basecamp for new tasks
 - Attend standup at 10:15 AM
 
@@ -65,10 +82,9 @@
   🚧 Blockers: [...]
   ```
 - Log time in tracker
+- Mark departure: Post "👋 Out - [time]" in #attendance
 
----
-
-### For PM:
+### For PM
 
 **After Standup (10:30 AM)**
 - Assign help for blockers
@@ -91,17 +107,96 @@
 
 ---
 
-## 🕐 MEETING TIMES
+## MEETINGS
 
-| Meeting | When | Duration |
-|---------|------|----------|
-| **Daily Standup** | 10:15 AM | 15 min |
-| **Weekly Review** | Fri 6:00 PM | 50 min |
-| **Client Meetings** | 3-6 PM | As needed |
+| Meeting | When | Duration | Focus |
+|---------|------|----------|-------|
+| **Daily Standup** | 10:15 AM | 15 min | Individual tasks & blockers |
+| **Monday Planning** | Mon 11:00 AM | 30-45 min | PROJECT goals for the week |
+| **Friday Review** | Fri 6:00 PM | 45-50 min | PROJECT progress review |
+| **Client Meetings** | 3-6 PM | As needed | Client updates |
+
+**Meeting Focus:**
+- **Daily Standup:** Task-level (What I'm doing today)
+- **Monday/Friday:** Project-level (How's the project doing?)
+
+**MOM (Minutes of Meeting):**
+- ✅ Required: Monday Planning, Friday Review (post in Basecamp within 2 hours)
+- ❌ Not Required: Daily Standup (keep it quick)
+
+### Monday Planning (Project-Focused)
+
+**For EACH project, discuss:**
+1. Project status & progress %
+2. This week's goals
+3. Task pipeline (pending/in-progress/completed)
+4. Roadblocks & dependencies
+5. Resource allocation
+
+**PM posts MOM in Basecamp** with:
+- Project status & timeline
+- Week's goals
+- Roadblocks with owners & ETAs
+- Action items
+
+### Friday Review (Project-Focused)
+
+**For EACH project, discuss:**
+1. Did we achieve Monday's goals?
+2. Tasks completed vs planned
+3. Roadblocks resolved/outstanding
+4. Quality & client feedback
+5. Next week preview
+
+**PM posts MOM in Basecamp** with:
+- Goals achievement status
+- Task completion summary
+- Timeline update
+- Client feedback
+- Next week's plan
+
+**NOT about individual performance - focus on PROJECT health!**
 
 ---
 
-## 🛠️ TOOLS
+## ATTENDANCE & LEAVE
+
+**Daily Attendance:**
+- In: Post by 10:15 AM in #attendance
+- Out: Post after 7:00 PM in #attendance
+- Late >3 times/month = warning
+
+**Leave Request (Must Request 1 Day in Advance):**
+```
+📅 Leave Request
+Name: [Your Name]
+Date(s): [DD/MM/YYYY]
+Type: [Casual/Sick/Annual]
+Reason: [Brief]
+Backup: [Name]
+```
+
+**Leave Approval Flow:**
+1. Employee posts in #attendance + tags @PM
+2. PM approves/rejects (within 4 hrs)
+3. PM notifies HR
+4. HR confirms final approval (within 24 hrs)
+5. **Leave NOT final until HR confirms**
+
+**Leave Types:**
+- Casual: 12 days/year
+- Sick: 10 days/year (medical cert if 3+ days)
+- Annual: 15 days/year
+- Emergency: Same-day (call PM, don't just message)
+
+**Before Leave:**
+- Update Basecamp tasks
+- Handover notes to backup
+- Set Slack status: "🏖️ On Leave [dates]"
+
+---
+
+## TOOLS & CHANNELS
 
 | Tool | Purpose |
 |------|---------|
@@ -111,24 +206,40 @@
 | **WPCS** | Code quality (run before commit) |
 | **Plugin Checker** | Plugin standards |
 
----
-
-## 📞 WHO TO CONTACT
-
-| Issue | Contact |
-|-------|---------|
-| Stuck on code | @Lead-Dev |
-| Task unclear | @PM |
-| Client question | @PM |
-| Urgent/Security | @PM + @Lead-Dev |
-| Absent/Leave | Post in #attendance |
+**Slack Channels:**
+- **#daily-updates** - End-of-day progress (mandatory)
+- **#attendance** - Daily in/out, leave requests
+- **#emergencies** - Site down, critical bugs
 
 ---
 
-## 🚨 ESCALATION
+## WHO TO CONTACT
 
+| Issue | Contact | See Section |
+|-------|---------|-------------|
+| Stuck on code | @Lead-Dev or Senior Dev | 2A, 9A |
+| Task unclear | @PM or BA | 2A, 4A |
+| Client question | @PM (NEVER answer directly) | 2A, 2B |
+| **Client contacts me directly** | **Redirect to PM (template in 2B)** | **2B** |
+| **PM unavailable** | **@Lead-Dev (PM backup)** | **2A** |
+| Urgent/Security | @PM + @Lead-Dev in #emergencies | 2B, 18 |
+| Leave request | Post in #attendance + @PM | 3 |
+| Check leave balance | @HR | 3 |
+| Which task first? | @PM | 4A |
+| Can I make this decision? | See Decision Matrix | 9A |
+| **Disagree with Lead Dev** | **Discuss respectfully (process in 9A)** | **9A** |
+| **QA vs Dev bug dispute** | **@Lead-Dev decides** | **21A** |
+
+**Full reporting structure & roles:** See Section 2A
+**BA assists PM** with requirements - See Section 2A
+
+---
+
+## ESCALATION
+
+**Stuck on task:**
 ```
-Stuck on task (30 min)
+Stuck (30 min)
     ↓
 Ask in Slack
     ↓
@@ -137,6 +248,7 @@ Still stuck (2 hrs)
 PM adjusts timeline
 ```
 
+**Client complaint:**
 ```
 Client complaint
     ↓
@@ -147,7 +259,7 @@ PM responds (4 hrs)
 
 ---
 
-## 💡 QUICK TIPS
+## QUICK TIPS
 
 **For Developers:**
 - Run WPCS before committing: `phpcs --standard=WordPress file.php`
@@ -168,22 +280,11 @@ PM responds (4 hrs)
 
 ---
 
-## 🔄 KEY PROCESSES
-
-**New Project?** → Section 14 (Project Onboarding Checklist)
-**Ready to Deploy?** → Section 15 (Deployment Process - needs PM approval)
-**Client Wants Changes?** → Section 16 (Scope Change - don't commit immediately)
-**Site Down?** → Section 17 (Emergency Response - post in #emergencies)
-**Git Branching?** → Section 18 (Use feature/*, bugfix/*, hotfix/*)
-**New Team Member?** → Section 19 (Onboarding - mentor assigned, first day/week/month)
-
----
-
-## ⚠️ RED FLAGS
+## RED FLAGS - REPORT IMMEDIATELY
 
 **Report to PM immediately (Slack/WhatsApp):**
 - Security issue
-- Site down (post in #emergencies + follow Section 17)
+- Site down (post in #emergencies + follow Section 18)
 - Client escalation
 - Stuck >2 hours on urgent task
 - Missing credentials to start work
@@ -192,7 +293,42 @@ PM responds (4 hrs)
 
 ---
 
-## 📊 SUCCESS METRICS
+## KEY PROCESSES (QUICK LOOKUP)
+
+| Question | Answer in Section |
+|----------|-------------------|
+| Who reports to whom? | 2A - Roles & Reporting Structure |
+| **What does BA do?** | **2A - BA is PM Assistant** |
+| **PM unavailable - who helps?** | **2A - PM Backup (Lead Dev)** |
+| When to use Slack vs Basecamp? | 2B - Communication Protocol |
+| **Client contacts me directly?** | **2B - Direct Client Contact Protocol** |
+| How do I get tasks? | 4A - Task Assignment |
+| Task is unclear - what to ask? | 4A - Clarification Questions |
+| Which task should I do first? | 4A - Task Priority Rules |
+| Is this time billable? | 4B - Time Tracking Rules |
+| Meetings & MOM format? | 8 - Meeting Structure |
+| Can I decide this or escalate? | 9A - Decision Authority Matrix |
+| **Can I challenge Lead Dev?** | **9A - Technical Disagreement Process** |
+| **Deadline seems impossible?** | **9A - Timeline Communication** |
+| Who do I ask when stuck? | 9A - Escalation Paths |
+| Is this bug urgent? | 9B - Bug Priority (P0/P1/P2/P3) |
+| New Project? | 15 - Project Onboarding |
+| Ready to Deploy? | 16 - Deployment Process |
+| Client wants changes? | 17 - Scope Change Process |
+| Site Down? | 18 - Emergency Response |
+| Git branching? | 19 - Git Workflow |
+| New team member? | 20 - Team Onboarding |
+| Can I start this task? | 21 - Definition of Ready |
+| What to check in code review? | 21A - Code Review Checklist |
+| **Who approves code review?** | **21A - Senior Dev or Lead Dev** |
+| What should QA test? | 21A - QA Testing Checklist |
+| **QA vs Dev disagree on bug?** | **21A - Disagreement Resolution** |
+| **Test entire app or just feature?** | **21A - Regression Testing Scope** |
+| **Where are test accounts?** | **21B - Test Environment Setup** |
+
+---
+
+## SUCCESS METRICS
 
 **Target:**
 - QA Pass Rate: 85%+
