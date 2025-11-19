@@ -91,7 +91,7 @@ Management/Founders
 - Assign/prioritize tasks for the day
 - Unblock developers (get client approvals, clarify requirements)
 - Monitor project timelines and deadlines
-- 6:45 PM: Review team's daily updates in Slack
+- 6:45 PM: Review team's daily updates in Slack #dailymeeting
 - Update project status in Basecamp
 
 **Weekly Activities:**
@@ -500,7 +500,7 @@ When PM is unavailable (sick/leave/meeting/off-hours), the following backup prot
 ### When to Use SLACK
 
 **✅ Use Slack for:**
-- Daily standup updates (#daily-updates)
+- Daily standup updates (#dailymeeting)
 - Quick technical questions
 - Internal discussions (not client-visible)
 - Team coordination
@@ -514,7 +514,7 @@ When PM is unavailable (sick/leave/meeting/off-hours), the following backup prot
 
 | Channel | Purpose | Who Posts |
 |---------|---------|-----------|
-| **#daily-updates** | End-of-day progress updates | All team members (mandatory) |
+| **#dailymeeting** | End-of-day progress updates | All team members (mandatory) |
 | **#attendance** | Daily in/out, leave requests | All team members |
 | **#emergencies** | Site down, critical bugs, urgent issues | Anyone (tag @PM @Lead-Dev) |
 | **#general** | Team announcements, company updates | PM, Management |
@@ -589,7 +589,7 @@ When PM is unavailable (sick/leave/meeting/off-hours), the following backup prot
 | "I'm stuck on this task" | Slack (#dev-questions or DM Lead Dev) | ❌ Internal only |
 | "Client keeps changing scope" | Slack (DM to PM) | ❌ Internal only |
 | "This code is messy" | Slack or Basecamp Campfire | ❌ Internal only |
-| Daily standup update | Slack (#daily-updates) | ❌ Internal only |
+| Daily standup update | Slack (#dailymeeting) | ❌ Internal only |
 | Technical discussion | Slack or Basecamp Campfire | ❌ Internal only |
 | Leave request | Slack (#attendance) | ❌ Internal only |
 | Team coordination | Slack | ❌ Internal only |
@@ -618,7 +618,7 @@ When PM is unavailable (sick/leave/meeting/off-hours), the following backup prot
 4. **Update Basecamp task** (client-visible): "In progress, implementing [solution approach]"
 
 #### Example 4: Daily End-of-Day Update
-1. **6:30 PM:** Post in Slack #daily-updates:
+1. **6:30 PM:** Post in Slack #dailymeeting:
    ```
    ✅ Completed: [task name]
    🕓 Tomorrow: [what's next]
@@ -878,7 +878,6 @@ If client reports site down or critical bug:
 |------------|------------------|----------------|-------------------|-------|
 | **Casual Leave** | 12 days | 1 day | PM (initial) → HR (final) | For personal reasons |
 | **Sick Leave** | 10 days | Same day (if genuine emergency) | PM (initial) → HR (final) | Medical certificate needed for 3+ consecutive days |
-| **Annual/Earned Leave** | 15 days | 7 days | PM (initial) → HR (final) | Can be carried forward (max 5 days) |
 | **Emergency Leave** | As needed | Same day | PM (initial) → HR (final) | Genuine emergencies only, case-by-case |
 | **Unpaid Leave** | As approved | 7 days | PM → HR → Management | When leave balance exhausted |
 | **Paternity/Maternity** | As per company policy | 30 days | HR → Management | Separate from annual quota |
@@ -889,7 +888,6 @@ If client reports site down or critical bug:
 - Reset annually on [January 1st / hire date anniversary - specify]
 
 **Carry Forward Policy:**
-- Annual leave: Maximum 5 days can be carried to next year
 - Casual/Sick leave: Cannot be carried forward (use it or lose it)
 
 ---
@@ -1002,7 +1000,7 @@ HR updates leave balance
   - Priority (High/Medium/Low)  
   - Backup Developer  
 
-**Daily Accountability:** Developers must post end-of-day updates in Slack’s `#daily-updates` channel.
+**Daily Accountability:** Developers must post end-of-day updates in Slack's `#dailymeeting` channel.
 
 ```
 ✅ What was completed today
@@ -1136,7 +1134,7 @@ Every task in Basecamp MUST include:
 **If you complete all assigned work and no new tasks are available:**
 
 **Option 1: Ask PM for work** (Primary)
-- Post in Slack #daily-updates or DM PM: "Completed all tasks. Ready for next assignment."
+- Post in Slack #dailymeeting or DM PM: "Completed all tasks. Ready for next assignment."
 - PM will assign next task
 
 **Option 2: Productive idle time** (If PM says no urgent tasks)
@@ -1213,7 +1211,7 @@ Choose from approved activities:
 
 **End of Day (6:30 PM):**
 1. Update all Basecamp tasks with current status
-2. Post daily update in Slack #daily-updates
+2. Post daily update in Slack #dailymeeting
 3. Log time in tracker
 4. Plan tomorrow's priorities
 
@@ -2964,7 +2962,7 @@ If client says "This doesn't work" but it was never built → It's a feature req
 - **Leave Policy:** Request in Slack #attendance channel (1 day advance). PM approves first, then HR grants final confirmation. See Section 3 for full details.
 
 ### Developers
-- Post daily updates in Slack `#daily-updates`.  
+- Post daily updates in Slack `#dailymeeting`.  
 - Never discuss blockers or delays with clients directly.  
 - All Basecamp comments must be **client-friendly**.  
 - If client gives extra tasks → inform PM only.
@@ -3070,7 +3068,7 @@ Ensures fair, measurable, and transparent performance evaluation for all employe
 | Task Completion | ≥ 90% |
 | QA Pass Rate | ≥ 85% |
 | Code Quality | Verified by Lead |
-| Communication | 100% daily updates |
+| Communication | 100% daily updates in #dailymeeting |
 
 #### QA
 | KPI | Target |

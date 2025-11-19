@@ -186,7 +186,6 @@ Backup: [Name]
 **Leave Types:**
 - Casual: 12 days/year
 - Sick: 10 days/year (medical cert if 3+ days)
-- Annual: 15 days/year
 - Emergency: Same-day (call PM, don't just message)
 
 **Before Leave:**
@@ -207,7 +206,7 @@ Backup: [Name]
 | **Plugin Checker** | Plugin standards |
 
 **Slack Channels:**
-- **#daily-updates** - End-of-day progress (mandatory)
+- **#dailymeeting** - End-of-day progress (mandatory)
 - **#attendance** - Daily in/out, leave requests
 - **#emergencies** - Site down, critical bugs
 
