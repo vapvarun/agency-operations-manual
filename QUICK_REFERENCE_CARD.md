@@ -5,21 +5,22 @@
 
 ## NEW TO THE TEAM? START HERE
 
-**Read these 8 sections FIRST for daily clarity:**
+**Read these 9 sections FIRST for daily clarity:**
 
 **FOUNDATION:**
 1. **Section 2A** - Who reports to whom? What's my role? Daily responsibilities?
 2. **Section 2B** - When to use Slack vs Basecamp? What's client-visible?
-3. **Section 4A** - How do I get tasks? Which one first? What questions to ask when unclear?
-4. **Section 9A** - Can I decide this or escalate? Who do I ask?
+3. **Section 2C** - What do I own? Daily update, 1:1, raising risks early
+4. **Section 4A** - How do I get tasks? Which one first? What questions to ask when unclear?
+5. **Section 9A** - Can I decide this or escalate? Who do I ask?
 
 **DAILY CHECKLISTS:**
-5. **Section 4B** - Is this billable time? How to log time?
-6. **Section 9B** - Is this bug urgent (P0) or can it wait (P3)?
-7. **Section 21** - Is this task ready to start? (Definition of Ready)
-8. **Section 21A** - What do I check in code review? What does QA test?
+6. **Section 4B** - Is this billable time? How to log time?
+7. **Section 9B** - Is this bug urgent (P0) or can it wait (P3)?
+8. **Section 21** - Is this task ready to start? (Definition of Ready)
+9. **Section 21A** - What do I check in code review? What does QA test?
 
-**These 8 sections = Everything you need for daily work.**
+**These 9 sections = Everything you need for daily work.**
 
 ---
 
@@ -42,7 +43,10 @@
 ### Rule 2: When Stuck
 
 **If blocked >30 min:**
-Post in Slack: "Stuck on [X], tried [Y], need help with [Z]"
+Post in the project channel: "Stuck on [X], tried [Y], need help with [Z]"
+
+**At 50% of your estimate:** post On track / At risk.
+**Deadline at risk?** Raise it the same day with options. Early = never blamed. Surprise = reviewed.
 
 **Who to ask:**
 - Technical → @Lead-Dev
@@ -73,13 +77,15 @@ Post in Slack: "Stuck on [X], tried [Y], need help with [Z]"
 **During Work**
 - Update task status in Basecamp
 - Ask for help if stuck >30 min
+- At 50% of estimate: post On track / At risk
 
 **Evening (6:30 PM)**
-- Post daily update in Slack:
+- Post daily update in **each project channel** you worked in:
   ```
-  ✅ Done today: [...]
-  🕓 Tomorrow: [...]
-  🚧 Blockers: [...]
+  Done:  [...]
+  Next:  [...]
+  Risk:  [... or None]
+  Need:  [what, from whom]
   ```
 - Log time in tracker
 - Mark departure: Post "👋 Out - [time]" in #attendance
@@ -111,13 +117,14 @@ Post in Slack: "Stuck on [X], tried [Y], need help with [Z]"
 
 | Meeting | When | Duration | Focus |
 |---------|------|----------|-------|
-| **Daily Standup** | 10:15 AM | 15 min | Individual tasks & blockers |
+| **Daily Standup** | 10:15 AM | 5-15 min | Blockers & risks only |
+| **1:1 with Lead** | Weekly, fixed slot | 15 min | Quality, growth, unspoken issues |
 | **Monday Planning** | Mon 11:00 AM | 30-45 min | PROJECT goals for the week |
 | **Friday Review** | Fri 6:00 PM | 45-50 min | PROJECT progress review |
 | **Client Meetings** | 3-6 PM | As needed | Client updates |
 
 **Meeting Focus:**
-- **Daily Standup:** Task-level (What I'm doing today)
+- **Daily Standup:** Blockers and risks only (Done/Next are in the async update)
 - **Monday/Friday:** Project-level (How's the project doing?)
 
 **MOM (Minutes of Meeting):**
@@ -200,13 +207,13 @@ Backup: [Name]
 | Tool | Purpose |
 |------|---------|
 | **Basecamp** | Tasks, client communication |
-| **Slack** | Daily updates, team chat |
+| **Slack** | Daily updates (project channels), team chat |
 | **Time Tracker** | Log hours |
 | **WPCS** | Code quality (run before commit) |
 | **Plugin Checker** | Plugin standards |
 
 **Slack Channels:**
-- **#dailymeeting** - Daily updates, technical questions, team chat
+- **#dailymeeting** - General team chat, cross-project technical questions
 - **#attendance** - Daily in/out, leave requests
 - **#emergencies** - Site down, critical bugs
 - **#wbcomers** - Team announcements, company updates
@@ -266,7 +273,8 @@ PM responds (4 hrs)
 - Run WPCS before committing: `phpcs --standard=WordPress file.php`
 - Never respond to client directly
 - Commit format: `[Fix] Description` or `[Feature] Description`
-- Post daily update by 6:30 PM (no exceptions)
+- Post daily update by 6:30 PM in each project channel
+- You own your feature: plan, risks, QA fixes, release, bugs after release
 
 **For QA:**
 - Start testing within 24 hrs of "QA Ready"
@@ -274,10 +282,19 @@ PM responds (4 hrs)
 - Test on staging, not production
 
 **For PM:**
-- Review daily updates at 6:45 PM
+- Review daily updates in project channels at 6:45 PM; answer every Risk/Need
 - Do project board check after standup
 - Client reports every Friday
 - Keep Basecamp client-friendly
+
+---
+
+## OWNERSHIP (Section 2C)
+
+- Every feature has one **Owner** (developer) + one **Reviewer** (Lead/Senior).
+- Owner: clarify → plan + estimate → build → fix QA → release → 48h watch → own bugs after.
+- Lead reviews and unblocks, does not take over. PM answers the client.
+- Weekly 15-min 1:1 with your Lead.
 
 ---
 
@@ -315,6 +332,8 @@ Working on our own plugins/themes? Follow the **Product Operations Manual** (`PR
 | Question | Answer in Section |
 |----------|-------------------|
 | Who reports to whom? | 2A - Roles & Reporting Structure |
+| **What do I own as a developer?** | **2C - Feature Owner Model** |
+| **Task may slip?** | **2C - 50% Checkpoint** |
 | **What does BA do?** | **2A - BA is PM Assistant** |
 | **PM unavailable - who helps?** | **2A - PM Backup (Lead Dev)** |
 | When to use Slack vs Basecamp? | 2B - Communication Protocol |
@@ -348,7 +367,9 @@ Working on our own plugins/themes? Follow the **Product Operations Manual** (`PR
 ## SUCCESS METRICS
 
 **Target:**
-- QA Pass Rate: 85%+
+- QA Reopen Rate: ≤ 15% (85%+ pass rate)
+- Escaped bugs in owned work: trending down
+- Every deadline risk raised before the deadline
 - Deadlines Met: 95%+
 - Client Response: <4 hours
 - Code Reviews: <24 hours

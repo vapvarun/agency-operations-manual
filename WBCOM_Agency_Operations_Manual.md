@@ -93,7 +93,7 @@ Management/Founders
 - Assign/prioritize tasks for the day
 - Unblock developers (get client approvals, clarify requirements)
 - Monitor project timelines and deadlines
-- 6:45 PM: Review team's daily updates in Slack #dailymeeting
+- 6:45 PM: Review developers' daily updates in each project channel (Section 2C)
 - Update project status in Basecamp
 
 **Weekly Activities:**
@@ -184,9 +184,11 @@ When PM is unavailable (sick/leave/meeting/off-hours), the following backup prot
 - Unblock developers (technical issues)
 - Ensure coding standards followed (WPCS, quality checks)
 - Escalate blockers to PM (if client-side or scope-related)
-- Post daily update by 6:30 PM in Slack
+- Reply to every "At risk" flag within 2 hours with a decision (Section 2C)
+- Post daily update by 6:30 PM in each project channel worked on (Section 2C)
 
 **Weekly Activities:**
+- 15-minute 1:1 with each developer (Section 2C)
 - Monday 11:00 AM: Attend weekly planning meeting
 - Technical planning for complex features
 - Review git branches and merge requests
@@ -223,7 +225,7 @@ When PM is unavailable (sick/leave/meeting/off-hours), the following backup prot
 - Conduct peer code reviews (when assigned)
 - Mentor junior developers (answer questions, pair programming)
 - Update Basecamp task status throughout the day
-- Post daily update by 6:30 PM in Slack
+- Post daily update by 6:30 PM in each project channel worked on (Section 2C)
 - Log time in time tracker
 
 **Weekly Activities:**
@@ -255,7 +257,7 @@ When PM is unavailable (sick/leave/meeting/off-hours), the following backup prot
 - Work on assigned tasks (simpler features, bug fixes)
 - Ask for help when stuck >30 min (Lead Dev or Senior Dev)
 - Update Basecamp task status throughout the day
-- Post daily update by 6:30 PM in Slack
+- Post daily update by 6:30 PM in each project channel worked on (Section 2C)
 - Log time in time tracker
 
 **Weekly Activities:**
@@ -287,7 +289,7 @@ When PM is unavailable (sick/leave/meeting/off-hours), the following backup prot
 - Report bugs with clear steps + screenshots in Basecamp
 - Verify bug fixes
 - Regression testing for critical features
-- Post daily update by 6:30 PM in Slack
+- Post daily update by 6:30 PM in each project channel worked on (Section 2C)
 - Log time in time tracker
 
 **Weekly Activities:**
@@ -319,7 +321,7 @@ When PM is unavailable (sick/leave/meeting/off-hours), the following backup prot
 - Work on design tasks (mockups, wireframes, assets)
 - Collaborate with developers on implementation
 - Review design implementations on staging
-- Post daily update by 6:30 PM in Slack
+- Post daily update by 6:30 PM in each project channel worked on (Section 2C)
 - Log time in time tracker
 
 **Reports To:** PM
@@ -343,7 +345,7 @@ When PM is unavailable (sick/leave/meeting/off-hours), the following backup prot
 - Review task descriptions for clarity before assignment
 - Assist PM with client meeting preparation
 - Take notes during client meetings
-- Post daily update by 6:30 PM in Slack
+- Post daily update by 6:30 PM in each project channel worked on (Section 2C)
 - Log time in time tracker
 
 **Weekly Activities:**
@@ -502,7 +504,7 @@ When PM is unavailable (sick/leave/meeting/off-hours), the following backup prot
 ### When to Use SLACK
 
 **✅ Use Slack for:**
-- Daily standup updates (#dailymeeting)
+- Daily updates (in each project channel, Section 2C)
 - Quick technical questions
 - Internal discussions (not client-visible)
 - Team coordination
@@ -516,7 +518,7 @@ When PM is unavailable (sick/leave/meeting/off-hours), the following backup prot
 
 | Channel | Purpose | Who Posts |
 |---------|---------|-----------|
-| **#dailymeeting** | Daily updates, technical questions, team chat | All team members (mandatory for daily updates) |
+| **#dailymeeting** | General team chat and cross-project technical questions (daily updates go in project channels, Section 2C) | All team members |
 | **#attendance** | Daily in/out, leave requests | All team members |
 | **#emergencies** | Site down, critical bugs, urgent issues | Anyone (tag @PM @Lead-Dev) |
 | **#wbcomers** | Team announcements, company updates | PM, Management |
@@ -616,10 +618,10 @@ Every client project has exactly **one Basecamp project** (client-facing) and **
 | Meeting summary (MOM) | Basecamp (message board) | ✅ Client sees |
 | Project milestone completed | Basecamp (message board) | ✅ Client sees |
 | Requesting client feedback | Basecamp (message board or to-do) | ✅ Client sees |
-| "I'm stuck on this task" | Slack (#dailymeeting or DM Lead Dev) | ❌ Internal only |
+| "I'm stuck on this task" | Slack (project channel, tag Lead Dev) | ❌ Internal only |
 | "Client keeps changing scope" | Slack (DM to PM) | ❌ Internal only |
 | "This code is messy" | Slack or Basecamp Campfire | ❌ Internal only |
-| Daily standup update | Slack (#dailymeeting) | ❌ Internal only |
+| Daily update | Slack (project channel, Section 2C) | ❌ Internal only |
 | Technical discussion | Slack or Basecamp Campfire | ❌ Internal only |
 | Leave request | Slack (#attendance) | ❌ Internal only |
 | Team coordination | Slack | ❌ Internal only |
@@ -643,16 +645,17 @@ Every client project has exactly **one Basecamp project** (client-facing) and **
 
 #### Example 3: Stuck on a Task
 1. **Try yourself for 30 min max**
-2. **Post in Slack #dailymeeting:** "Stuck on [task]: [what I tried], [specific question]"
+2. **Post in the project's Slack channel, tag Lead Dev:** "Stuck on [task]: [what I tried], [specific question]"
 3. **Lead Dev responds in Slack** with guidance
 4. **Update Basecamp task** (client-visible): "In progress, implementing [solution approach]"
 
 #### Example 4: Daily End-of-Day Update
-1. **6:30 PM:** Post in Slack #dailymeeting:
+1. **6:30 PM:** Post in each project channel you worked in (Section 2C):
    ```
-   ✅ Completed: [task name]
-   🕓 Tomorrow: [what's next]
-   🚧 Blockers: [any issues or "None"]
+   Done:  [task name + card link]
+   Next:  [what's next]
+   Risk:  [anything that may slip, or "None"]
+   Need:  [what you're waiting for, from whom]
    ```
 2. **Update Basecamp tasks:** Move completed tasks to "Done"
 3. **Log time in Time Tracker**
@@ -798,6 +801,116 @@ If client reports site down or critical bug:
 - Maintains professional client relationship
 
 **Remember:** You're helping the client by directing them to PM, not avoiding them.
+
+---
+
+## 2C. Developer Ownership & Lead Communication
+
+**Purpose:** Make every developer responsible for the result of their work, not just for finishing tasks, and keep the project lead informed early enough to fix problems before the client or customer sees them. Applies to client projects and to our products (themes + plugins).
+
+---
+
+### A. Feature Owner Model
+
+Every feature, module or plugin area has **one named Feature Owner** (a developer) and **one Reviewer** (Lead Dev or Senior Dev). For small tasks (under a day), the assignee is the owner.
+
+Put this at the top of the Basecamp card:
+
+```
+Owner:    [Developer]
+Reviewer: [Lead Dev / Senior Dev]
+PM:       [PM] (client communication)
+Estimate: [X hours]   50% checkpoint: [date/time]
+Scope:    [link to Scope of Work item]
+```
+
+**The Feature Owner is responsible for:**
+
+| Stage | Owner does |
+|-------|-----------|
+| **Before building** | Reads the scope item and all client comments, asks clarifying questions (Section 4A), writes a short plan + estimate in the card, gets Reviewer OK on the approach |
+| **While building** | Daily update (B), 50% checkpoint (D), raises risks the same day, keeps the card status current |
+| **Review + QA** | Opens the PR, fixes review comments and QA bounces, re-tests the whole feature after each fix |
+| **Release** | Is present for the deploy or product release of their feature, watches errors / support for 48 hours after |
+| **After release** | Gets bugs in their feature first (backup developer if on leave), explains the cause in the card, adds the check that would have caught it |
+
+**The Lead / Reviewer:** agrees the approach, reviews code, unblocks, coaches. The Lead does not take the work over. If a feature has to change hands, the owner writes a handover note in the card.
+
+**The PM:** still owns the client relationship and all answers to client questions (Section 2B). The PM invites the Feature Owner to client calls about their feature, and the owner keeps task progress comments on their own cards current (client-friendly tone).
+
+---
+
+### B. Daily Update (Async, in the Project Channel)
+
+By **6:30 PM**, post one update in **each project channel you worked in today** (`#proj-[client]` or the product's channel), not in `#dailymeeting`. This keeps the project's history in one place for the lead, the backup developer and whoever picks it up next.
+
+```
+Done:  [what finished today, card links]
+Next:  [what you'll do tomorrow]
+Risk:  [anything that may slip, or "None"]
+Need:  [review / answer / access you're waiting for, and from whom]
+```
+
+- The Lead / PM reads project channels by 6:45 PM and answers every **Risk** and **Need** by next morning.
+- `#dailymeeting` stays for general team chat and cross-project technical questions.
+- Because Done / Next are already posted, the morning standup covers **blockers and risks only** (Section 8F).
+
+---
+
+### C. Weekly 1:1 with Your Lead (15 minutes)
+
+Every developer has a 15-minute 1:1 with their Lead Dev every week, in a fixed slot. The Lead Dev has the same with the PM. If either person is on leave, reschedule within the same week.
+
+**Agenda (developer talks first):**
+1. What went well this week?
+2. What was hard, slow or unclear?
+3. Quality on owned work: bugs found by QA / client / customers, and why
+4. Anything you haven't said in a channel (workload, team issues, ideas)
+5. One thing to learn or improve next week
+
+**Rules:**
+- This is not a status meeting. Status is already in the daily updates.
+- The Lead keeps a short private note per developer, shared only with that developer. It feeds the monthly review (E).
+
+---
+
+### D. Raise Risks Early: the 50% Checkpoint
+
+1. **Every task has an estimate before it starts** (Definition of Ready, Section 21).
+2. **At 50% of the estimate**, the owner posts in the project channel: **On track** or **At risk**.
+3. **Blocked for more than 30 minutes:** ask for help (Section 22).
+4. **Any risk to a deadline is raised the same day it is known**, with options:
+
+```
+[Feature]: AT RISK
+Found: [what you discovered]
+Options: (a) +[X] hours  (b) drop [edge case / part]  (c) help from [name]
+My suggestion: [a/b/c]
+@Lead / @PM: which?
+```
+
+5. The Lead / PM replies **within 2 hours** with a decision. The PM handles any client communication about it.
+
+**Culture rule:** raising a risk early is never blamed. A **surprise at the deadline** (no flag raised before) is what gets discussed in the review. If you're not sure whether something is a risk, raise it.
+
+---
+
+### E. How Ownership Is Measured
+
+Reviewed monthly per developer by the Lead (Section 14). Data comes from Basecamp, GitHub and support tickets.
+
+| Measure | Why it matters | Good looks like |
+|---------|----------------|-----------------|
+| **Escaped bugs in owned work** | Bugs the client or customers found after release | Trending down |
+| **QA reopen rate** on owned cards | Quality before handing to QA | ≤ 15% (same as 85%+ QA pass rate) |
+| **Risks raised early** | Problems surfaced while there was still time | Every deadline risk flagged before the deadline |
+| **Own-bug fix time** | Taking responsibility for your own bugs | Within the Section 9B response times |
+| **Self-found bugs** | Bugs you found and fixed before QA | Counted as a positive |
+| **Help given** | Code reviews done, teammates unblocked | Regular, noted in 1:1s |
+
+**Not used for performance:** counting daily update posts or attendance posts. (Attendance itself is still an HR policy, Section 3.)
+
+Fixing your own bugs is still not billable to clients (Section 4B), but fixing them fast and owning the cause counts in your favour.
 
 ---
 
@@ -1030,12 +1143,10 @@ HR updates leave balance
   - Priority (High/Medium/Low)  
   - Backup Developer  
 
-**Daily Accountability:** Developers must post end-of-day updates in Slack's `#dailymeeting` channel.
+**Daily Accountability:** Developers post an end-of-day update in each project channel they worked in (format and rules: Section 2C).
 
 ```
-✅ What was completed today
-🕓 What will be done tomorrow
-🚧 Any blockers or dependencies
+Done / Next / Risk / Need
 ```
 
 ---
@@ -1237,11 +1348,12 @@ Choose from approved activities:
 - Work on highest priority task
 - Update Basecamp task status as you progress
 - If stuck >30 min, ask for help (don't waste time)
+- At 50% of a task's estimate, post On track / At risk in the project channel (Section 2C)
 - Log time in time tracker
 
 **End of Day (6:30 PM):**
 1. Update all Basecamp tasks with current status
-2. Post daily update in Slack #dailymeeting
+2. Post daily update in each project channel (Section 2C)
 3. Log time in tracker
 4. Plan tomorrow's priorities
 
@@ -1645,9 +1757,11 @@ A: Yes, if it's for client work (billable project). No, if it's internal/practic
 
 | Stage | Action | Responsible |
 |--------|---------|-------------|
-| Task assigned | PM confirms realistic timeline | PM |
-| Daily progress | Developer posts update in Slack | Developer |
-| Missed deadline (Day 1) | PM flags issue in Slack | PM |
+| Task assigned | Owner gives estimate, PM confirms realistic timeline | PM + Owner |
+| Daily progress | Owner posts update in project channel | Developer |
+| 50% of estimate | Owner posts On track / At risk (Section 2C) | Developer |
+| At risk flagged | Lead / PM decide within 2 hrs: more time, cut scope or add help | Lead + PM |
+| Missed deadline (Day 1) | PM flags issue in Slack. If no risk was raised before, discussed in 1:1 | PM |
 | Missed twice | PM & Lead review reason | PM & Lead |
 | Repeated delay | Written warning and review | Management |
 
@@ -2032,7 +2146,7 @@ Next Planning Meeting: Monday [Date] 11:00 AM
 
 ### F. Daily Standup Structure (10:15 AM – 10:30 AM)
 
-**Purpose:** Quick sync on individual tasks and immediate blockers. **Task-level, not project-level.**
+**Purpose:** Clear blockers and risks. **Done / Next are already in yesterday's async update (Section 2C), so don't repeat them.**
 
 **Duration:** 15 minutes MAX
 
@@ -2040,10 +2154,11 @@ Next Planning Meeting: Monday [Date] 11:00 AM
 
 #### Daily Standup Format (Round-Robin)
 
-Each person answers (1 minute per person):
-1. ✅ **What did you complete yesterday?**
-2. 🕓 **What are you working on today?**
-3. 🚧 **Any blockers?**
+Each person answers (30 seconds per person):
+1. **Am I blocked, or is anything at risk?**
+2. **What do I need, and from whom?**
+
+Nothing to raise → say "No blockers" and pass. A standup with no blockers should end in 5 minutes.
 
 **No detailed discussions** - If something needs more than 1 minute, schedule separate discussion after standup.
 
@@ -2992,7 +3107,7 @@ If client says "This doesn't work" but it was never built → It's a feature req
 - **Leave Policy:** Request in Slack #attendance channel (1 day advance). PM approves first, then HR grants final confirmation. See Section 3 for full details.
 
 ### Developers
-- Post daily updates in Slack `#dailymeeting`.  
+- Post daily updates in each project's Slack channel (Section 2C).  
 - Never discuss blockers or delays with clients directly.  
 - All Basecamp comments must be **client-friendly**.  
 - If client gives extra tasks → inform PM only.
@@ -3003,7 +3118,7 @@ If client says "This doesn't work" but it was never built → It's a feature req
 - Keep communication professional in Basecamp.
 
 ### Project Managers
-- Collect daily updates from developers.  
+- Read developers' daily updates in project channels; act on every "At risk" flag.  
 - Always maintain client-friendly tone.  
 - Post weekly progress and monthly summaries.
 
@@ -3096,9 +3211,14 @@ Ensures fair, measurable, and transparent performance evaluation for all employe
 | KPI | Target |
 |------|--------|
 | Task Completion | ≥ 90% |
-| QA Pass Rate | ≥ 85% |
+| Escaped bugs in owned work | Trending down |
+| QA reopen rate on owned cards | ≤ 15% (85%+ pass rate) |
+| Risks raised early | Every deadline risk flagged before the deadline |
+| Own-bug fix time | Within Section 9B response times |
 | Code Quality | Verified by Lead |
-| Communication | 100% daily updates in #dailymeeting |
+| Help given (reviews, unblocking) | Regular, noted in 1:1s |
+
+See Section 2C-E for what each measure means.
 
 #### QA
 | KPI | Target |
@@ -3742,7 +3862,8 @@ When a new developer, QA, or PM joins the team, follow this checklist to onboard
 - [ ] Explain tools (Basecamp, Slack, Time Tracker)
 - [ ] Review daily/weekly meeting schedule
 - [ ] Show where credentials stored (Basecamp → Docs & Files)
-- [ ] Explain daily update process (Slack at 6:30 PM)
+- [ ] Explain ownership model, daily update (project channel at 6:30 PM) and 50% checkpoint (Section 2C)
+- [ ] Schedule weekly 1:1 slot with Lead Dev
 - [ ] Assign mentor/buddy
 
 **Lead Dev does (1 hour) - For Developers:**
@@ -3770,7 +3891,7 @@ When a new developer, QA, or PM joins the team, follow this checklist to onboard
 **New member does:**
 - [ ] Read Operations Manual (Sections 1-3, 14-24)
 - [ ] Complete first simple task (guided by mentor)
-- [ ] Post first daily standup update at 6:30 PM
+- [ ] Post first daily update in the project channel at 6:30 PM
 
 ---
 
@@ -3903,6 +4024,8 @@ When a new developer, QA, or PM joins the team, follow this checklist to onboard
 **Estimated & Prioritized:**
 - [ ] **Deadline is set** - You know when it's due
 - [ ] **Priority is clear** (High/Medium/Low) - You know its urgency
+- [ ] **Owner + estimate in the card** - Feature Owner named, your estimate written, 50% checkpoint noted (Section 2C)
+- [ ] **Scope item linked** - The task maps to an item in the Scope of Work (Section 2B), or is an approved change request
 
 ---
 
@@ -4409,7 +4532,8 @@ Before marking task **"Ready for QA"**, developer MUST:
 **If blocked on a task:**
 
 1. **Try yourself (30 minutes max)** - Search docs, check similar past tasks
-2. **Ask for help immediately** - Post in Slack: "Stuck on [task], tried [what], need help with [specific question]"
+2. **Ask for help immediately** - Post in the project channel: "Stuck on [task], tried [what], need help with [specific question]"
+3. **Deadline at risk?** - Raise it the same day with options (Section 2C-D). Raising early is never blamed.
 
 **Who to contact:**
 - **Technical question** → Lead Developer
@@ -4438,11 +4562,12 @@ Before marking task **"Ready for QA"**, developer MUST:
 ## 24. Document Control
 
 - **Owner:** HR & Project Management Team
-- **Version:** 9.0 - COMPLETE + OPERATIONAL EDGE CASES
-- **Last Updated:** November 2025
-- **Next Review:** February 2026
+- **Version:** 10.0 - Developer ownership + client project setup
+- **Last Updated:** October 2026
+- **Next Review:** January 2027
 - **Status:** ✅ Complete - All essential sections + operational edge case handling
 - **Changelog:**
+  - v10.0: Added Section 2C (Feature Owner model, async daily update in project channels, weekly 1:1, 50% checkpoint, ownership measures). Standup is blockers-only. Developer KPIs measure outcomes instead of update counts. Added Client Project Setup (Section 2B): one Basecamp project per client, internal #proj-[client] channel, whole team monitors client communication, Scope of Work document. Linked the Product Operations Manual.
   - v9.0: **OPERATIONAL COMPLETENESS - Team-Level Edge Cases:** Added 8 operational sections + fixed contradictions:
     - BA Role Definition: Business Analyst as PM assistant (requirement gathering support)
     - PM Backup Process: Who covers when PM unavailable (Lead Dev backup protocol)
