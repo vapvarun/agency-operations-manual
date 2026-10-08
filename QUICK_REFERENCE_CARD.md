@@ -126,6 +126,8 @@ Source: Agency manual 2B (response times) and 9B (bug timings). Products: Produc
 | **Monday Planning** | Mon 11:00 AM | 30-45 min | PROJECT goals for the week |
 | **Friday Review** | Fri 6:00 PM | 45-50 min | PROJECT progress review |
 | **Client Meeting** | Weekly, 3-6 PM | 30-60 min | Client updates |
+| **QA Review** | Wed 12:00 PM | 30 min | Quality patterns, escaped and aging bugs |
+| **Product Review** | Thu 12:00 PM, one product family per week | 60 min | Customer pain points, competitors, roadmap decisions |
 
 **Meeting Focus:**
 - **Daily Standup:** Blockers and risks only (Done/Next are in the async update)

@@ -100,6 +100,7 @@ Every product board uses the **standard card table** in the [Developer Playbook 
 | WordPress.org forum or review | Triage column | Support Lead |
 | QA finding | Bugs column | QA |
 | Team idea | Triage column | Product Owner |
+| Monthly Product Review (pain points, competitors) | Scope / Not now / Suggestions, decided in the meeting | Product Owner |
 | Client request touching a product | Triage column, tagged "client" (no client details, see below) | PM |
 
 ### Triage rules (within 2 working days)
@@ -348,11 +349,8 @@ The goal is that the same kind of bug does not ship twice.
 
 - **Every QA bounce** adds one line to the product's QA checklist describing the check that would have caught it.
 - **Every customer-found bug** gets a one-line "why we missed it" note on the card before the release ships.
-- **Monthly product retro (30 min per product, Product Owner leads):**
-  1. Which bugs did customers find that we didn't?
-  2. Which checks were added this month?
-  3. Which hotfixes did we need, and why?
-  4. One process change to try next month.
+- **Weekly QA Review** (Agency manual 8H): repeat bounce patterns, escaped bugs, aging bugs and hotfixes. Every pattern leaves with an owner and a new check.
+- **Monthly Product Review** per product family (Agency manual 8I): customer pain points, WordPress.org reviews, the Competitor Watch from a rotating developer scout, the QA summary, and the Suggestions column. Every item leaves with a decision (Scope / Not now / Docs / Reply). It also picks one process change to try next month.
 
 ---
 
@@ -418,7 +416,7 @@ AI coding tools are allowed for product and client work, with these rules (clien
 ## Document Control
 
 - **Owner:** Product Owners + Lead Developers
-- **Version:** 1.2 - consistency pass across all four documents
+- **Version:** 1.3 - Product Review and QA Review linked
 - **Last Updated:** October 2026
 - **Next Review:** January 2027
 
