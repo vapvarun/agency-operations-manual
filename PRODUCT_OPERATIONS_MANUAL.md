@@ -251,7 +251,7 @@ The Product Owner gives a written "Go" in the Basecamp release card. **No Go, no
 
 - [ ] GitHub release published (P8 format)
 - [ ] Version number added as a comment on every card in the release
-- [ ] Release confirmed in `#releases`. Only then do customers get told to update
+- [ ] Release post in `#wbcomers` gets the ✅ from the release lead. Only then do customers get told to update, and the team shares it (Agency manual 2D)
 - [ ] Support team told what changed and which tickets it fixes
 - [ ] Each Feature Owner watches support and errors for their feature
 - [ ] Support replies to every customer whose ticket was fixed
@@ -416,7 +416,7 @@ AI coding tools are allowed for product and client work, with these rules (clien
 ## Document Control
 
 - **Owner:** Product Owners + Lead Developers
-- **Version:** 1.3 - Product Review and QA Review linked
+- **Version:** 1.4 - Releases confirmed in #wbcomers, shared per Agency 2D
 - **Last Updated:** October 2026
 - **Next Review:** January 2027
 
