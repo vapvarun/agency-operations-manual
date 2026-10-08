@@ -32,7 +32,7 @@ Every product has one named owner for each role below. The owners are listed in 
 |------|----------------|----------------|
 | **Product Owner** | Roadmap, priorities, Free vs Pro decisions, final call on "is this release ready" | PM or Management |
 | **Lead Developer** | Architecture, code review approval, release branch, tagging | Lead / Senior Dev |
-| **Developer** | Features and fixes, tests, docs for what they build | Developers |
+| **Feature Owner** | One developer per feature or plugin area: plan, build, tests, docs, QA fixes, release watch and bugs after release (Agency manual Section 2C) | Developers |
 | **QA** | Pre-release smoke, card verification, regression | QA team |
 | **Support Lead** | Ticket triage, turning tickets into cards, replying to customers when fixed | Support team |
 | **Docs Owner** | Docs in the repo stay in step with the code | Developer who built the feature, reviewed by Docs Owner |
@@ -43,7 +43,7 @@ Every product has one named owner for each role below. The owners are listed in 
 |----------|---------------|----------|-----------|----|---------|
 | Roadmap and priorities | **A/R** | C | I | I | C |
 | Free vs Pro placement | **A/R** | C | I | - | C |
-| Feature / fix build | I | A | **R** | C | - |
+| Feature / fix build (Feature Owner) | I | A | **R** | C | - |
 | Code review | - | **A/R** | C | - | - |
 | Pre-release QA | I | C | C | **A/R** | - |
 | Release go / no-go | **A** | R | I | C | I |
@@ -258,6 +258,7 @@ The Product Owner gives a written "Go" in the Basecamp release card. **No Go, no
 - [ ] GitHub release published (P8 format)
 - [ ] Cards moved to Released with the version number
 - [ ] Support team told what changed and which tickets it fixes
+- [ ] Each Feature Owner watches support and errors for their feature
 - [ ] Support replies to every customer whose ticket was fixed
 - [ ] Watch support and forums for 48 hours. Two or more reports of the same new problem → hotfix
 
@@ -366,7 +367,7 @@ Measure results, not activity. The Product Owner reviews these monthly.
 | **Support reply time** | First reply to customers | Meets P9 targets |
 | **WordPress.org rating** | Customer sentiment (free products) | ≥ 4.5 |
 
-Track these per product, not per person. They show where the process is weak. They are not individual performance scores.
+Per-developer ownership measures (escaped bugs in owned work, reopen rate, risks raised early) are in Agency manual Section 2C-E. Track the table above per product, not per person. They show where the process is weak. They are not individual performance scores.
 
 ---
 
