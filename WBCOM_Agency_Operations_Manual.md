@@ -3,6 +3,8 @@
 This document defines the complete management, communication, and evaluation system for Wbcom Designs. It ensures consistent operations, quality assurance, accountability, and transparent client communication for all projects.
 
 > **Product work** (our own plugins, themes and Pro add-ons) follows the [Product Operations Manual](PRODUCT_OPERATIONS_MANUAL.md) in addition to this one.
+>
+> **How to do the work, step by step** (bug fixing, debugging, build rules, self-checks, quality gates, QA, release): the [Developer Playbook](DEVELOPER_PLAYBOOK.md). Same steps for client projects and products.
 
 ---
 
@@ -285,7 +287,7 @@ When PM is unavailable (sick/leave/meeting/off-hours), the following backup prot
 
 **Daily Activities:**
 - Attend 10:15 AM standup
-- Test tasks marked "Ready for QA" in Basecamp (within 24 hours)
+- Test tasks marked "Ready for Testing" in Basecamp (within 24 hours)
 - Report bugs with clear steps + screenshots in Basecamp
 - Verify bug fixes
 - Regression testing for critical features
@@ -1182,9 +1184,11 @@ Every task in Basecamp MUST include:
 
 | Priority | Definition | Examples | Response Time |
 |----------|------------|----------|---------------|
-| **🔴 High (P0)** | Critical, blocks client/production, urgent | Site down, critical bug, client blocker, deadline today/tomorrow | Start immediately (within 1 hour) |
-| **🟠 Medium (P1)** | Important, deadline within this week | Feature delivery this week, scheduled deployment, client meeting deliverable | Start within 4 hours, complete by deadline |
-| **🟢 Low (P2)** | Normal priority, deadline next week or later | Regular features, minor improvements, documentation | Start within 24 hours, complete by deadline |
+| **🔴 High** | Critical, blocks client/production, urgent | Site down, critical bug, client blocker, deadline today/tomorrow | Start immediately (within 1 hour) |
+| **🟠 Medium** | Important, deadline within this week | Feature delivery this week, scheduled deployment, client meeting deliverable | Start within 4 hours, complete by deadline |
+| **🟢 Low** | Normal priority, deadline next week or later | Regular features, minor improvements, documentation | Start within 24 hours, complete by deadline |
+
+**Task priority (High / Medium / Low) is separate from bug severity (P0-P3, Section 9B).**
 
 **PM sets priority based on:**
 - Client urgency
@@ -1209,7 +1213,7 @@ Every task in Basecamp MUST include:
 2. PM assigns to specific developer (considers workload, skills, availability)
 3. PM tags developer in task: "@DeveloperName - assigned to you, please review and confirm"
 4. Developer acknowledges in Basecamp within 2 hours: "Got it, starting [today/tomorrow]"
-5. Developer updates task status: "To Do" → "In Progress"
+5. Developer moves the card: "Ready for Development" → "In Development"
 
 ---
 
@@ -1224,7 +1228,7 @@ Every task in Basecamp MUST include:
 1. Developer checks their current workload (must have <3 active tasks)
 2. Developer claims in Basecamp: "I'll take this task" (and assigns to self)
 3. Developer notifies PM in Slack: "Picked up task: [task name]"
-4. Developer updates task status: "To Do" → "In Progress"
+4. Developer moves the card: "Ready for Development" → "In Development"
 
 **Rules for self-assignment:**
 - ✅ Only if you have capacity (<3 active tasks)
@@ -1239,11 +1243,11 @@ Every task in Basecamp MUST include:
 
 **If you have multiple assigned tasks, work in this order:**
 
-1. **First:** 🔴 **High priority (P0)** - urgent/critical
+1. **First:** 🔴 **High priority** - urgent/critical
 2. **Second:** Tasks with **deadline today or tomorrow**
-3. **Third:** 🟠 **Medium priority (P1)** - important this week
+3. **Third:** 🟠 **Medium priority** - important this week
 4. **Fourth:** **Blocked tasks** (where you're waiting on something - follow up)
-5. **Fifth:** 🟢 **Low priority (P2)** - normal work
+5. **Fifth:** 🟢 **Low priority** - normal work
 
 **If still unsure, ask PM in Slack:** "I have 3 tasks with same priority/deadline. Which one first?"
 
@@ -1320,17 +1324,18 @@ Choose from approved activities:
 
 ### Task Status Workflow in Basecamp
 
-**Use these statuses in Basecamp (customize based on your Basecamp setup):**
+**Every client project and every product uses the same standard card table** (full column list and rules: [Developer Playbook D11](DEVELOPER_PLAYBOOK.md#d11-basecamp-conventions--evidence)). For client projects the working path is:
 
-1. **To Do** - Task created, not started yet
-2. **In Progress** - Actively working on it
-3. **Peer Review** - Code done, needs code review (tag reviewer)
-4. **Ready for QA** - Code reviewed and merged to staging, needs testing
-5. **QA Failed** - Bugs found, back to developer (include bug details)
-6. **Ready for Deployment** - QA passed, waiting PM approval to deploy
-7. **Deployed** - Live on production, monitoring
-8. **Done** - Fully complete, client approved (archive)
-9. **Blocked** - Can't proceed, waiting on external dependency
+1. **Scope** - Agreed work from the Scope of Work, not started yet
+2. **Ready for Development** - Clear, estimated, owner assigned (Definition of Ready, Section 21)
+3. **In Development** - Being built. Code review happens in the GitHub pull request
+4. **Ready for Testing** - PR reviewed and merged to staging, developer's own browser check done, handover comment posted
+5. **In Testing** - QA working on it. If QA finds problems the card goes back to **Bugs**
+6. **Ready for Deployment** - QA passed, waiting for PM approval to deploy (Section 16)
+7. **Deployed** - Live on production, being monitored
+8. **Done** - Client approved
+
+Bugs reported by the client or QA enter at **Triage** / **Possible Bug** / **Bugs** like on every board. A **blocked** card stays in its column and is put **On Hold** with a comment saying what it is waiting for and from whom.
 
 **Developer updates status as they progress** - keep it current throughout the day.
 
@@ -2174,7 +2179,7 @@ Nothing to raise → say "No blockers" and pass. A standup with no blockers shou
 **PM does 2-minute project board check:**
 - Any unassigned tasks? → Assign immediately
 - Any tasks without deadlines? → Add deadline now
-- Any tasks stuck in "To Do" for 3+ days? → Follow up with developer
+- Any cards stuck in "Ready for Development" for 3+ days? → Follow up with developer
 
 **No MOM required for daily standup** - Keep it verbal and quick.
 
@@ -2193,7 +2198,9 @@ Nothing to raise → say "No blockers" and pass. A standup with no blockers shou
 
 ## 9. Quality & Review Enforcement
 
-Every task passes through: **Developer → Peer Review → QA → PM Approval → Client Review**.
+Every task passes through: **Developer (self-checks) → Pull request + code review → QA → PM Approval → Client Review**.
+
+**How to do each step** (bug fixing, self-checks, quality gates, QA of a card): see the [Developer Playbook](DEVELOPER_PLAYBOOK.md). The steps are the same for client projects and products.
 
 **Code & QA Rules:**
 - Follow WPCS and modular coding.
@@ -2869,6 +2876,8 @@ PM will:
 
 ### How to Assign Bug Severity
 
+**Use the triage grid (reach × impact × location) in the [Developer Playbook D3](DEVELOPER_PLAYBOOK.md#d3-fixing-a-bug) to set the level.** The questions below are the quick version.
+
 **QA or whoever finds the bug assigns initial severity based on:**
 
 1. **Is production affected?** → P0 or P1
@@ -3051,7 +3060,7 @@ If client says "This doesn't work" but it was never built → It's a feature req
 ### Bug Prevention Best Practices
 
 **For Developers:**
-- Test thoroughly locally before marking "Ready for QA"
+- Test thoroughly locally before marking "Ready for Testing"
 - Run WPCS and Plugin Checker
 - Test on multiple browsers (Chrome, Firefox, Safari)
 - Test on mobile (responsive)
@@ -3113,7 +3122,7 @@ If client says "This doesn't work" but it was never built → It's a feature req
 - If client gives extra tasks → inform PM only.
 
 ### QA
-- Begin testing once a task is marked *Ready for QA*.  
+- Begin testing once a task is marked *Ready for Testing*.  
 - Report bugs with clear description and screenshots.  
 - Keep communication professional in Basecamp.
 
@@ -3698,7 +3707,7 @@ git push origin feature/user-profile-export
 
 ---
 
-**Step 5: Peer Review**
+**Step 5: Pull Request Review**
 
 **Reviewer checks out branch:**
 
@@ -4052,7 +4061,7 @@ When a new developer, QA, or PM joins the team, follow this checklist to onboard
 
 A task is only "Complete" when ALL criteria are met:
 
-### Developer (Before marking "Peer Review"):
+### Developer (Before moving to "Ready for Testing"):
 - [ ] Code passes WPCS check (run locally: `phpcs --standard=WordPress`)
 - [ ] Plugin Checker shows no errors
 - [ ] Tested on local/staging + screenshot attached to Basecamp
@@ -4077,6 +4086,8 @@ A task is only "Complete" when ALL criteria are met:
 ---
 
 ### A. Code Review Checklist (For Peer Reviewers)
+
+The developer runs the self-checks in Developer Playbook D7 before asking for review. Reviewers check that they were done.
 
 **When a developer requests code review, check ALL of these:**
 
@@ -4148,7 +4159,7 @@ A task is only "Complete" when ALL criteria are met:
 
 ### B. QA Testing Checklist (For QA Team)
 
-**When testing a task marked "Ready for QA", check ALL of these:**
+**When testing a task marked "Ready for Testing", check ALL of these:**
 
 #### 1. Core Functionality
 - [ ] **Feature works as described?** - Read task description, does it do what was requested?
@@ -4194,7 +4205,7 @@ Use bug priority system (Section 9B):
 ### QA Test Result
 
 **If ALL checks pass:**
-- Comment in Basecamp: "QA Passed ✅ Ready for deployment"
+- Post the verdict comment (Developer Playbook D9-F) with PASS
 - Attach screenshots showing it works
 - Change task status to "Ready for Deployment"
 
@@ -4202,7 +4213,7 @@ Use bug priority system (Section 9B):
 - Report each bug using bug template (Section 9B)
 - Comment in Basecamp:
   ```
-  QA Failed ❌
+  QA Bounced ❌
 
   Bugs found:
   1. [P1] Login form doesn't validate email format
@@ -4211,17 +4222,17 @@ Use bug priority system (Section 9B):
 
   Assigning back to developer for fixes.
   ```
-- Change task status to "QA Failed"
-- Assign back to developer
+- Move the card back to **Bugs**
+- Assign back to the Feature Owner
 
-**Response time:** Test within 24 hours of "Ready for QA" status
+**Response time:** Test within 24 hours of "Ready for Testing" status
 
 ---
 
 ### Testing Tips
 
 **For Developers (Self-Testing Before QA):**
-- Run through this QA checklist yourself BEFORE marking "Ready for QA"
+- Run through this QA checklist yourself BEFORE marking "Ready for Testing"
 - Catch obvious issues yourself → Higher QA pass rate → Less back-and-forth
 
 **For QA:**
@@ -4399,7 +4410,7 @@ Time: 15-20 minutes
 ### Test Accounts & Test Data
 
 **Developer's Responsibility:**
-Before marking task **"Ready for QA"**, developer MUST:
+Before marking task **"Ready for Testing"**, developer MUST:
 
 1. **Create Test Accounts** (if feature needs login/roles)
    - At least 2 test accounts with different roles (if applicable)
@@ -4426,14 +4437,14 @@ Before marking task **"Ready for QA"**, developer MUST:
 
 **QA's Action:**
 1. Comment in Basecamp task: "Cannot start testing - missing test accounts/data"
-2. Move task back to "In Progress" status
+2. Move the card back to "In Development"
 3. Tag developer: "@Developer Need test accounts to proceed"
 4. **Do NOT** create test data yourself (developer must provide)
 
 **Developer's Action:**
 1. Create accounts/data within 2 hours
 2. Document in task
-3. Move back to "Ready for QA"
+3. Move back to "Ready for Testing"
 
 ---
 
@@ -4562,11 +4573,12 @@ Before marking task **"Ready for QA"**, developer MUST:
 ## 24. Document Control
 
 - **Owner:** HR & Project Management Team
-- **Version:** 10.0 - Developer ownership + client project setup
+- **Version:** 10.1 - Linked the Developer Playbook, standard card table
 - **Last Updated:** October 2026
 - **Next Review:** January 2027
 - **Status:** ✅ Complete - All essential sections + operational edge case handling
 - **Changelog:**
+  - v10.1: Linked the Developer Playbook. Client projects use the standard card table (Section 4A). Task priority labels (High/Medium/Low) separated from bug severity (P0-P3). Definition of Done and QA results use the new column names.
   - v10.0: Added Section 2C (Feature Owner model, async daily update in project channels, weekly 1:1, 50% checkpoint, ownership measures). Standup is blockers-only. Developer KPIs measure outcomes instead of update counts. Added Client Project Setup (Section 2B): one Basecamp project per client, internal #proj-[client] channel, whole team monitors client communication, Scope of Work document. Linked the Product Operations Manual.
   - v9.0: **OPERATIONAL COMPLETENESS - Team-Level Edge Cases:** Added 8 operational sections + fixed contradictions:
     - BA Role Definition: Business Analyst as PM assistant (requirement gathering support)
