@@ -2199,7 +2199,7 @@ Next Planning Meeting: Monday [Date] 11:00 AM
 ### E. Example: PROJECT vs TASK Thinking
 
 **❌ WRONG (Task-level thinking in weekly meeting):**
-> "John is working on the login page. Sarah is fixing the header bug. Mike will do the footer tomorrow."
+> "Developer A is working on the login page. Developer B is fixing the header bug. Developer C will do the footer tomorrow."
 
 **✅ CORRECT (Project-level thinking):**
 > "**Project: Website Redesign**
@@ -3768,7 +3768,7 @@ Client says: "Can you add this feature?" - Follow this process:
 - `hotfix/critical-security-patch`
 
 **Bad examples:**
-- `john-work` (unclear what it is)
+- `my-work` (unclear what it is)
 - `fix` (too vague)
 - `testing123` (not descriptive)
 
