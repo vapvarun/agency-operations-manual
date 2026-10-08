@@ -22,6 +22,7 @@ Each topic is written in **one** place. Other documents only link to it. If two 
 | Roles, reporting lines, RACI, who approves what (including code review approvers) | Agency 2A, 21A |
 | Communication channels, response times, client isolation, Scope of Work | Agency 2B |
 | Feature Owner model, daily update, weekly 1:1, 50% checkpoint, ownership measures | Agency 2C |
+| Social media sharing (blogs, videos, releases) | Agency 2D |
 | Attendance, leave, HR, KPIs, evaluations | Agency 3, 14 |
 | Task priority (High / Medium / Low), task assignment | Agency 4, 4A |
 | Meetings, standup, MOM, QA Review, Product Review | Agency 8 |

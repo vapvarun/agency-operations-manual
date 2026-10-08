@@ -520,10 +520,10 @@ When PM is unavailable (sick/leave/meeting/off-hours), the following backup prot
 | **#dailymeeting** | General team chat and cross-project technical questions (daily updates go in project channels, Section 2C) | All team members |
 | **#attendance** | Daily in/out, leave requests | All team members |
 | **#emergencies** | Site down, critical bugs, urgent issues | Anyone (tag @PM @Lead-Dev) |
-| **#wbcomers** | Team announcements, company updates | PM, Management |
+| **#wbcomers** | Team announcements, company updates, and product release posts. A release counts as available to customers only once its post has the ✅ reaction from the release lead (Product manual P7, Section 2D) | PM, Management, release lead |
 | **#proj-[client]** | One per client project. All internal discussion about that client (see Client Project Setup below) | Project team members only (e.g., #proj-clientxyz) |
 | **#prod-[product]** | One per product. Internal product discussion, daily updates, aging alerts | Product team |
-| **#releases** | Release confirmations (Product manual P7). A version counts as available only after the release lead confirms it here | Release lead, Lead Devs |
+| **#marketing-team** | New blog posts, videos, official social links and marketing reports to share (Section 2D) | Marketing; everyone reads and shares |
 
 **⏰ Response Time:**
 - Urgent/tagged messages: Within 2 hours
@@ -908,6 +908,74 @@ Reviewed monthly per developer by the Lead (Section 14). Data comes from Basecam
 **Not used for performance:** counting daily update posts or attendance posts. (Attendance itself is still an HR policy, Section 3.)
 
 Fixing your own bugs is still not billable to clients (Section 4B), but fixing them fast and owning the cause counts in your favour.
+
+---
+
+## 2D. Social Media Sharing (Everyone)
+
+**Purpose:** Every new blog post, video and product release reaches more people when the whole team shares it, not just the official accounts. The material already arrives in Slack every day. This section says what to share, when, and how.
+
+---
+
+### A. Where the Material Comes From
+
+| Slack channel | What appears there | Share when |
+|---------------|--------------------|------------|
+| **#marketing-team** | "[New Posts]" digests of new blog posts across our sites, new YouTube films and shorts, links to official social posts, and the weekly marketing report | As soon as it is posted |
+| **#wbcomers** | Product release posts (version, what changed, release notes, docs) | **Only after the post has the ✅ reaction.** ✅ means the release lead has confirmed the version is available. A release post without ✅ is not shared yet |
+
+Products with their own social accounts (for example BuddyNext on X) are shared from **that product's account first**, then reposted by the company account and the team.
+
+---
+
+### B. Follow the Official Accounts (once, when you join)
+
+Follow every account in the table below on the platforms you use. Marketing keeps this list current. New team members do this in their first week (Section 20).
+
+| Account | Platforms |
+|---------|-----------|
+| Wbcom Designs (company) | X, LinkedIn, Bluesky, YouTube, Instagram |
+| Product accounts (BuddyNext and others with their own accounts) | As listed by Marketing in the #marketing-team channel topic |
+| Our blog sites (wbcomdesigns.com, tweakswp.com, woocustomdev.com, bpcustomdev.com, wppioneer.com, reigntheme.com, attowp.com and the others in the "[New Posts]" digests) | Wherever each site has an account |
+
+---
+
+### C. Daily Sharing Routine (5-10 minutes, before your 6:30 PM update)
+
+1. **Check #marketing-team and #wbcomers** for anything new since yesterday.
+2. **Repost the official post** (repost or retweet on X and Bluesky, repost on LinkedIn). Reposting the official post counts for more than posting the link again yourself.
+3. **Add your own line at least once a week:** quote-post one item with a sentence about why it is useful, in your own words. Developers and QA know the products best, so a short "what this fixes" from you is worth more than a generic share.
+4. **Like and reply** to genuine comments on official posts when you can add something useful.
+5. **React 🔁 on the Slack message** once you have shared it, so Marketing can see what was covered.
+
+**Product releases:** share only after ✅ (see A). For a Free + Pro pair, share the one post that covers both. Lead with what changed for the site owner, never with internal details.
+
+---
+
+### D. What Never Goes on Social Media
+
+- Anything about **client projects**, client names, client sites or screenshots, unless the client has agreed in writing and the PM confirms it (client isolation, Section 2B)
+- **Unreleased** features, versions without ✅, or roadmap items not yet announced
+- Credentials, internal links (Basecamp, staging sites, admin screens), internal Slack messages or screenshots of them
+- Criticism of competitors or other people. Compare facts, politely, only in posts Marketing has written
+- Support answers in public threads. Reply with the docs link or "our support team will help at [support link]" and post the question in the product channel for the Support Lead
+
+---
+
+### E. Personal Accounts
+
+Sharing from a personal or professional profile is expected for every team member, because it is how our content reaches new people. If you don't want to use a personal account on a platform, tell your PM. You can help in other ways instead, such as writing the "what this fixes" line for Marketing to post. Your profile, your words. Never post on behalf of the company beyond reposting and your own honest comment.
+
+---
+
+### F. Who Owns What
+
+| Role | Responsibility |
+|------|----------------|
+| **Marketing** | Posts from the official accounts, schedules reshares with a new angle every 2-3 days, keeps the account list (B) current, posts official social links in #marketing-team so the team can repost, and includes sharing coverage in the weekly marketing report |
+| **Release lead** | Adds ✅ to the release post in #wbcomers once the version is available |
+| **Product Owner** | Makes sure each release post says what changed for the site owner, so it can be shared as is |
+| **Everyone** | Follows the accounts, runs the daily routine, reacts 🔁 when shared, sends good questions or objections from social comments to Marketing (they feed the Product Review, Section 8I) |
 
 ---
 
@@ -3933,6 +4001,7 @@ When a new developer, QA, or PM joins the team, follow this checklist to onboard
 - [ ] Understands Basecamp task flow
 - [ ] Knows who to ask for what (PM, Lead Dev, mentor)
 - [ ] Attended first Friday weekly review
+- [ ] Follows the official company and product social accounts and runs the daily sharing routine (Section 2D)
 
 **PM checks in (30 min end-of-week):**
 - "How's your first week going?"
@@ -4566,11 +4635,12 @@ All response times live in one table: **Section 2B, "Communication Response Time
 ## 24. Document Control
 
 - **Owner:** HR & Project Management Team
-- **Version:** 10.3 - Weekly QA Review and monthly Product Review
+- **Version:** 10.4 - Social media sharing
 - **Last Updated:** October 2026
 - **Next Review:** January 2027
 - **Status:** ✅ Complete - All essential sections + operational edge case handling
 - **Changelog:**
+  - v10.4: Added Section 2D (social media sharing for everyone: sources in #marketing-team and #wbcomers, share releases only after ✅, daily routine, what never goes on social, who owns what). Release confirmations happen in #wbcomers, not a separate channel.
   - v10.3: Added the Weekly QA Review (8H) and the Monthly Product Review per product family with a rotating competitor scout (8I). The Product Review replaces the monthly product retro.
   - v10.2: Consistency pass. One rule per topic, with the owner listed in README.md. Every production deploy needs PM approval (fast-track for small fixes). Staging needs PR review. All code review and merges go through GitHub pull requests. PM answers client questions. Internal talk only in Slack project channels. One response-time table (2B) and one bug-timing table (9B). One credentials document. Fixed wrong section references, old status names and HR wording.
   - v10.1: Linked the Developer Playbook. Client projects use the standard card table (Section 4A). Task priority labels (High/Medium/Low) separated from bug severity (P0-P3). Definition of Done and QA results use the new column names.

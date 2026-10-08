@@ -708,7 +708,7 @@ A full manual walk takes about 90 minutes, plus about 45 minutes for the release
 11. **Tag** `vX.Y.Z` (annotated) on `main` after the merge, and only when `main` is green. Then merge `main` back into `develop` through a PR.
 12. **GitHub release:** attach the zip. Title `Product X.Y.Z - one-line summary`. Body = the readme changelog bullets.
 13. **Free/Pro lockstep** (rule: Product manual P7): same version, released together, each release links the other.
-14. **Announce** in `#releases`. A version counts as available to customers only after the release lead confirms it there.
+14. **Announce** in `#wbcomers` (what changed for the site owner, release notes, docs). A version counts as available to customers only after the release lead adds ✅ to that post. Then it is shared on social media (Agency manual 2D).
 15. **First 48 hours:** debug.log clean on the test site, scheduled jobs present, no "broke after update" tickets. Each Feature Owner watches their feature.
 
 ---

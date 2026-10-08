@@ -223,10 +223,10 @@ Backup: [Name]
 - **#dailymeeting** - General team chat, cross-project technical questions
 - **#attendance** - Daily in/out, leave requests
 - **#emergencies** - Site down, critical bugs
-- **#wbcomers** - Team announcements, company updates
+- **#wbcomers** - Team announcements, company updates, product releases (✅ = available, OK to share)
 - **#proj-[client]** - Internal channel per client project (client never added)
 - **#prod-[product]** - Internal channel per product
-- **#releases** - Release confirmations
+- **#marketing-team** - New blog posts, videos and social links to share
 
 ---
 
@@ -331,6 +331,16 @@ PM acknowledges (1 hr), resolution plan (4 hrs)
 | Every release | Full battery; build script refuses on any failure. Skips must be typed and explained |
 
 **Bug fix in one line:** reproduce in the browser → triage (reach × impact × location) → root cause + every caller → fix once at the source → regression guard in the same commit → self-checks → Ready for Testing with handover comment.
+
+---
+
+## SOCIAL SHARING (Section 2D)
+
+- **Once:** follow the official company and product accounts (list from Marketing).
+- **Daily, before your 6:30 PM update:** check #marketing-team and #wbcomers → repost the official posts → react 🔁 on the Slack message.
+- **Releases:** share only after the ✅ on the #wbcomers post.
+- **Weekly:** quote-post one item with your own line about why it helps.
+- **Never:** client work, unreleased features, internal links or screenshots, support answers in public.
 
 ---
 
