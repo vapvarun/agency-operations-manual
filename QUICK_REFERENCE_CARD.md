@@ -22,6 +22,8 @@
 
 **These 9 sections = Everything you need for daily work.**
 
+**HOW TO DO THE WORK:** the **Developer Playbook** (`DEVELOPER_PLAYBOOK.md`) has the step-by-step for fixing bugs, debugging, build rules, self-checks, quality gates, QA and release. Same steps for client projects and products.
+
 ---
 
 ## THE 3 RULES
@@ -305,6 +307,19 @@ PM responds (4 hrs)
 - Read ALL client messages in Basecamp every morning, not just your tasks.
 - Client changed something? Post in `#proj-[client]` + tag PM same day.
 - Not in the Scope of Work doc? Ask PM before building (Section 17).
+
+---
+
+## QUALITY GATES (Playbook D8)
+
+| When | Gate |
+|------|------|
+| Every commit | Pre-commit hook: lint + PHPCS on staged files |
+| Every push / PR | CI green (or same checks run locally for private repos). Red = no merge |
+| Every card | Run what your change can break + **browser check at 1440 + 390px, light + dark, on the role ladder** |
+| Every release | Full battery; build script refuses on any failure. Skips must be typed and explained |
+
+**Bug fix in one line:** reproduce in the browser → triage (reach × impact × location) → root cause + every caller → fix once at the source → regression guard in the same commit → self-checks → Ready for Testing with handover comment.
 
 ---
 

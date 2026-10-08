@@ -62,9 +62,9 @@ Idea / Ticket / Review
         ↓
 Triage (Support Lead or Product Owner)
         ↓
-Roadmap card (Product Owner prioritises)
+Scope / Bugs (Product Owner prioritises)
         ↓
-Build (Developer) → Code Review (Lead Dev) → Ready for Testing
+Ready for Development → Build (Feature Owner) → PR + CI + code review → Ready for Testing
         ↓
 QA verify (per card) → Done
         ↓
@@ -73,21 +73,20 @@ Release branch → Pre-release smoke (QA) → Go / No-go (Product Owner)
 Tag + publish → Changelog → Support notified → Customers told
 ```
 
-### Basecamp Card Table Columns (every product project)
+### Basecamp Card Table
 
-| Column | Meaning | Who moves cards in |
-|--------|---------|--------------------|
-| **Triage** | New, not yet confirmed | Anyone |
-| **Bugs** | Confirmed bug, reproduced | Support Lead / QA |
-| **Roadmap** | Accepted feature, not yet scheduled | Product Owner |
-| **Next Release** | Committed to the next version | Product Owner |
-| **In Progress** | Being built | Developer |
-| **Ready for Testing** | Built, reviewed, merged to the release branch | Developer |
-| **Done** | QA verified | QA |
-| **Released** | Shipped in a tagged version (card notes the version) | Lead Dev |
-| **Won't Fix** | Closed with a written reason | Product Owner |
+Every product board uses the **standard card table** in the [Developer Playbook D11](DEVELOPER_PLAYBOOK.md#d11-basecamp-conventions--evidence) (Triage, Not now, Scope, Suggestions, Possible Bug, Bugs, Ready for Development, In Development, Ready for Testing, In Testing, Done). Client projects use the same table.
 
-**Rule:** a card moves to Ready for Testing only after the code is merged and the developer has done the browser check in P6. A card QA bounces back gets a comment saying what was missed, and the missed check is added to the product's QA checklist (see P10).
+| Who moves cards into | Column |
+|----------------------|--------|
+| Anyone | Triage, Possible Bug |
+| Support Lead / QA (after reproducing) | Bugs |
+| Product Owner | Scope, Suggestions, Not now |
+| Lead Dev (cause known, owner assigned) | Ready for Development |
+| Feature Owner | In Development, Ready for Testing |
+| QA | In Testing, Done, back to Bugs |
+
+**Rule:** a card moves to Ready for Testing only after the code is merged and the developer has done their own browser check (Playbook D7-G). The released version number is added as a card comment. A card QA bounces back gets a comment saying what was missed, and the missed check is added to the product's QA checklist (see P10).
 
 ---
 
@@ -112,7 +111,7 @@ For every card in Triage, the triager answers four questions in the card:
 3. **Impact:** data loss, payment, security, broken feature, or cosmetic?
 4. **Where:** Free or Pro, and which surface (frontend, admin, REST API, email)?
 
-Then the card goes to **Bugs**, **Roadmap** or **Won't Fix** (with reason).
+Then the card goes to **Bugs**, **Scope**, **Suggestions**, **Not now**, or is closed in **Done** as not-a-bug with the evidence. Full triage steps, including the priority grid: Playbook D3.
 
 ### Free vs Pro placement
 
@@ -136,12 +135,12 @@ The discussion with the client stays in the client's own Basecamp project (clien
 
 ## P5. Building Product Features
 
-Before writing code, the developer checks these. Each one exists because skipping it caused real bugs before.
+Before writing code, the developer checks these. Each one exists because skipping it caused real bugs before. The step-by-step how-to is in the [Developer Playbook](DEVELOPER_PLAYBOOK.md) (D2 before coding, D5 build rules, D6 UI rules, D7 self-checks).
 
 ### A. Reuse before you write
 
 - If the repo has `audit/manifest.json` (or a free/pro manifest pair), read it first. It lists every function, hook and REST route. Reuse what exists instead of adding a near-duplicate.
-- Read the repo's `CLAUDE.md` / architecture docs for conventions.
+- Read the repo's project guide (the READ-FIRST file at the repo root) for conventions.
 - When you add a hook, endpoint or option, update the manifest in the same PR.
 
 ### B. Three entry points for every feature
@@ -156,32 +155,18 @@ A table or setting that only one of these can reach is a half-finished feature. 
 
 ### C. Large-site readiness (baseline, not a follow-up)
 
-Customer sites are big. Every list, grid, table or query must work with **2,000+ rows** on day one:
-
-- [ ] **Pagination:** `LIMIT`/`OFFSET` + `COUNT(*)` + prev/next in the UI. No unbounded queries.
-- [ ] **Indexes:** every `WHERE` / `ORDER BY` / `JOIN` column is indexed.
-- [ ] **No N+1:** no queries inside a `foreach`. Batch-fetch first.
-- [ ] **Counts via `COUNT(*)`:** never `count()` a full result set just to show a number.
-- [ ] **Filter + sort:** at least the main filter (status / type) and sort (newest / oldest).
-- [ ] **Caching:** shared data has a cache key and is cleared on write.
-- [ ] **Concurrency:** the UI handles "already deleted / already taken" without errors.
-
-Test it: seed 1,000+ posts / 500+ users with WP-CLI and check the page still loads quickly.
+Customer sites are big. Every list, grid, table or query must work with **2,000+ rows** on day one: pagination with `COUNT(*)`, indexes on every filtered or sorted column, no queries inside loops, a main filter and sort, caching with invalidation, and graceful "already deleted / already taken" handling. Rules and how to test: Playbook D5-E and D7-D.
 
 ### D. UI rules
 
-- [ ] Works at **390px** mobile width, with a mobile breakpoint in the same PR.
-- [ ] Works in **dark mode** (use design tokens, never raw hex colours).
-- [ ] Works in **RTL** (`margin-inline-*`, not `margin-left/right`).
-- [ ] **Accessible:** semantic HTML, labels on icon-only buttons, keyboard reachable.
-- [ ] Handles **empty, loading and error** states.
-- [ ] Looks right under our own themes and at least one popular third-party theme.
+Every UI change works at 390px, in dark mode and RTL, is accessible, handles empty / loading / error states, and fits our own themes plus a default theme. Rules: Playbook D6.
 
 ### E. Never break existing sites
 
-- [ ] Database changes run through a versioned upgrade routine. No data is dropped.
+- [ ] Database changes run through a versioned upgrade routine that is safe to run twice. No data is dropped. No schema changes in patch releases.
 - [ ] Renamed options, hooks or meta keys keep the old name working (read old, write new) for at least two releases.
-- [ ] Removed hooks or functions are deprecated first (`_deprecated_function()`), not deleted.
+- [ ] Removed hooks or functions are deprecated first (`_deprecated_function()`) and kept for at least 2 major versions.
+- [ ] A change to default behaviour ships with a filter that restores the old behaviour.
 - [ ] Free and Pro: Pro checks the Free version it needs and shows a clear notice if Free is too old.
 
 ---
@@ -191,9 +176,11 @@ Test it: seed 1,000+ posts / 500+ users with WP-CLI and check the page still loa
 ### Developer (before Ready for Testing)
 
 - [ ] Code reviewed and approved in a GitHub pull request
-- [ ] CI is green: PHPCS (WPCS), PHPStan, PHPUnit, Plugin Check
+- [ ] CI is green (public repos), or the same checks run locally and the result pasted in the PR (private / paid repos). Playbook D8
+- [ ] Self-checks done for what changed: wiring, contract, security, performance (Playbook D7)
+- [ ] Regression guard added in the same commit (test or QA checklist line)
 - [ ] Large-site checklist (P5-C) done for every list / query touched
-- [ ] Browser-checked as each affected role (admin, member, guest) at desktop and 390px
+- [ ] Browser-checked on the role ladder (logged out, owner, second member, moderator, admin) at desktop and 390px, light and dark
 - [ ] Screenshots attached to the card, each labelled with **viewport + role**
 - [ ] All three entry points work (P5-B)
 - [ ] Manifest updated if a hook / endpoint / option was added
@@ -206,6 +193,7 @@ Test it: seed 1,000+ posts / 500+ users with WP-CLI and check the page still loa
 - [ ] Checked the surrounding feature, not just the exact steps on the card
 - [ ] Checked as the site owner would see it: settings, defaults, emails, templates
 - [ ] No new PHP notices or JS console errors
+- [ ] Verdict posted in the standard format (Playbook D9-F)
 
 **QA findings are input, not verdicts.** Broken functions are fixed without debate. For layout / UX preferences ("feels empty", "should be wider"), the developer reproduces at the exact viewport, judges it as the site owner and end customer would, and pushes back with a reason if the current behaviour is correct. If it is genuinely subjective, add a filter so site owners can change it.
 
@@ -217,20 +205,23 @@ Test it: seed 1,000+ posts / 500+ users with WP-CLI and check the page still loa
 
 | Type | When | Contains |
 |------|------|----------|
-| **Patch** (1.4.**2**) | As needed, usually every 2 weeks | Bug fixes only |
+| **Patch** (1.4.**2**) | Regular maintenance cycle, about every 7-10 days | Bug fixes only |
 | **Minor** (1.**5**.0) | Planned, about every 1-2 months | New features + fixes |
 | **Major** (**2**.0.0) | Rare, announced ahead | Breaking changes, big redesigns |
-| **Security** | Same day if possible | Security fix only, nothing else |
+| **Security / fatal** | Within 1-2 days | That fix only, nothing else |
 
 ### Release branch
 
-1. Lead Dev creates `release/X.Y.Z` from `develop` when the Next Release column is done.
+1. Lead Dev creates the release branch (named for the version) when the cards planned for this release are Done.
 2. Only fixes for problems found during the release QA go into the release branch after that.
-3. After release, merge back to `main` and `develop`, then tag `X.Y.Z`.
+3. Merge into `main` through a PR once CI is green, then tag `vX.Y.Z` on `main`. Merge back into the development branch.
+
+Full step-by-step release QA and release steps: Playbook D10.
 
 ### Pre-release checklist (QA owns, Product Owner signs off)
 
-- [ ] Every card in Next Release is in Done
+- [ ] Every card planned for this release is in Done
+- [ ] Full gate battery passed; build script produced the zip with no bypasses (Playbook D8 Gate 4)
 - [ ] Full smoke run of the product's core paths, per role, at desktop and 390px
 - [ ] Contract check: every saved setting is actually read and applied; every hook fired is consumed
 - [ ] Upgrade test: install the **previous** released version with data, then update. Nothing lost, no errors
@@ -238,11 +229,11 @@ Test it: seed 1,000+ posts / 500+ users with WP-CLI and check the page still loa
 - [ ] Tested on the minimum and latest supported WordPress and PHP versions
 - [ ] Tested with the latest WooCommerce / BuddyPress (where the product depends on them)
 - [ ] Free + Pro: tested together at the new versions **and** new Pro with the oldest Free it supports
-- [ ] Plugin Check passes (required for WordPress.org products)
-- [ ] Version number bumped everywhere (plugin header, constants, `readme.txt` stable tag, `package.json`)
+- [ ] Plugin Check passes on the **built zip** (required for WordPress.org products)
+- [ ] Version number matches in every location (Playbook D10-D step 4)
 - [ ] `readme.txt` changelog written (P8)
 - [ ] Docs updated
-- [ ] Build zip installs and activates on a clean site
+- [ ] Built zip installs and activates on a clean site (never skipped, not even for hotfixes)
 
 ### Go / No-go
 
@@ -256,7 +247,8 @@ The Product Owner gives a written "Go" in the Basecamp release card. **No Go, no
 ### After release (same day)
 
 - [ ] GitHub release published (P8 format)
-- [ ] Cards moved to Released with the version number
+- [ ] Version number added as a comment on every card in the release
+- [ ] Release confirmed in the releases channel. Only then do customers get told to update
 - [ ] Support team told what changed and which tickets it fixes
 - [ ] Each Feature Owner watches support and errors for their feature
 - [ ] Support replies to every customer whose ticket was fixed
@@ -308,9 +300,9 @@ Customer ticket
 Support Lead reproduces (latest version, clean site + customer's setup if needed)
     ↓
 Not a bug → answer customer, add to docs/FAQ if asked twice
-Bug → Basecamp card in Bugs (link ticket, steps, version, environment)
+Bug → Basecamp card in Bugs (bug brief, Playbook D4-F) + private note on the ticket
     ↓
-Customer told: "Confirmed, we'll update you when it's fixed" (no dates promised)
+Customer told within 48 h: reproduced + workaround + "in the next update" (no dates promised)
     ↓
 Fixed + released → Support replies with the version number
 ```
@@ -322,20 +314,25 @@ Fixed + released → Support replies with the version number
 - Exact steps to reproduce on our site
 - Expected vs actual result
 - Link to the support ticket(s)
-- Reach (one site / some / everyone) and severity (Agency manual Section 9B)
+- Reach / impact / location and the resulting P level (Playbook D3 step 3)
+- Paying customer or free user
+
+Full card format and steps: Playbook D3 and D4-F.
 
 ### Response targets
 
-| Severity | First reply to customer | Fix shipped |
-|----------|-------------------------|-------------|
-| P0 - site broken / data loss / security | 4 hours | Hotfix, same or next day |
-| P1 - major feature broken, no workaround | 1 working day | Next patch release |
-| P2 - broken with a workaround | 1 working day | Next minor release |
-| P3 - cosmetic / enhancement | 2 working days | Roadmap |
+| Severity | First useful reply to customer | Fix shipped |
+|----------|-------------------------------|-------------|
+| P0 - site broken / data loss / payments / security | Same day | Hotfix within 1-2 days |
+| P1 - core path blocked, no workaround | Within 48 hours | Next maintenance release |
+| P2 - degraded, workaround exists | Within 48 hours | Next or following maintenance release |
+| P3 - cosmetic / edge case | Within 48 hours | When scheduled |
+
+"A useful reply" means reproduced, a workaround if there is one, and an honest next step. Reply rules: Playbook D12.
 
 ### Aging
 
-Every Monday the Support Lead lists bugs older than 30 days in the planning meeting. Each one gets a release target or moves to Won't Fix with a reply to the customer.
+A card with no useful customer reply 48 hours after carding gets an aging alert (Playbook D12), at most once a day. Every Monday the Support Lead lists bugs older than 30 days in the planning meeting. Each one gets a release target, or is moved to Not now with a reply to the customer.
 
 ---
 
@@ -344,7 +341,7 @@ Every Monday the Support Lead lists bugs older than 30 days in the planning meet
 The goal is that the same kind of bug does not ship twice.
 
 - **Every QA bounce** adds one line to the product's QA checklist describing the check that would have caught it.
-- **Every customer-found bug** gets a one-line "why we missed it" note on the card before it moves to Released.
+- **Every customer-found bug** gets a one-line "why we missed it" note on the card before the release ships.
 - **Monthly product retro (30 min per product, Product Owner leads):**
   1. Which bugs did customers find that we didn't?
   2. Which checks were added this month?
@@ -362,7 +359,7 @@ Measure results, not activity. The Product Owner reviews these monthly.
 | **Escaped bugs** | Bugs customers reported against the latest release | Trending down |
 | **Hotfixes per release** | How often a release had to be patched within 7 days | ≤ 1 in 5 releases |
 | **Card reopen rate** | Cards bounced from QA back to dev | ≤ 15% |
-| **Cycle time** | Days from In Progress to Released | Trending down |
+| **Cycle time** | Days from In Development to released | Trending down |
 | **Bug age** | Median age of open bugs | ≤ 30 days |
 | **Support reply time** | First reply to customers | Meets P9 targets |
 | **WordPress.org rating** | Customer sentiment (free products) | ≥ 4.5 |
@@ -405,6 +402,7 @@ AI coding tools (Claude Code and similar) are allowed for product work, with the
 
 | Question | Section |
 |----------|---------|
+| How do I actually do it, step by step? | Developer Playbook |
 | Is this agency or product work? | P1 |
 | Who owns this product? | P2 |
 | Which Basecamp column? | P3 |
@@ -423,7 +421,7 @@ AI coding tools (Claude Code and similar) are allowed for product work, with the
 ## Document Control
 
 - **Owner:** Product Owners + Lead Developers
-- **Version:** 1.0
+- **Version:** 1.1 - aligned with the Developer Playbook
 - **Last Updated:** October 2026
 - **Next Review:** January 2027
 
