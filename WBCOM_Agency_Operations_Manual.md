@@ -2,6 +2,8 @@
 
 This document defines the complete management, communication, and evaluation system for Wbcom Designs. It ensures consistent operations, quality assurance, accountability, and transparent client communication for all projects.
 
+> **Product work** (our own plugins, themes and Pro add-ons) follows the [Product Operations Manual](PRODUCT_OPERATIONS_MANUAL.md) in addition to this one.
+
 ---
 
 ## 1. Foundation of the System
@@ -518,7 +520,7 @@ When PM is unavailable (sick/leave/meeting/off-hours), the following backup prot
 | **#attendance** | Daily in/out, leave requests | All team members |
 | **#emergencies** | Site down, critical bugs, urgent issues | Anyone (tag @PM @Lead-Dev) |
 | **#wbcomers** | Team announcements, company updates | PM, Management |
-| **#proj-[name]** | Project-specific internal discussion | Project team members (e.g., #proj-clientxyz) |
+| **#proj-[client]** | One per client project. All internal discussion about that client (see Client Project Setup below) | Project team members only (e.g., #proj-clientxyz) |
 
 **⏰ Response Time:**
 - Urgent/tagged messages: Within 2 hours
@@ -572,6 +574,36 @@ When PM is unavailable (sick/leave/meeting/off-hours), the following backup prot
 2. If no response in 15 min → WhatsApp PM
 3. If no response in 15 min → Call PM
 4. If no response in 30 min total → WhatsApp/Call Management
+
+---
+
+### Client Project Setup: Isolation, Monitoring & Scope
+
+Every client project has exactly **one Basecamp project** (client-facing) and **one internal Slack channel** (`#proj-[client]`). Both are created at kickoff (Section 15).
+
+**1. Client isolation (Basecamp)**
+- One Basecamp project per client. Never put two clients in the same Basecamp project.
+- Everything that belongs to the client stays inside their Basecamp project: tasks, files, credentials, MOMs, scope.
+- Never mention, show or reuse one client's data, code, screenshots or details with another client.
+- Product work (our own plugins/themes) is never tracked inside a client's Basecamp project. See the Product Operations Manual.
+
+**2. Internal discussion (Slack `#proj-[client]`)**
+- All internal talk about that client goes in their `#proj-[client]` channel, not in `#dailymeeting` or DMs. This keeps the full history of the project in one place for whoever picks it up next (backup developer, new PM).
+- Members: PM, Lead Dev, assigned developers, QA, BA. Add and remove people as the team changes.
+- Channel topic holds: Basecamp project link, scope document link, Primary + Backup developer.
+- The client is never added to this channel.
+
+**3. Everyone monitors client communication**
+- Every team member on a project follows the client's Basecamp project with notifications on, and reads **all** client messages, comments and MOMs at least once a day (start of day).
+- The PM replies to the client. The team still needs to know everything the client has said, so nobody builds against an outdated request.
+- If a client message changes a requirement, priority or deadline, post it in `#proj-[client]` and tag the PM the same day.
+- Before starting any task, re-read the latest client comments on that task and its scope item.
+
+**4. Scope is always written and visible**
+- The agreed scope lives in one document: Basecamp → Docs & Files → **"Scope of Work"**. It is pinned on the Message Board and linked in the Slack channel topic.
+- Every Basecamp task links to the scope item it delivers. A task that maps to no scope item is a change request (Section 17), not a task.
+- Every approved scope change is added to the Scope of Work with the date and a link to the client's written approval. The document is always the current truth.
+- If anyone on the team is unsure whether a request is in scope, they ask the PM in `#proj-[client]` **before** doing the work.
 
 ---
 
@@ -3128,8 +3160,11 @@ When a new project/client comes in, follow this checklist to start smoothly:
 **After kickoff meeting (within 24 hours):**
 
 **PM does:**
-- [ ] Create project in Basecamp
+- [ ] Create project in Basecamp (one per client, see Section 2B Client Project Setup)
 - [ ] Set up folder structure (Docs & Files → Credentials, Designs, Notes)
+- [ ] Write the Scope of Work document in Docs & Files and pin it on the Message Board
+- [ ] Create internal Slack channel `#proj-[client]`, add the project team, put Basecamp + scope links in the topic
+- [ ] Confirm every team member follows the Basecamp project with notifications on
 - [ ] Add client to Basecamp
 - [ ] Post meeting summary in Basecamp
 - [ ] Create initial task list with deadlines

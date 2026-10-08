@@ -210,7 +210,7 @@ Backup: [Name]
 - **#attendance** - Daily in/out, leave requests
 - **#emergencies** - Site down, critical bugs
 - **#wbcomers** - Team announcements, company updates
-- **#proj-[name]** - Project-specific discussions
+- **#proj-[client]** - Internal channel per client project (client never added)
 
 ---
 
@@ -278,6 +278,22 @@ PM responds (4 hrs)
 - Do project board check after standup
 - Client reports every Friday
 - Keep Basecamp client-friendly
+
+---
+
+## CLIENT PROJECTS
+
+- One Basecamp project per client. Never mix clients.
+- Internal talk about a client goes in `#proj-[client]` only.
+- Read ALL client messages in Basecamp every morning, not just your tasks.
+- Client changed something? Post in `#proj-[client]` + tag PM same day.
+- Not in the Scope of Work doc? Ask PM before building (Section 17).
+
+---
+
+## PRODUCT WORK
+
+Working on our own plugins/themes? Follow the **Product Operations Manual** (`PRODUCT_OPERATIONS_MANUAL.md`): Definition of Done (P6), release checklist (P7), changelog format (P8).
 
 ---
 
