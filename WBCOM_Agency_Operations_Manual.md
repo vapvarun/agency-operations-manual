@@ -10,7 +10,7 @@ This document defines the complete management, communication, and evaluation sys
 
 ## 1. Foundation of the System
 
-Every task, meeting, and deliverable runs on time with visible ownership and backup coverage — managed purely through Basecamp and Slack. All activities must be logged in these two tools to ensure traceability and accountability.
+Every task, meeting, and deliverable runs on time with visible ownership and backup coverage — managed through Basecamp and Slack (code review and merges in GitHub pull requests). All activities must be logged in these tools to ensure traceability and accountability.
 
 > “If it’s not updated in Basecamp or Slack, it didn’t happen.”
 
@@ -114,8 +114,8 @@ Management/Founders
 **Reports From:** Lead Dev, QA Lead, Developers (via standup)
 
 **Decision Authority:**
-- ✅ Can approve: Task prioritization, scope changes (minor), timeline adjustments (within reason), leave requests, client communication, deployment timing
-- ❌ Must escalate to Management: Budget changes, timeline delays >1 week, scope changes (major), contract modifications, team conflicts (unresolved)
+- ✅ Can approve: Task prioritization, scope changes (minor), timeline adjustments (within reason), leave requests (initial approval; HR confirms), client communication, deployment timing
+- ❌ Must escalate to Management: Budget changes, timeline delays >3 days, scope changes (major), contract modifications, team conflicts (unresolved)
 
 **Key Metrics:**
 - Client satisfaction
@@ -132,7 +132,7 @@ When PM is unavailable (sick/leave/meeting/off-hours), the following backup prot
 
 **For Task Clarification:**
 → Technical aspects: Ask Lead Developer
-→ Client-facing questions: Tag PM in Basecamp (PM will respond when available)
+→ Client-facing questions: post in `#proj-[client]` and tag the PM (PM will respond when available)
 → If urgent and PM unreachable: Lead Dev responds: "We've received your question and PM will respond by [time]"
 
 **For Urgent Client Questions/Issues:**
@@ -206,7 +206,7 @@ When PM is unavailable (sick/leave/meeting/off-hours), the following backup prot
 
 **Decision Authority:**
 - ✅ Can approve: Technical approach, framework/library choices, code architecture, peer review approvals, developer task assignment (technical aspects)
-- ✅ Can do without approval: Deploy to staging (no approval needed)
+- ✅ Can do without PM approval: Deploy to staging (after the pull request is reviewed, Section 4A)
 - ❌ Must escalate to PM: Timeline changes, scope clarifications, client questions, deployment to production (needs PM approval per Section 16)
 
 **Key Metrics:**
@@ -239,14 +239,10 @@ When PM is unavailable (sick/leave/meeting/off-hours), the following backup prot
 
 **Decision Authority:**
 - ✅ Can decide: Technical implementation details, which libraries to use (within approved stack), code refactoring
-- ✅ Can do without approval: Deploy to staging (after local testing - no approval needed)
-- ❌ Must escalate to Lead Dev: Architecture changes, new technology introduction, timeline concerns, technical blockers >2 hours, major code refactoring
+- ✅ Can do without PM approval: Deploy to staging (after the pull request is reviewed, Section 4A)
+- ❌ Must escalate to Lead Dev: Architecture changes, new technology introduction, timeline concerns, blocked >30 min (Section 22), major code refactoring
 
-**Key Metrics:**
-- Task completion rate (≥90%)
-- QA pass rate (≥85%)
-- Code review quality
-- Mentoring contribution
+**Key Metrics:** Section 14D developer KPIs (and 2C-E), plus code review quality and mentoring contribution.
 
 ---
 
@@ -273,11 +269,7 @@ When PM is unavailable (sick/leave/meeting/off-hours), the following backup prot
 - ✅ Can decide: Implementation details for assigned tasks (within guidelines), when to ask for help
 - ❌ Must escalate to Senior/Lead Dev: Any technical uncertainty, timeline concerns, task unclear, stuck >30 min, ANY code changes outside assigned task
 
-**Key Metrics:**
-- Task completion rate (≥85%)
-- QA pass rate (≥80%)
-- Learning progress
-- Asking for help appropriately (not stuck too long)
+**Key Metrics:** Section 14D developer KPIs (and 2C-E). During the first 3 months the Lead sets individual targets in the weekly 1:1, plus learning progress and asking for help on time.
 
 ---
 
@@ -393,18 +385,18 @@ When PM is unavailable (sick/leave/meeting/off-hours), the following backup prot
 |------------------|----------|----------|----------|-----|-----|-----|------------|
 | **Task Assignment** | I | I | C | I | I | A | I |
 | **Code Development** | R | R | C | I | - | I | - |
-| **Code Review** | I | R/C | A | I | - | I | - |
+| **Code Review** (approval rules: Section 21A) | I | R | A | I | - | I | - |
 | **QA Testing** | I | I | C | R/A | - | I | - |
 | **Deployment to Staging** | I | R | I | I | - | I | - |
 | **Deployment to Production** | I | R | C | C | - | A | I |
-| **Client Communication** | - | - | I | I | R | A | C |
+| **Client Communication** | C | C | I | I | C | R/A | C |
 | **Requirement Gathering** | - | I | C | I | R | A | C |
 | **Bug Fixing** | R | R | C | I | - | I | - |
 | **Timeline Planning** | I | C | C | I | C | R/A | C |
 | **Scope Changes** | - | I | C | I | C | R/A | A (major) |
-| **Leave Approval** | - | - | I | - | - | A | A (final, via HR) |
+| **Leave Approval** (PM initial, HR final, Section 3B) | - | - | I | - | - | A | I (appeals) |
 | **Performance Review** | - | - | C | - | - | R | A |
-| **Emergency Response** | I | R | R/A | C | I | A | I |
+| **Emergency Response** | I | R | R | C | I | A | I |
 | **Project Onboarding** | I | I | C | I | R | A | C |
 | **Team Onboarding** | I | C | R | I | - | A | I |
 
@@ -455,7 +447,7 @@ When PM is unavailable (sick/leave/meeting/off-hours), the following backup prot
 
 | Tool | Purpose | Visibility | Speed |
 |------|---------|------------|-------|
-| **Basecamp** | Project tasks, client communication, project documentation | Client-visible (unless Campfire) | Not urgent (4-24 hrs response) |
+| **Basecamp** | Project tasks, client communication, project documentation | Client-visible | Not urgent (4-24 hrs response) |
 | **Slack** | Internal team communication, daily updates, quick questions | Internal-only | Fast (within hours) |
 | **Email** | External communication, formal requests, contracts | External parties | Formal (24-48 hrs) |
 | **WhatsApp/Phone** | Emergencies only, urgent issues | Internal-only | Immediate |
@@ -476,10 +468,10 @@ When PM is unavailable (sick/leave/meeting/off-hours), the following backup prot
 - Bug reports (client should see)
 
 **📍 Where in Basecamp:**
-- **To-Do Lists:** All tasks
+- **Card Table:** All tasks and bugs (standard columns, Section 4A / Developer Playbook D11)
 - **Message Board:** Client communication, MOMs, announcements
 - **Docs & Files:** Credentials, contracts, designs, documentation
-- **Campfire (Internal):** Team discussion (client doesn't see)
+- **Campfire:** Not used for internal discussion. Internal talk goes in Slack `#proj-[client]`
 - **Schedule:** Meetings, deadlines, milestones
 
 **⏰ Response Time:**
@@ -525,11 +517,13 @@ When PM is unavailable (sick/leave/meeting/off-hours), the following backup prot
 | **#emergencies** | Site down, critical bugs, urgent issues | Anyone (tag @PM @Lead-Dev) |
 | **#wbcomers** | Team announcements, company updates | PM, Management |
 | **#proj-[client]** | One per client project. All internal discussion about that client (see Client Project Setup below) | Project team members only (e.g., #proj-clientxyz) |
+| **#prod-[product]** | One per product. Internal product discussion, daily updates, aging alerts | Product team |
+| **#releases** | Release confirmations (Product manual P7). A version counts as available only after the release lead confirms it here | Release lead, Lead Devs |
 
 **⏰ Response Time:**
 - Urgent/tagged messages: Within 2 hours
 - General questions: Same day
-- #emergencies: Within 15-30 minutes
+- #emergencies: Within 15 minutes (P0 acknowledge, Section 9B)
 
 **✍️ Tone in Slack:**
 - Professional but more casual than Basecamp
@@ -575,9 +569,10 @@ When PM is unavailable (sick/leave/meeting/off-hours), the following backup prot
 
 **📞 Emergency Contact Protocol:**
 1. Post in Slack #emergencies first (creates record)
-2. If no response in 15 min → WhatsApp PM
-3. If no response in 15 min → Call PM
-4. If no response in 30 min total → WhatsApp/Call Management
+2. If no response in 15 min → WhatsApp/call PM and Lead Dev
+3. If no response in 30 min total → WhatsApp/call Management
+
+This chain applies in and after office hours. Section 18 follows it.
 
 ---
 
@@ -621,10 +616,10 @@ Every client project has exactly **one Basecamp project** (client-facing) and **
 | Project milestone completed | Basecamp (message board) | ✅ Client sees |
 | Requesting client feedback | Basecamp (message board or to-do) | ✅ Client sees |
 | "I'm stuck on this task" | Slack (project channel, tag Lead Dev) | ❌ Internal only |
-| "Client keeps changing scope" | Slack (DM to PM) | ❌ Internal only |
-| "This code is messy" | Slack or Basecamp Campfire | ❌ Internal only |
+| "Client keeps changing scope" | Slack (`#proj-[client]`, tag PM) | ❌ Internal only |
+| "This code is messy" | Slack (`#proj-[client]`) | ❌ Internal only |
 | Daily update | Slack (project channel, Section 2C) | ❌ Internal only |
-| Technical discussion | Slack or Basecamp Campfire | ❌ Internal only |
+| Technical discussion | Slack (`#proj-[client]` or `#prod-[product]`) | ❌ Internal only |
 | Leave request | Slack (#attendance) | ❌ Internal only |
 | Team coordination | Slack | ❌ Internal only |
 
@@ -635,15 +630,14 @@ Every client project has exactly **one Basecamp project** (client-facing) and **
 #### Example 1: Found a Bug in Production
 1. **Immediate:** Post in Slack #emergencies: "🚨 Bug found: [description]. Investigating now."
 2. **5 min later:** Identify cause, post update in Slack
-3. **After fix:** Deploy fix, test
+3. **After fix:** deploy with PM approval (Section 16; P0 follows Section 18), then test
 4. **After verification:** Post in Basecamp (client-visible): "We identified and resolved [issue]. Monitoring for stability."
 
 #### Example 2: Client Asks a Question in Basecamp
-1. **Read question in Basecamp**
-2. **If you know answer:** Respond directly in Basecamp (professional tone)
-3. **If unsure:** Post in Slack: "@PM Client asked [question], need clarification"
-4. **PM responds in Slack**
-5. **You post in Basecamp** with approved answer
+1. **Read the question in Basecamp**
+2. **Post it in `#proj-[client]`**, tag the PM, and add the facts or the answer you suggest
+3. **The PM replies to the client** in Basecamp
+4. Developers keep progress comments on their own cards current (Section 2C), but don't answer client questions
 
 #### Example 3: Stuck on a Task
 1. **Try yourself for 30 min max**
@@ -652,14 +646,8 @@ Every client project has exactly **one Basecamp project** (client-facing) and **
 4. **Update Basecamp task** (client-visible): "In progress, implementing [solution approach]"
 
 #### Example 4: Daily End-of-Day Update
-1. **6:30 PM:** Post in each project channel you worked in (Section 2C):
-   ```
-   Done:  [task name + card link]
-   Next:  [what's next]
-   Risk:  [anything that may slip, or "None"]
-   Need:  [what you're waiting for, from whom]
-   ```
-2. **Update Basecamp tasks:** Move completed tasks to "Done"
+1. **6:30 PM:** Post your Done / Next / Risk / Need update in each project channel you worked in (format: Section 2C-B)
+2. **Update Basecamp cards** to their current column (developers move finished work to Ready for Testing, never to Done)
 3. **Log time in Time Tracker**
 
 ---
@@ -668,13 +656,15 @@ Every client project has exactly **one Basecamp project** (client-facing) and **
 
 | Message Type | Tool | Response Time | Who Responds |
 |--------------|------|---------------|--------------|
-| Emergency (site down) | Slack #emergencies | 15-30 min | PM + Lead Dev |
+| Emergency (site down) | Slack #emergencies | 15 min (P0 acknowledge, Section 9B) | PM + Lead Dev |
 | Client question | Basecamp | 4 hours (business hrs) | PM |
-| Task clarification | Basecamp or Slack | Same day | PM or Lead Dev |
-| Code review request | Basecamp or Slack | 24 hours | Peer developer |
+| Task clarification | Project channel (`#proj-[client]`) | Same day | PM or Lead Dev |
+| Code review request | GitHub pull request | 24 hours | Reviewer (Lead Dev or Senior Dev) |
 | Help request (stuck) | Slack | 2 hours | Lead Dev or Senior Dev |
 | Leave request | Slack #attendance | 4 hours | PM |
 | General team question | Slack | Same day | Anyone who knows |
+| QA testing start | Basecamp card in Ready for Testing | 24 hours | QA |
+| Bugs by severity | Basecamp card | Section 9B Quick Reference | Assigned owner |
 
 **If you can't respond within the committed time:**
 - Reply with: "Got it, will respond by [specific time]"
@@ -786,7 +776,7 @@ Thanks for reaching out! For project coordination, please contact our PM [Name] 
 **What You CAN Answer (If You Choose To):**
 ✅ "Yes, I received your email" - acknowledgment only
 ✅ "Let me check with PM and get back to you" - then inform PM
-✅ Pure technical clarification if client asks (but still copy PM)
+✅ Technical question: "Let me check with our PM" and pass it on in `#proj-[client]` (Example 2 above)
 
 **Exception - Emergencies:**
 If client reports site down or critical bug:
@@ -853,7 +843,7 @@ Risk:  [anything that may slip, or "None"]
 Need:  [review / answer / access you're waiting for, and from whom]
 ```
 
-- The Lead / PM reads project channels by 6:45 PM and answers every **Risk** and **Need** by next morning.
+- The Lead / PM reads project channels by 6:45 PM. Every **Risk** gets a decision within 2 hours (D below); every **Need** is answered by next morning.
 - `#dailymeeting` stays for general team chat and cross-project technical questions.
 - Because Done / Next are already posted, the morning standup covers **blockers and risks only** (Section 8F).
 
@@ -906,7 +896,7 @@ Reviewed monthly per developer by the Lead (Section 14). Data comes from Basecam
 | **Escaped bugs in owned work** | Bugs the client or customers found after release | Trending down |
 | **QA reopen rate** on owned cards | Quality before handing to QA | ≤ 15% (same as 85%+ QA pass rate) |
 | **Risks raised early** | Problems surfaced while there was still time | Every deadline risk flagged before the deadline |
-| **Own-bug fix time** | Taking responsibility for your own bugs | Within the Section 9B response times |
+| **Own-bug fix time** | Taking responsibility for your own bugs | Within Section 9B (client projects) or Product manual P9 (products) |
 | **Self-found bugs** | Bugs you found and fixed before QA | Counted as a positive |
 | **Help given** | Code reviews done, teammates unblocked | Regular, noted in 1:1s |
 
@@ -952,7 +942,7 @@ Fixing your own bugs is still not billable to clients (Section 4B), but fixing t
    📅 Leave Request
    Name: [Your Name]
    Date(s): [DD/MM/YYYY to DD/MM/YYYY]
-   Type: [Casual/Sick/Annual/Emergency]
+   Type: [Casual/Sick/Emergency/Unpaid]
    Reason: [Brief reason]
    Backup: [Name of backup developer - if applicable]
    ```
@@ -1085,8 +1075,8 @@ Fixing your own bugs is still not billable to clients (Section 4B), but fixing t
 **Attendance tracked in monthly reviews:**
 - **Excellent (5/5):** No absences, always on time, zero unauthorized leave
 - **Strong (4/5):** 1-2 late arrivals, all leaves properly approved
-- **Satisfactory (3/5):** 3-5 late arrivals, occasional last-minute leave
-- **Needs Improvement (2/5):** Frequent tardiness, pattern of unapproved absences
+- **Satisfactory (3/5):** 2 late arrivals, occasional last-minute leave
+- **Needs Improvement (2/5):** 3+ late arrivals in a month (written warning, Section 3A), pattern of unapproved absences
 - **Unsatisfactory (1/5):** Multiple unapproved absences, chronic lateness
 
 **Consequences of poor attendance:**
@@ -1140,10 +1130,7 @@ HR updates leave balance
 ## 4. Task & Deadline System (Manual Tracking)
 
 - All tasks are assigned in Basecamp with clear **titles, deadlines, descriptions, and assigned developers**.  
-- Each task must include:
-  - Start Date & End Date  
-  - Priority (High/Medium/Low)  
-  - Backup Developer  
+- Each task follows the Task Creation Requirements in Section 4A (owner, reviewer, estimate, scope link, deadline, priority, backup developer).
 
 **Daily Accountability:** Developers post an end-of-day update in each project channel they worked in (format and rules: Section 2C).
 
@@ -1177,6 +1164,7 @@ Every task in Basecamp MUST include:
 - ✅ **Assigned to** (specific developer or "Unassigned")
 - ✅ **Backup developer** (for coverage)
 - ✅ **Project/client** (which project this belongs to)
+- ✅ **Card header** with Owner, Reviewer, Estimate + 50% checkpoint, and the Scope of Work item it delivers (Section 2C-A)
 
 ---
 
@@ -1184,7 +1172,7 @@ Every task in Basecamp MUST include:
 
 | Priority | Definition | Examples | Response Time |
 |----------|------------|----------|---------------|
-| **🔴 High** | Critical, blocks client/production, urgent | Site down, critical bug, client blocker, deadline today/tomorrow | Start immediately (within 1 hour) |
+| **🔴 High** | Urgent, blocks the client | Client blocker, deadline today/tomorrow (outages and bugs use P0-P3, Section 9B) | Start immediately (within 1 hour) |
 | **🟠 Medium** | Important, deadline within this week | Feature delivery this week, scheduled deployment, client meeting deliverable | Start within 4 hours, complete by deadline |
 | **🟢 Low** | Normal priority, deadline next week or later | Regular features, minor improvements, documentation | Start within 24 hours, complete by deadline |
 
@@ -1221,7 +1209,7 @@ Every task in Basecamp MUST include:
 
 **When developers can self-assign:**
 - PM posts task as "Unassigned"
-- PM announces in Slack #dailymeeting: "Task available for pickup: [link]"
+- PM announces in the project channel: "Task available for pickup: [link]"
 - Developer can claim it if they have capacity
 
 **Process:**
@@ -1303,9 +1291,9 @@ Choose from approved activities:
 #### When Blocked on a Task
 
 **If you can't proceed due to blocker:**
-1. Update Basecamp task status: "Blocked"
+1. Put the card **On Hold** (it stays in its column, Section 4A)
 2. Add comment in Basecamp: "Blocked because: [reason]. Waiting on: [client/approval/dependency]"
-3. Notify PM in Slack: "@PM Task [name] blocked: [reason]"
+3. Notify PM in the project channel: "@PM Task [name] blocked: [reason]"
 4. Move to next task while waiting
 5. Follow up daily: "Still waiting on [blocker]?"
 
@@ -1316,7 +1304,7 @@ Choose from approved activities:
 **Before leave, handover your active tasks:**
 1. Update all task statuses in Basecamp
 2. Add detailed notes: "Current status: [what's done, what's pending, any gotchas]"
-3. Notify backup developer: Slack DM with context
+3. Notify backup developer: handover note in the card + post in the project channel
 4. Notify PM: "Tasks handed over to [Backup] for my leave [dates]"
 5. Backup developer reviews and confirms understanding
 
@@ -1331,9 +1319,9 @@ Choose from approved activities:
 3. **In Development** - Being built. Code review happens in the GitHub pull request
 4. **Ready for Testing** - PR reviewed and merged to staging, developer's own browser check done, handover comment posted
 5. **In Testing** - QA working on it. If QA finds problems the card goes back to **Bugs**
-6. **Ready for Deployment** - QA passed, waiting for PM approval to deploy (Section 16)
+6. **Ready for Deployment** - QA passed and client reviewed on staging (where the contract requires it), waiting for PM approval to deploy (Section 16)
 7. **Deployed** - Live on production, being monitored
-8. **Done** - Client approved
+8. **Done** - Client confirmed it on live
 
 Bugs reported by the client or QA enter at **Triage** / **Possible Bug** / **Bugs** like on every board. A **blocked** card stays in its column and is put **On Hold** with a comment saying what it is waiting for and from whom.
 
@@ -1382,7 +1370,7 @@ A: Ask PM in Slack to prioritize. PM will decide based on project needs.
 A: Yes, but focus on one task at a time. Complete or reach a checkpoint before switching projects.
 
 **Q: What if I finish a task ahead of deadline?**
-A: Great! Mark it complete, notify PM, ask for next task. Don't sit idle.
+A: Great! Move it to Ready for Testing, notify PM, ask for next task. Don't sit idle.
 
 ---
 
@@ -1475,7 +1463,7 @@ A: Great! Mark it complete, notify PM, ask for next task. Don't sit idle.
 
 #### Template for Asking Clarification
 
-**Use this format in Basecamp:**
+**Post this in `#proj-[client]`, linking the card:**
 
 ```
 @PM - Need clarification on [Task Name]:
@@ -1551,7 +1539,7 @@ Thanks!
 | **Research for client task** | ✅ Yes (if significant) | "Research - [Topic] for [Task]" | Only if directly for task, max 1-2 hrs |
 | **Rework due to unclear requirements** | ✅ Yes (usually) | "Rework - [Task]" | If PM approved vague requirements |
 | | | | |
-| **Fixing your own bugs** | ❌ No | Don't log | Bugs you introduced, not client's fault |
+| **Fixing your own bugs** | ❌ No | Don't log | Bugs you introduced, found before client acceptance (after acceptance, see FAQ below) |
 | **Internal team meetings** | ❌ No | Don't log | Daily standup, weekly review |
 | **Learning new technology** | ❌ No | Don't log | Self-improvement time |
 | **Code refactoring (not requested)** | ❌ No | Don't log | Unless PM specifically asked |
@@ -1566,7 +1554,7 @@ Thanks!
 
 ### How to Log Time
 
-**Use the Time Tracker tool (specified in Section 2).**
+**Use the company time tracker.**
 
 **Format for time entries:**
 
@@ -1596,7 +1584,7 @@ Thanks!
 - Don't wait till Friday to remember what you did Monday
 
 **2. Be honest and accurate**
-- Round to nearest 0.25 hours (15 min increments)
+- Round up to the next 0.25 hours (15 min minimum per entry)
 - If task took 1 hour 10 min → log 1.25 hrs
 - Don't inflate hours
 - Don't underreport hours
@@ -1771,7 +1759,7 @@ A: Yes, if it's for client work (billable project). No, if it's internal/practic
 | Repeated delay | Written warning and review | Management |
 
 - **No extensions** without PM approval.  
-- Two missed deadlines in a sprint → review with PM.
+- Two missed deadlines in a month → review with PM. Raising a risk early (Section 2C-D) is never counted as a miss.
 
 ---
 
@@ -1804,9 +1792,9 @@ Developers use idle time for:
 
 | Meeting | Frequency | Attendees | Duration | Purpose |
 |----------|------------|------------|----------|---------|
-| **Daily Standup** | Daily (10:15 AM) | All Devs + PM + QA | 15 min | Individual blockers & daily tasks |
-| **Monday Weekly Planning** | Monday (11:00 AM) | PM + Leads + QA | 30-45 min | PROJECT-level planning for the week |
-| **Friday Weekly Review** | Friday (6:00 PM) | PM + Leads + QA | 45-50 min | PROJECT-level progress review |
+| **Daily Standup** | Daily (10:15 AM) | All Devs + PM + QA | 5-15 min | Blockers & risks only (Done/Next are in the async update, Section 2C) |
+| **Monday Weekly Planning** | Monday (11:00 AM) | PM + Lead Dev + Developers + QA + BA | 30-45 min | PROJECT-level planning for the week |
+| **Friday Weekly Review** | Friday (6:00 PM) | PM + Lead Dev + Developers + QA + BA | 45-50 min | PROJECT-level progress review |
 | **Client Meeting** | Weekly (3-6 PM) | PM + Assigned Dev | 30-60 min | Client progress & feedback |
 
 ---
@@ -1921,9 +1909,9 @@ Next Review: Friday 6:00 PM
 
 #### What NOT to Discuss in Monday Meeting
 
-❌ **Individual task assignments** (that's in daily standup)
+❌ **Individual task assignments** (handled on Basecamp cards and in the daily update, Section 2C)
 ❌ **Who is working on which specific task** (already decided)
-❌ **Code-level details** (discuss offline or in peer review)
+❌ **Code-level details** (discuss in the pull request)
 ❌ **Client communication details** (PM handles separately)
 
 **Focus:** PROJECT health, not individual task tracking.
@@ -2077,7 +2065,7 @@ Next Planning Meeting: Monday [Date] 11:00 AM
 
 #### What NOT to Discuss in Friday Meeting
 
-❌ **Individual performance reviews** (that's in monthly 1-on-1s with HR/Management)
+❌ **Individual performance reviews** (that's in the weekly 1:1 with your Lead and the monthly review, Sections 2C and 14)
 ❌ **Who was late or absent** (that's HR/attendance matter)
 ❌ **Blame for delays** (focus on solutions, not blame)
 ❌ **New feature discussions** (schedule separate meeting)
@@ -2090,10 +2078,10 @@ Next Planning Meeting: Monday [Date] 11:00 AM
 
 | Aspect | Daily Standup | Monday Planning | Friday Review |
 |--------|---------------|-----------------|----------------|
-| **Focus** | Individual tasks | Project planning | Project outcomes |
-| **Level** | Task-level | Project-level | Project-level |
-| **Timeframe** | Today/Tomorrow | This week ahead | This week past |
-| **Discussed** | My blockers | Project roadblocks | Project results |
+| **Focus** | Blockers & risks | Project planning | Project outcomes |
+| **Level** | Person-level | Project-level | Project-level |
+| **Timeframe** | Today | This week ahead | This week past |
+| **Discussed** | My blockers / risks / needs | Project roadblocks | Project results |
 | **Output** | Verbal sync | MOM in Basecamp | MOM in Basecamp |
 | **Duration** | 15 min | 30-45 min | 45-50 min |
 
@@ -2198,13 +2186,15 @@ Nothing to raise → say "No blockers" and pass. A standup with no blockers shou
 
 ## 9. Quality & Review Enforcement
 
-Every task passes through: **Developer (self-checks) → Pull request + code review → QA → PM Approval → Client Review**.
+Every task passes through: **Developer (self-checks) → Pull request + code review → QA → Client review on staging → PM deploy approval → Deployed → Done** (Section 4A).
+
+**AI-assisted development:** the rules in Product manual P13 apply to all work. On client projects, also never paste client code, data or credentials into an AI tool unless the client contract allows it.
 
 **How to do each step** (bug fixing, self-checks, quality gates, QA of a card): see the [Developer Playbook](DEVELOPER_PLAYBOOK.md). The steps are the same for client projects and products.
 
 **Code & QA Rules:**
 - Follow WPCS and modular coding.
-- Test locally/staging before marking done.
+- Test locally/staging before moving to Ready for Testing.
 - Maintain proper commit messages and documentation.
 
 ---
@@ -2237,8 +2227,8 @@ Every task passes through: **Developer (self-checks) → Pull request + code rev
 | Adding a new library/dependency | 🔺 Escalate | Ask Lead Dev → PM |
 | Modifying database schema | 🔺 Escalate | Never do this - Ask Lead Dev |
 | Responding to client directly | 🔺 Escalate | Always go through PM |
-| Deploy to staging | 💬 Consult | After testing locally, with peer review |
-| Deploy to production | 🔺 Escalate | Never - requires PM + Lead Dev approval |
+| Deploy to staging | 💬 Consult | After the pull request is reviewed (Section 4A) |
+| Deploy to production | 🔺 Escalate | Never - requires PM approval (Section 16) |
 | Taking on additional task | 💬 Consult | If have capacity, confirm with PM |
 | Refactoring code (outside task) | 🔺 Escalate | Ask Lead Dev first |
 
@@ -2253,7 +2243,7 @@ Every task passes through: **Developer (self-checks) → Pull request + code rev
 | Technical implementation approach | ✅ Autonomous | Use best judgment, document |
 | Library/framework choice (within approved stack) | ✅ Autonomous | Use industry-standard options |
 | Code refactoring (minor) | ✅ Autonomous | Document what and why |
-| Deploy to staging | ✅ Autonomous | After local testing + WPCS |
+| Deploy to staging | ✅ Autonomous | After PR review + local testing + WPCS |
 | Introducing new technology | 🔺 Escalate | Discuss with Lead Dev → PM |
 | Changing task architecture | 💬 Consult | Discuss with Lead Dev |
 | Timeline extension request | 🔺 Escalate | Notify PM immediately |
@@ -2291,7 +2281,7 @@ Every task passes through: **Developer (self-checks) → Pull request + code rev
 | Decision Type | Authority | Process |
 |---------------|-----------|---------|
 | Mark task as Passed/Failed | ✅ Autonomous | Based on testing criteria |
-| Bug severity assignment | ✅ Autonomous | Use severity guidelines (Section 9B when added) |
+| Bug severity assignment | ✅ Autonomous | Use severity guidelines (Section 9B) |
 | Testing approach/strategy | ✅ Autonomous | Choose best testing method |
 | Request bug fix | ✅ Autonomous | Report in Basecamp with details |
 | Block deployment (quality concerns) | ✅ Autonomous | Notify PM + Lead Dev immediately |
@@ -2313,7 +2303,7 @@ Every task passes through: **Developer (self-checks) → Pull request + code rev
 | Scope changes (major, >4 hours) | 🔺 Escalate | Discuss with Management |
 | Client communication | ✅ Autonomous | All client-facing communication |
 | Leave approval (initial) | ✅ Autonomous | Approve or request alternative dates |
-| Deployment to production | ✅ Autonomous | After QA + Lead Dev approval |
+| Deployment to production | ✅ Autonomous | After QA pass; Lead Dev also reviews full-review deploys (Section 16) |
 | Budget reallocation (within project) | ✅ Autonomous | Track and report to Management |
 | Budget increase | 🔺 Escalate | Request from Management with justification |
 | Contract modifications | 🔺 Escalate | Involve Management |
@@ -2413,7 +2403,7 @@ PM prioritizes: Fix now? Scheduled fix? Workaround?
 If pattern of poor quality → PM + Lead Dev review with developer
 ```
 
-**Timeline:** Critical bugs <2 hours, regular bugs within 24-48 hours.
+**Timeline:** As per the Section 9B Quick Reference (by severity).
 
 ---
 
@@ -2498,7 +2488,7 @@ Unresolved or repeated pattern → PM escalates to HR + Management
 - Better: "This approach has [issue]. I suggest [alternative A] or [alternative B]. Which should I pursue?"
 
 **4. Document Decisions**
-- After verbal discussion, post decision in Basecamp for record
+- After verbal discussion, post the decision in `#proj-[client]` for the record
 - Example: "Discussed with @PM. Decided to [decision]. Proceeding."
 
 **5. Escalate Early, Not at Crisis**
@@ -2530,17 +2520,7 @@ Unresolved or repeated pattern → PM escalates to HR + Management
 ### Escalation Communication Templates
 
 #### Template 1: Timeline Concern
-```
-"@PM - Timeline concern on [Task Name]:
-- Original estimate: 4 hours
-- Actual complexity: ~8 hours because [reason]
-- Options:
-  1. Extend deadline by 1 day
-  2. Reduce scope: Remove [feature X]
-  3. Get help from [Senior Dev]
-- Recommend: Option [X]
-- Awaiting your decision before proceeding."
-```
+Use the **AT RISK** format in Section 2C-D, posted in the project channel.
 
 #### Template 2: Technical Blocker
 ```
@@ -2581,10 +2561,10 @@ Unresolved or repeated pattern → PM escalates to HR + Management
 | "Can I extend the deadline?" | PM | Immediately |
 | "Client asked me a question" | PM (never answer directly) | Within 1 hour |
 | "I'm stuck on a bug" | Lead Dev or Senior Dev | After 30 min of trying |
-| "Should I work on task A or B first?" | PM | Same day (morning standup) |
+| "Should I work on task A or B first?" | PM | Same day (ask in the project channel) |
 | "Can I use this library?" | Lead Dev | Before starting |
 | "Client wants to add feature" | PM | Immediately, never commit |
-| "Can I deploy to production?" | PM + Lead Dev | Before deployment |
+| "Can I deploy to production?" | PM (Lead Dev also reviews full-review deploys, Section 16) | Before deployment |
 | "I need access to tool/server" | PM or IT | Same day |
 | "I have a conflict with teammate" | Try to resolve, then PM | Within 2-3 days |
 
@@ -2601,7 +2581,7 @@ Unresolved or repeated pattern → PM escalates to HR + Management
 **Process:**
 
 **Step 1: Understand First (Ask Questions)**
-→ Tag Lead Dev in Basecamp or ask in Slack
+→ Ask in the project channel, tag Lead Dev
 → "Can you explain why we're using approach A instead of approach B? I want to understand the reasoning."
 → Lead Dev explains technical rationale
 
@@ -2754,7 +2734,7 @@ Not questioning Lead Dev's authority, but want PM aware of [specific risk/impact
 - Identify dependencies/blockers
 - Calculate realistic timeline
 
-**Step 2: Communicate to PM (Basecamp or Slack)**
+**Step 2: Post in the project channel, tag PM** (short version: the AT RISK format, Section 2C-D. Use the template below when you need to show an estimate breakdown)
 
 **Template:**
 ```
@@ -2826,7 +2806,7 @@ PM will:
 → PM decides based on priority
 
 **Scenario 2:** "I estimated 4 hours, taking 8 hours"
-→ Notify PM at 4-hour mark: "Hitting complexity, need 4 more hours"
+→ At the 50% checkpoint (2 hours), post **At risk** in the project channel with options (Section 2C-D)
 → PM adjusts or helps prioritize
 → Don't wait until deadline to notify
 
@@ -2865,12 +2845,14 @@ PM will:
 
 ### Bug Severity Levels
 
+**The level is set with the triage grid (reach × impact × location) in [Developer Playbook D3](DEVELOPER_PLAYBOOK.md#d3-fixing-a-bug).** The table below gives typical examples and the client-project timings.
+
 | Priority | Name | Definition | Examples | Response Time | Who Fixes |
 |----------|------|------------|----------|---------------|-----------|
-| **🔴 P0** | **Critical** | Production broken, site down, data loss, security breach | Site completely down, checkout broken, user data exposed, critical security vulnerability | **Immediately** (within 30 min) | Drop everything, all hands on deck |
-| **🟠 P1** | **High** | Major feature broken, significant user impact, client blocker | Login not working, dashboard error, major feature completely broken, client can't do their work | **Same day** (within 4 hours) | Prioritize over other work |
-| **🟡 P2** | **Medium** | Minor bug, workaround exists, affects some users | Form validation issue (but form submits), styling broken on one page, minor feature glitch | **This week** (within 2-3 days) | Schedule between tasks |
-| **🟢 P3** | **Low** | Cosmetic, nice-to-have, very minor impact | Typo, color slightly off, minor UI inconsistency, feature enhancement request | **Next sprint** (when time allows) | Backlog, low priority |
+| **🔴 P0** | **Critical** | Production broken, site down, data loss, security breach | Site completely down, checkout broken, user data exposed, critical security vulnerability | **Acknowledge 15 min, start immediately** | PM assigns Lead Dev + 1 developer (Section 18) |
+| **🟠 P1** | **High** | Major feature broken, significant user impact, client blocker | Login not working, dashboard error, major feature completely broken, client can't do their work | **Acknowledge 1 hour, start within 2 hours, fix same day** | Prioritize over other work |
+| **🟡 P2** | **Medium** | Minor bug, workaround exists, affects some users | Form validation issue (but form submits), styling broken on one page, minor feature glitch | **Acknowledge 4 hours, fix within 2-3 days** | Schedule between tasks |
+| **🟢 P3** | **Low** | Cosmetic, nice-to-have, very minor impact | Typo, color slightly off, minor UI inconsistency | **When time allows** | Backlog, low priority |
 
 ---
 
@@ -2880,12 +2862,13 @@ PM will:
 
 **QA or whoever finds the bug assigns initial severity based on:**
 
-1. **Is production affected?** → P0 or P1
-2. **Can users still work?** → If yes: P2 or P3, If no: P0 or P1
-3. **Is there a workaround?** → If yes: downgrade one level
-4. **How many users affected?** → All users: higher priority, Few users: lower priority
+1. **Can users still work?** (road-block, degraded, or cosmetic)
+2. **Is it on a core path or an edge case?**
+3. **Does it hit everyone or only some setups?**
 
-**PM can override severity** if business impact differs.
+Read the level off the grid. Feature requests are not bugs (Section 17).
+
+**PM has final say on severity for client projects** (the Product Owner for products, Product manual P9).
 
 ---
 
@@ -2923,7 +2906,7 @@ PM will:
 - Tooltip shows wrong text
 - Feature works but UX is confusing
 
-**Action:** Add to task list, fix between other work this week
+**Action:** Create a card in Bugs, fix between other work this week
 
 ---
 
@@ -2931,16 +2914,15 @@ PM will:
 - Button text says "Submit" instead of "Save"
 - Color is #333 instead of #000 (minor visual difference)
 - Spacing is 10px instead of 15px
-- Nice-to-have feature enhancement
 - Minor UI inconsistency that doesn't affect functionality
 
-**Action:** Add to backlog, fix during maintenance sprint or downtime
+**Action:** Add to the backlog, fix during maintenance windows or downtime
 
 ---
 
 ### Bug Reporting Template
 
-**When reporting a bug in Basecamp, include:**
+**Full format:** the bug brief in [Developer Playbook D4-F](DEVELOPER_PLAYBOOK.md#d4-debugging-method) (adds root cause, reach, not verified and tried). The short form below is the minimum for a QA or client-reported finding:
 
 ```
 🐛 Bug: [Short description]
@@ -2995,14 +2977,14 @@ Additional Notes:
 
 #### Step 4: Bug Fixing
 - Developer reproduces bug
-- Developer fixes and tests locally
-- Developer updates Basecamp: "Fixed, ready for QA re-test"
-- Code review (if significant change)
+- Developer fixes and tests locally (Developer Playbook D3)
+- Pull request reviewed and merged (always, Section 19)
+- Developer moves the card to Ready for Testing with a handover comment
 
 #### Step 5: QA Verification
 - QA re-tests on staging
-- If still broken → Back to developer with details
-- If fixed → Mark as "QA Passed"
+- If still broken → card back to **Bugs**, with details
+- If fixed → card to **Ready for Deployment** (client projects) or **Done** (products)
 
 #### Step 6: Deployment
 - **P0/P1:** Deploy to production ASAP after QA pass (get PM approval per Section 16)
@@ -3025,7 +3007,7 @@ Additional Notes:
 If client says "This doesn't work" but it was never built → It's a feature request (handle via scope change Section 17)
 
 #### Regression Bug (Broke something that was working)
-- Automatically P1 or P2 (depending on impact)
+- Set the level with the grid (Developer Playbook D3)
 - Assign to developer who made the recent change
 - Review why it wasn't caught in QA
 
@@ -3043,7 +3025,7 @@ If client says "This doesn't work" but it was never built → It's a feature req
 - Affects fewer users than thought
 - Client says it can wait
 
-**PM has final say on severity.**
+**PM has final say on severity** (client projects; Product Owner for products).
 
 ---
 
@@ -3053,7 +3035,7 @@ If client says "This doesn't work" but it was never built → It's a feature req
 - **P0 bugs:** [X] (Goal: 0 per month)
 - **P1 bugs:** [X] (Goal: <5 per month)
 - **Bug fix time (P1):** [X hours average] (Goal: <4 hours)
-- **QA pass rate:** [X%] (Goal: >85% - fewer bugs = higher quality)
+- **QA pass rate:** [X%] (Goal: ≥ 85%, same as reopen rate ≤ 15%)
 
 ---
 
@@ -3086,7 +3068,9 @@ If client says "This doesn't work" but it was never built → It's a feature req
 | P0 | 15 min | Immediately | 1-2 hours | ASAP |
 | P1 | 1 hour | 2 hours | Same day | Same day or next |
 | P2 | 4 hours | This week | 2-3 days | Next deployment |
-| P3 | Same day | When time allows | Next sprint | Next maintenance |
+| P3 | Same day | When time allows | When scheduled | Next maintenance |
+
+**This table is the single source for client-project bug timings.** Products use Product manual P9.
 
 ---
 
@@ -3094,14 +3078,14 @@ If client says "This doesn't work" but it was never built → It's a feature req
 
 **Daily:** Developers post updates in Slack.
 **Weekly:** PM summarizes progress in Basecamp.
-**Monthly:** PM and Leads conduct performance review meetings.
+**Monthly:** Lead + PM + HR performance review (Section 14).
 
 ---
 
 ## 11. Manual Self-Driven Workflow Summary
 
 1. PM assigns and reviews tasks in Basecamp.  
-2. Developers acknowledge and update in Slack.  
+2. Developers acknowledge in the Basecamp card and post daily updates in the project channel (Section 2C).  
 3. Backup developers handle absences.  
 4. Meetings reinforce accountability.  
 5. PM maintains weekly and monthly reports.  
@@ -3112,7 +3096,7 @@ If client says "This doesn't work" but it was never built → It's a feature req
 
 ### General
 - **Tools Used:** Basecamp for projects, Slack for communication, Git for code.
-- **Missed Updates:** Daily status must be posted by 6:45 PM.
+- **Missed Updates:** Post your daily update in each project channel by 6:30 PM (Section 2C). The Lead / PM reviews them at 6:45 PM.
 - **Leave Policy:** Request in Slack #attendance channel (1 day advance). PM approves first, then HR grants final confirmation. See Section 3 for full details.
 
 ### Developers
@@ -3137,10 +3121,9 @@ If client says "This doesn't work" but it was never built → It's a feature req
 
 ### A. Repository & Access Management
 
-- Each project has a **dedicated Git repository** (`main`, `develop`, `feature/*`, `bugfix/*`).  
-- All credentials (WP Admin, SFTP, Hosting, Analytics) stored in **Basecamp → Docs & Files → "Project Credentials"**.  
-- Credentials file format: `Credentials_<ProjectName>_<Date>.txt`.  
-- Staging and live site credentials kept separately.  
+- Each project has a **dedicated Git repository** (branches: Section 19).  
+- All credentials (WP Admin, SFTP, Hosting, Analytics, test accounts) are stored in **one** place: **Basecamp → Docs & Files → "Project Credentials"**, with separate **Staging** and **Production** sections. This is the only credentials document; every other section points here.  
+- Never post passwords in card comments, Slack or email. Refer to accounts by role name.  
 - Weekly backups scheduled and logged in Basecamp.
 
 ### B. Client Communication Protocol
@@ -3163,10 +3146,10 @@ Client Meeting Summary – <Date>
 
 | Section | Purpose |
 |----------|----------|
-| To-Do List | Task tracking |
+| Card Table | Task tracking (standard columns, Section 4A) |
 | Docs & Files | Credentials, designs, SOW, notes |
 | Message Board | Client communication |
-| Campfire / Slack | Internal discussion |
+| Slack `#proj-[client]` | Internal discussion (never in Basecamp) |
 | Schedule | Meetings & milestones |
 
 ### D. Communication Etiquette
@@ -3181,8 +3164,7 @@ Client Meeting Summary – <Date>
 |------|--------|----------|
 | Monday | Review client feedback | Slack |
 | Tue–Thu | Task execution | Basecamp + Slack |
-| Friday | Client meeting | Basecamp |
-| Saturday | Optional documentation | Internal only |
+| Weekly (agreed day, 3-6 PM) | Client meeting | Basecamp |
 
 ---
 
@@ -3192,7 +3174,7 @@ Client Meeting Summary – <Date>
 Ensures fair, measurable, and transparent performance evaluation for all employees.
 
 ### B. Evaluation Frequency
-- **Monthly:** PM + HR review.  
+- **Monthly:** Lead reviews ownership measures (Section 2C-E); PM + HR score the evaluation sheet.  
 - **Quarterly:** Formal feedback session.  
 - **Annually:** Promotion or salary review.
 
@@ -3223,7 +3205,7 @@ Ensures fair, measurable, and transparent performance evaluation for all employe
 | Escaped bugs in owned work | Trending down |
 | QA reopen rate on owned cards | ≤ 15% (85%+ pass rate) |
 | Risks raised early | Every deadline risk flagged before the deadline |
-| Own-bug fix time | Within Section 9B response times |
+| Own-bug fix time | Within Section 9B (client projects) or Product manual P9 (products) |
 | Code Quality | Verified by Lead |
 | Help given (reviews, unblocking) | Regular, noted in 1:1s |
 
@@ -3290,13 +3272,13 @@ When a new project/client comes in, follow this checklist to start smoothly:
 
 **PM does:**
 - [ ] Create project in Basecamp (one per client, see Section 2B Client Project Setup)
-- [ ] Set up folder structure (Docs & Files → Credentials, Designs, Notes)
+- [ ] Set up Docs & Files: "Project Credentials" document (Section 13A), Designs, Notes
 - [ ] Write the Scope of Work document in Docs & Files and pin it on the Message Board
 - [ ] Create internal Slack channel `#proj-[client]`, add the project team, put Basecamp + scope links in the topic
 - [ ] Confirm every team member follows the Basecamp project with notifications on
 - [ ] Add client to Basecamp
 - [ ] Post meeting summary in Basecamp
-- [ ] Create initial task list with deadlines
+- [ ] Set up the standard card table and create the first cards with deadlines
 - [ ] Assign Primary and Backup developers
 - [ ] Request all credentials and access
 - [ ] Set up weekly meeting schedule
@@ -3309,9 +3291,9 @@ When a new project/client comes in, follow this checklist to start smoothly:
 - [ ] Review technical requirements
 
 **First week:**
-- [ ] All credentials collected and stored in Basecamp
+- [ ] All credentials collected in "Project Credentials" (Section 13A)
 - [ ] Team has access to necessary tools
-- [ ] First sprint tasks defined and assigned
+- [ ] First week's cards defined and assigned
 - [ ] First client meeting scheduled
 
 **Red flags to address immediately:**
@@ -3328,10 +3310,10 @@ When a new project/client comes in, follow this checklist to start smoothly:
 **Developer (before deployment to staging):**
 - [ ] Code passes WPCS locally
 - [ ] All tests passing locally
-- [ ] Merge feature branch to develop branch
-- [ ] Push to staging server
+- [ ] Pull request reviewed and approved (Section 21A)
+- [ ] Merge the PR into `develop` (Section 19), which deploys to staging
 
-**No approval needed for staging** - developers can deploy freely for testing.
+**No PM approval needed for staging**, but the pull request must be reviewed first (Section 4A).
 
 ---
 
@@ -3347,16 +3329,17 @@ When a new project/client comes in, follow this checklist to start smoothly:
 - [ ] Backup plan documented
 
 **Developer requests deployment:**
-- [ ] Comment in Basecamp: "@PM @Lead-Dev Ready for production deployment"
+- [ ] Post in `#proj-[client]`, linking the card: "@PM @Lead-Dev Ready for production deployment"
 - [ ] List what's being deployed
 - [ ] Note any special instructions
 
 **PM + Lead Dev review:**
-- [ ] Client approved the feature
+- [ ] QA passed (card in Ready for Deployment)
+- [ ] Client reviewed it on staging (where the contract requires staging sign-off)
 - [ ] No reported bugs on staging
-- [ ] Timing is good (not Friday evening, not during client's peak hours)
+- [ ] Timing is good (not Friday after 3 PM, not before a public holiday, not during client's peak hours)
 
-**Approval given:** PM comments "Approved for production deployment"
+**Approval given:** PM approves in `#proj-[client]` and moves the card
 
 ---
 
@@ -3381,19 +3364,21 @@ When a new project/client comes in, follow this checklist to start smoothly:
 
 ### Production Deployment Rules
 
-**✅ Can deploy immediately:**
+**Every production deploy needs PM approval** (card in Ready for Deployment, Section 4A).
+
+**⚡ Fast-track (PM approves in the project channel, no full review):**
 - Small bug fixes (no database changes)
 - CSS/UI tweaks
 - Content updates
 
-**⚠️ Need PM approval:**
+**⚠️ Full review (PM + Lead Dev):**
 - New features
 - Database schema changes
 - Third-party integrations
 - Major code changes
 
-**🚫 Never deploy without approval:**
-- Friday after 3 PM (in case issues arise over weekend)
+**🚫 Never deploy:**
+- Friday after 3 PM or before a public holiday (in case issues arise over the weekend)
 - During client's peak business hours
 - Without testing on staging first
 - Without backup plan
@@ -3406,7 +3391,7 @@ Client says: "Can you add this feature?" - Follow this process:
 
 ### Step 1: Don't Commit Immediately
 
-**Developer/PM response:**
+**PM response** (a developer asked directly uses the Direct Client Contact protocol, Section 2B):
 > "That's a great idea! Let me evaluate the impact on timeline and budget and get back to you by [tomorrow/specific time]."
 
 **Never say:** "Sure, we'll add it!" (commits you without knowing impact)
@@ -3436,7 +3421,7 @@ Client says: "Can you add this feature?" - Follow this process:
 **Option B: Larger change, no budget**
 > "Great idea! This would take approximately [X hours]. This would require [additional hours/budget]. Would you like us to:
 > 1. Add it now with additional budget?
-> 2. Add it to next sprint/phase?
+> 2. Add it to the next phase?
 > 3. Replace it with a lower-priority task?"
 
 **Option C: Change affects timeline**
@@ -3450,7 +3435,8 @@ Client says: "Can you add this feature?" - Follow this process:
 - [ ] Client approves in Basecamp or email (written record)
 - [ ] If budget change → get approval from management
 - [ ] Update project timeline in Basecamp
-- [ ] Update task list with new scope
+- [ ] Add the change to the Scope of Work document with the date and a link to the approval (Section 2B)
+- [ ] Create the new cards in Scope
 
 ---
 
@@ -3477,7 +3463,7 @@ Client says: "Can you add this feature?" - Follow this process:
 - Client wants to bypass quality process
 
 **How to say no politely:**
-> "I understand this is important. However, [reason]. I recommend we add this to the next phase/sprint. Would that work?"
+> "I understand this is important. However, [reason]. I recommend we add this to the next phase. Would that work?"
 
 ---
 
@@ -3495,14 +3481,14 @@ Client says: "Can you add this feature?" - Follow this process:
 
 ### What Counts as Emergency
 
-**Immediate Response (within 30 min):**
+**Immediate / P0 (acknowledge 15 min, start immediately, Section 9B):**
 - Production site completely down
 - Security breach or hack
 - Data loss
 - Payment system not working
 - Critical bug affecting all users
 
-**Urgent (within 2 hours):**
+**Urgent / P1 (acknowledge 1 hour, start fix within 2 hours, Section 9B):**
 - Major feature broken
 - Performance extremely slow
 - Bug affecting many users
@@ -3521,7 +3507,7 @@ Client says: "Can you add this feature?" - Follow this process:
 **Whoever discovers issue:**
 1. Post in Slack `#emergencies` channel: "🚨 EMERGENCY: [brief description]"
 2. Tag: @PM @Lead-Dev @on-duty-developer
-3. If after hours: Call PM directly (phone number in Basecamp)
+3. If after hours: follow the Section 2B emergency contact chain
 
 **Example:**
 > "🚨 EMERGENCY: Client XYZ's site is completely down. Getting 500 error. Discovered at 3:45 PM."
@@ -3567,7 +3553,7 @@ Client says: "Can you add this feature?" - Follow this process:
 
 **PM + Lead Dev + Developer(s) involved:**
 
-**Document in Basecamp:**
+**Document in `#proj-[client]`** (the client gets the summary below):
 1. **What happened?** (timeline of events)
 2. **Root cause?** (why it happened)
 3. **How fixed?** (solution applied)
@@ -3593,11 +3579,7 @@ Client says: "Can you add this feature?" - Follow this process:
 | Backup Dev | [Name] | @backupdev-name | Available | 9 AM - 8 PM |
 | Management | [Name] | @mgmt-name | Available | Emergency only |
 
-**After-hours emergencies:**
-- Message PM in Slack/WhatsApp first (mark as urgent)
-- If no response in 15 min → Message Lead Dev
-- If no response in 30 min → Message Management
-- Tag @channel in #emergencies Slack channel
+**After-hours emergencies:** same chain as Section 2B (Emergency Contact Protocol): post in #emergencies (tag @PM @Lead-Dev) → no reply in 15 min: WhatsApp/call PM **and** Lead Dev → no reply in 30 min total: call Management.
 
 ---
 
@@ -3674,6 +3656,9 @@ git push origin feature/user-profile-export
 - `[Update] Description` - Enhance existing feature
 - `[Refactor] Description` - Code improvement (no behavior change)
 - `[Docs] Description` - Documentation only
+- `[Hotfix] Description` - Emergency production fix
+
+Product changelog wording (New / Improve / Fix ...) is a different format: Product manual P8.
 
 ---
 
@@ -3696,110 +3681,58 @@ git push origin feature/user-profile-export
 
 ---
 
-**Step 4: Ready for Review**
+**Step 4: Open a Pull Request**
 
-**When feature complete:**
-- [ ] Code passes WPCS locally
-- [ ] Tested locally
+**When the feature is complete:**
+- [ ] Code passes WPCS locally (the pre-commit hook runs it, Developer Playbook D8)
+- [ ] Self-checks done for what changed (Developer Playbook D7)
 - [ ] Commit and push all changes
-- [ ] Create task comment in Basecamp: "Ready for code review - branch: feature/user-profile-export"
-- [ ] Tag peer reviewer
+- [ ] Open a pull request from your branch into `develop` and link it on the card
+- [ ] Request review from the Reviewer named on the card (Section 2C-A)
 
 ---
 
 **Step 5: Pull Request Review**
 
-**Reviewer checks out branch:**
+The Reviewer (approval rules: Section 21A) checks the branch out, tests it, and works through the Section 21A checklist.
 
-```bash
-git fetch origin
-git checkout feature/user-profile-export
-# Test the feature
-```
-
-**Reviewer checks:**
-- [ ] Code follows standards
-- [ ] No obvious bugs
-- [ ] Logic makes sense
-- [ ] Proper error handling
-
-**If approved:** Comment in Basecamp "Code review approved - ready to merge"
-**If issues:** Comment specific issues, developer fixes and re-requests review
+**If approved:** the Reviewer approves the pull request on GitHub.
+**If issues:** the Reviewer requests changes on the PR; the developer fixes and pushes, and the PR updates.
 
 ---
 
 **Step 6: Merge to Develop (Staging)**
 
-**Developer merges:**
-
-```bash
-git checkout develop
-git pull origin develop
-git merge feature/user-profile-export
-git push origin develop
-```
-
-**Then deploy to staging for QA testing.**
+Once the PR is approved and its checks are green (CI, or the local check run for private repos, Developer Playbook D8), **merge the PR on GitHub**. This deploys to staging for QA. Move the card to Ready for Testing with a handover comment.
 
 ---
 
 **Step 7: Merge to Main (Production)**
 
-**After QA approval and PM approval:**
-
-```bash
-git checkout main
-git pull origin main
-git merge develop
-git push origin main
-```
-
-**Then deploy to production.**
+**After QA, client review on staging, and PM approval (Section 16):** open a pull request from `develop` into `main`, merge it once checks are green, then deploy to production.
 
 ---
 
 **Step 8: Delete Feature Branch**
 
-**After successfully in production:**
-
-```bash
-git branch -d feature/user-profile-export
-git push origin --delete feature/user-profile-export
-```
-
-Keeps repo clean.
+After the change is in production, delete the branch (GitHub's "Delete branch" button after merge, or `git push origin --delete <branch>`).
 
 ---
 
 ### Hotfix Workflow (Emergency Production Fix)
 
-**If critical bug in production:**
+1. Create `hotfix/description` from `main`:
+   ```bash
+   git checkout main
+   git pull origin main
+   git checkout -b hotfix/critical-security-patch
+   ```
+2. Fix, test, commit: `git commit -m "[Hotfix] Fix critical security vulnerability"`
+3. Open a pull request into `main`. Shortened review by the Lead Dev; checks must be green.
+4. Merge, then deploy to production after PM approval (P0 emergency: the Lead Dev may approve and inform the PM, Section 2A).
+5. Open a pull request from `main` into `develop` to keep them in sync.
 
-```bash
-# Create hotfix branch from main
-git checkout main
-git pull origin main
-git checkout -b hotfix/critical-security-patch
-
-# Fix the issue, test thoroughly
-git add .
-git commit -m "[Hotfix] Fix critical security vulnerability"
-
-# Merge to main
-git checkout main
-git merge hotfix/critical-security-patch
-git push origin main
-
-# Also merge to develop (keep in sync)
-git checkout develop
-git merge hotfix/critical-security-patch
-git push origin develop
-
-# Delete hotfix branch
-git branch -d hotfix/critical-security-patch
-```
-
-**Deploy to production immediately.**
+**Products:** release and hotfix branches follow Product manual P7 and Developer Playbook D10.
 
 ---
 
@@ -3813,7 +3746,7 @@ git branch -d hotfix/critical-security-patch
 - Keep commits small and focused
 
 **🚫 DON'T:**
-- Commit directly to main or develop
+- Commit or push directly to main or develop (every change goes through a pull request)
 - Push broken code
 - Leave branches open forever
 - Use vague commit messages
@@ -3857,7 +3790,7 @@ When a new developer, QA, or PM joins the team, follow this checklist to onboard
 
 ### First Day Checklist
 
-**Morning (9:30 AM - 12:00 PM)**
+**Morning (10:00 AM - 12:00 PM)**
 
 **HR does (30 min):**
 - [ ] Office tour
@@ -3878,7 +3811,7 @@ When a new developer, QA, or PM joins the team, follow this checklist to onboard
 **Lead Dev does (1 hour) - For Developers:**
 - [ ] Setup development environment
 - [ ] Grant git repository access
-- [ ] Explain git workflow (Section 18)
+- [ ] Explain git workflow (Section 19)
 - [ ] Setup local WordPress/testing environment
 - [ ] Install WPCS + Plugin Checker
 - [ ] Review code quality standards
@@ -3898,7 +3831,7 @@ When a new developer, QA, or PM joins the team, follow this checklist to onboard
 - [ ] Show example of good git commit
 
 **New member does:**
-- [ ] Read Operations Manual (Sections 1-3, 14-24)
+- [ ] Read the 9 "start here" sections on the Quick Reference Card, then the Developer Playbook (developers / QA) or the Product Operations Manual (product team)
 - [ ] Complete first simple task (guided by mentor)
 - [ ] Post first daily update in the project channel at 6:30 PM
 
@@ -3939,8 +3872,8 @@ When a new developer, QA, or PM joins the team, follow this checklist to onboard
 - [ ] Working independently on medium tasks
 - [ ] Comfortable with all tools and processes
 - [ ] Knows when/how to ask for help
-- [ ] Zero missed daily updates
-- [ ] Completed peer code review for colleague
+- [ ] Posts daily updates consistently (coaching item, not a score, Section 2C-E)
+- [ ] Shadowed a code review with their mentor
 
 **PM does end-of-month review (30 min):**
 - Review first month performance
@@ -3958,13 +3891,13 @@ When a new developer, QA, or PM joins the team, follow this checklist to onboard
 - [ ] WPCS + Plugin Checker installed
 - [ ] Code review process explained
 - [ ] Completed first git branch → merge cycle
-- [ ] Understands Definition of Done (Section 20)
+- [ ] Understands Definition of Done (Section 21)
 
 #### For QA:
 - [ ] Staging server access
 - [ ] Testing checklist provided
 - [ ] Bug reporting format explained
-- [ ] Understands QA criteria (Section 20)
+- [ ] Understands QA criteria (Section 21A)
 - [ ] Cross-browser testing tools setup
 - [ ] Completed first full testing cycle
 
@@ -4042,7 +3975,7 @@ When a new developer, QA, or PM joins the team, follow this checklist to onboard
 
 **Don't start working!** Instead:
 
-1. **Comment in Basecamp:** "This task is not ready to start because [reason]"
+1. **Post in `#proj-[client]` with the card link:** "This task is not ready to start because [reason]"
 2. **Tag PM:** "@PM Need clarification on [specific issue]"
 3. **Wait for PM response** before starting
 4. **Move to next task** in the meantime
@@ -4059,29 +3992,34 @@ When a new developer, QA, or PM joins the team, follow this checklist to onboard
 
 ### B. Definition of Done (What "Complete" Actually Means)
 
-A task is only "Complete" when ALL criteria are met:
+A card is only **Done** when ALL criteria are met. This section says **who signs off what**. The step-by-step checks are in the [Developer Playbook](DEVELOPER_PLAYBOOK.md) (D7 self-checks, D8 gates, D9 QA). Products add the items in Product manual P6.
 
 ### Developer (Before moving to "Ready for Testing"):
-- [ ] Code passes WPCS check (run locally: `phpcs --standard=WordPress`)
-- [ ] Plugin Checker shows no errors
-- [ ] Tested on local/staging + screenshot attached to Basecamp
+- [ ] Pull request reviewed and approved, checks green (CI, or the local check run pasted in the PR), merged to staging (Section 19)
+- [ ] WPCS clean (`vendor/bin/phpcs` with the repo's `phpcs.xml.dist`; the pre-commit hook runs it) and Plugin Check clean where it applies
+- [ ] Self-checks done for what changed (Playbook D7)
+- [ ] Regression guard added in the same commit (test or QA checklist line)
+- [ ] Browser-checked at 1440px and 390px, light and dark, on the role ladder; screenshots on the card labelled role + viewport (Playbook D7-G)
+- [ ] Handover comment posted on the card: what to test, where, roles, not covered (Playbook D11)
+- [ ] Test accounts and test data ready (Section 21B)
 - [ ] Time logged in time tracker
-- [ ] Git commit with clear message (format: `[Type] Description`)
+- [ ] Commit messages in the `[Type] Description` format (Section 19)
 
-### QA (Before marking "Done"):
-- [ ] All critical bugs fixed (no P0/P1 bugs remaining)
-- [ ] Test screenshots attached to Basecamp
-- [ ] Cross-browser tested (if UI change)
+### QA (Before moving to "Ready for Deployment", or "Done" on product boards):
+- [ ] Verdict PASS posted in the Playbook D9-F format (all five D9-D questions answered yes)
+- [ ] Test screenshots attached to the card
+- [ ] Problems found outside the card filed as their own cards
 
-### PM (Before marking "Complete"):
-- [ ] Client approved or demo completed
-- [ ] Task closed in Basecamp
+### PM (Before moving to "Done"):
+- [ ] Deployed with PM approval (Section 16)
+- [ ] Client confirmed it on live
+- [ ] Card moved to Done
 
 ---
 
 ## 21A. Code Review & QA Testing Checklists
 
-**Purpose:** Simple checklists so peer reviewers and QA know exactly what to check. Ensures consistent quality without guessing.
+**Purpose:** Who approves, and simple checklists so reviewers and QA know exactly what to check. The full methods are in Developer Playbook D7 (self-checks) and D9 (QA of a card). Ensures consistent quality without guessing.
 
 ---
 
@@ -4128,8 +4066,7 @@ The developer runs the self-checks in Developer Playbook D7 before asking for re
 - Decision is final
 
 **Code Review Assignment:**
-- PM or Lead Dev assigns reviewer when task is ready
-- Or developer requests review from specific senior/lead dev
+- The Reviewer is named in the card header when the card is created (Section 2C-A). PM or Lead Dev picks them
 - Junior developers typically not assigned as primary reviewers (can shadow/learn)
 
 ---
@@ -4137,11 +4074,10 @@ The developer runs the self-checks in Developer Playbook D7 before asking for re
 ### Code Review Response
 
 **If approved:**
-- Comment in Basecamp: "Code review approved ✅ Ready to merge to staging for QA"
-- Approve the pull request (if using GitHub/GitLab)
+- Approve the pull request on GitHub. The developer merges it and moves the card to Ready for Testing
 
 **If issues found:**
-- Comment in Basecamp with specific issues:
+- Request changes on the pull request with specific issues (summary on the card in the Playbook D11 code review format if useful):
   ```
   Code review feedback:
   1. [Issue 1] - Line 45: Missing error handling for API call
@@ -4150,8 +4086,8 @@ The developer runs the self-checks in Developer Playbook D7 before asking for re
 
   Please fix and re-request review.
   ```
-- Mark task as "Needs Revision"
-- Developer fixes issues and re-requests review
+- The card stays in **In Development**
+- Developer fixes issues and re-requests review on the PR
 
 **Response time:** Within 24 hours of review request
 
@@ -4159,7 +4095,7 @@ The developer runs the self-checks in Developer Playbook D7 before asking for re
 
 ### B. QA Testing Checklist (For QA Team)
 
-**When testing a task marked "Ready for Testing", check ALL of these:**
+**When testing a card in "Ready for Testing", check ALL of these.** Walk the role ladder and use the verdict format in Developer Playbook D9.
 
 #### 1. Core Functionality
 - [ ] **Feature works as described?** - Read task description, does it do what was requested?
@@ -4168,11 +4104,9 @@ The developer runs the self-checks in Developer Playbook D7 before asking for re
 - [ ] **Error handling works?** - Invalid inputs show proper error messages?
 
 #### 2. Browser & Device Testing
-- [ ] **Chrome (desktop)** - Works correctly?
-- [ ] **Firefox (desktop)** - Works correctly?
-- [ ] **Safari (desktop)** - Works correctly?
-- [ ] **Mobile responsive?** - Test on mobile view (Chrome DevTools or real device)
-- [ ] **Tablet view?** (if applicable) - Medium screen sizes work?
+- [ ] **Chrome, Firefox, Safari (desktop)** - Works correctly?
+- [ ] **Safari iOS** (or a real phone) - Works correctly?
+- [ ] **1440px and 390px, light and dark** - Works and looks right? (768px and 1024px too when the change touches layout, Playbook D6)
 
 #### 3. Technical Checks
 - [ ] **No console errors?** - Open browser console (F12), should be clean
@@ -4207,21 +4141,11 @@ Use bug priority system (Section 9B):
 **If ALL checks pass:**
 - Post the verdict comment (Developer Playbook D9-F) with PASS
 - Attach screenshots showing it works
-- Change task status to "Ready for Deployment"
+- Move the card to **Ready for Deployment** (client projects) or **Done** (products)
 
-**If bugs found:**
-- Report each bug using bug template (Section 9B)
-- Comment in Basecamp:
-  ```
-  QA Bounced ❌
-
-  Bugs found:
-  1. [P1] Login form doesn't validate email format
-  2. [P2] Button alignment off on mobile
-  3. [P3] Typo in success message
-
-  Assigning back to developer for fixes.
-  ```
+**If it fails:**
+- Post the verdict comment (Playbook D9-F) with BOUNCE, listing each problem with its severity
+- Problems outside the card's scope become their own cards (bug format: Section 9B / Playbook D4-F)
 - Move the card back to **Bugs**
 - Assign back to the Feature Owner
 
@@ -4237,7 +4161,7 @@ Use bug priority system (Section 9B):
 
 **For QA:**
 - Test on staging, NOT production
-- Test both as logged-in user AND logged-out (if applicable)
+- Walk the role ladder: reporter's role, logged out, owner, a second member, moderator, admin last (Playbook D9-C)
 - Try to break it (enter weird data, click rapidly, etc.)
 - If unsure if something is a bug → Ask developer or PM
 
@@ -4260,7 +4184,7 @@ Use bug priority system (Section 9B):
 
 **Process:**
 
-**Step 1: Developer Explains (In Basecamp Task Comment)**
+**Step 1: Developer Explains (in the project channel, linking the card)**
 ```
 @QA - This is not a bug because:
 - According to requirement: [quote requirement]
@@ -4271,12 +4195,11 @@ Use bug priority system (Section 9B):
 **Step 2: QA Reviews Explanation**
 
 **If QA agrees after explanation:**
-- Mark as "Not a Bug" in Basecamp
-- Close the issue
+- Post the verdict NOT-A-BUG on the card with the reason, and move it to Done (closed). Never trash it
 - Document for future reference
 
 **If QA still disagrees:**
-- Comment: "@Lead-Dev Can you review? QA believes this is a bug because [reason], but developer says it's working as designed."
+- Post in the project channel: "@Lead-Dev Can you review? QA believes this is a bug because [reason], but developer says it's working as designed."
 - Tag Lead Developer for decision
 
 **Step 3: Lead Developer Reviews**
@@ -4359,7 +4282,7 @@ Use bug priority system (Section 9B):
 - Major change: Full regression (as estimated by Lead Dev/PM)
 
 **If Unsure of Scope:**
-→ Ask in Basecamp task: "@Lead-Dev What's the regression scope for this change?"
+→ Ask in `#proj-[client]`, linking the card: "@Lead-Dev What's the regression scope for this change?"
 → Lead Dev specifies what needs testing
 
 **What is "Smoke Testing"?**
@@ -4390,14 +4313,14 @@ Time: 15-20 minutes
 - **Purpose:** QA testing before production
 - **URL:** [Your staging URL - document in Basecamp Docs & Files]
 - **Access:** All developers and QA have access
-- **Credentials:** Stored in Basecamp → Project → Docs & Files → "Environment Credentials"
+- **Credentials:** "Project Credentials" → Staging section (Section 13A)
 - **Updated by:** Lead Developer or PM
 
 **Production Environment:**
 - **Purpose:** Live client site
 - **URL:** [Production URL]
 - **Access:** View-only for QA; Lead Dev and PM can modify
-- **Credentials:** Stored in Basecamp (restricted access)
+- **Credentials:** "Project Credentials" → Production section, restricted access (Section 13A)
 - **Rule:** Never test on production unless explicitly approved by PM
 
 **Local Development:**
@@ -4413,20 +4336,17 @@ Time: 15-20 minutes
 Before marking task **"Ready for Testing"**, developer MUST:
 
 1. **Create Test Accounts** (if feature needs login/roles)
-   - At least 2 test accounts with different roles (if applicable)
-   - Example: Admin account, Regular user account
+   - Accounts for the role ladder (Playbook D9-A): two members with the same role (one owns the test item, one doesn't) plus each elevated role
 
 2. **Create Test Data**
    - Sample data that demonstrates the feature
    - Example: If testing "user can delete posts", create 3-5 sample posts
 
-3. **Document in Task**
-   - Post credentials and test data in Basecamp task comment
-   - Format:
+3. **Document it**
+   - Add the test-account logins to "Project Credentials" (Staging section, Section 13A). Never post passwords in card comments, which clients can see
+   - On the card, refer to accounts by role name and list the test data:
    ```
-   Test Accounts:
-   - Admin: username / password
-   - User: username / password
+   Test Accounts: member-owner, member-other, moderator, admin (see Project Credentials → Staging)
 
    Test Data:
    - 5 sample posts created
@@ -4436,15 +4356,14 @@ Before marking task **"Ready for Testing"**, developer MUST:
 **What If Test Accounts/Data Missing:**
 
 **QA's Action:**
-1. Comment in Basecamp task: "Cannot start testing - missing test accounts/data"
-2. Move the card back to "In Development"
-3. Tag developer: "@Developer Need test accounts to proceed"
-4. **Do NOT** create test data yourself (developer must provide)
+1. Leave the card in Ready for Testing and put it **On Hold**
+2. Comment: "BLOCKED - missing test accounts/data" and tag the developer
+3. The developer provides the baseline accounts and data. QA may add extra data using the agreed test-data prefix (Playbook D11)
 
 **Developer's Action:**
 1. Create accounts/data within 2 hours
 2. Document in task
-3. Move back to "Ready for Testing"
+3. Take the card off hold
 
 ---
 
@@ -4452,7 +4371,7 @@ Before marking task **"Ready for Testing"**, developer MUST:
 
 **QA Action:**
 1. Check if it's actually down (ask another QA/developer)
-2. Post in Slack #emergencies: "🚨 Staging down, cannot test - [describe issue]"
+2. Post in the project channel, tag Lead Dev: "🚨 Staging down, cannot test - [describe issue]" (use #emergencies only if it blocks a release today)
 3. Tag Lead Developer
 4. Update affected tasks: "On hold - staging down"
 
@@ -4468,10 +4387,10 @@ Before marking task **"Ready for Testing"**, developer MUST:
 
 ---
 
-### Environment Credentials
+### Credentials for Testing
 
 **Where Stored:**
-- Basecamp → [Project Name] → Docs & Files → "Environment Credentials" document
+- The one credentials document: Basecamp → [Project Name] → Docs & Files → "Project Credentials" (Section 13A), Staging section
 
 **Document Contains:**
 - Staging URL and credentials
@@ -4487,7 +4406,7 @@ Before marking task **"Ready for Testing"**, developer MUST:
 **If Credentials Don't Work:**
 1. QA notifies Lead Dev in Slack
 2. Lead Dev updates credentials
-3. Lead Dev posts update in #wbcomers: "Environment credentials updated"
+3. Lead Dev posts in the project channel: "Staging credentials updated in Project Credentials"
 4. Team checks credentials work
 
 ---
@@ -4496,7 +4415,7 @@ Before marking task **"Ready for Testing"**, developer MUST:
 
 **New Team Member Needs Access:**
 1. PM or Lead Dev grants access
-2. Credentials shared via Basecamp (not Slack - Slack not secure)
+2. Credentials added to Project Credentials (Section 13A), never in comments or Slack
 3. Document who has access (for security)
 
 **Third-Party Tools (Analytics, Error Tracking):**
@@ -4558,26 +4477,19 @@ Before marking task **"Ready for Testing"**, developer MUST:
 
 ## 23. Response Time Expectations
 
-| What | Response Time | Who Responds |
-|------|---------------|--------------|
-| Client question (Basecamp) | Same day (within 4 hours) | PM |
-| Developer help request | Same day (within 2 hours) | PM or Lead Dev |
-| Peer code review | Within 24 hours | Peer Developer |
-| QA testing start | Within 24 hours of "QA Ready" | QA Team |
-| Security/Critical bug | Immediately (within 30 min) | Everyone |
-
-*If you can't meet the deadline, reply: "Got it, will respond by [time]"*
+All response times live in one table: **Section 2B, "Communication Response Time Commitments"**. Bug timings by severity: **Section 9B Quick Reference** (client projects) and **Product manual P9** (products).
 
 ---
 
 ## 24. Document Control
 
 - **Owner:** HR & Project Management Team
-- **Version:** 10.1 - Linked the Developer Playbook, standard card table
+- **Version:** 10.2 - Consistency pass across all four documents
 - **Last Updated:** October 2026
 - **Next Review:** January 2027
 - **Status:** ✅ Complete - All essential sections + operational edge case handling
 - **Changelog:**
+  - v10.2: Consistency pass. One rule per topic, with the owner listed in README.md. Every production deploy needs PM approval (fast-track for small fixes). Staging needs PR review. All code review and merges go through GitHub pull requests. PM answers client questions. Internal talk only in Slack project channels. One response-time table (2B) and one bug-timing table (9B). One credentials document. Fixed wrong section references, old status names and HR wording.
   - v10.1: Linked the Developer Playbook. Client projects use the standard card table (Section 4A). Task priority labels (High/Medium/Low) separated from bug severity (P0-P3). Definition of Done and QA results use the new column names.
   - v10.0: Added Section 2C (Feature Owner model, async daily update in project channels, weekly 1:1, 50% checkpoint, ownership measures). Standup is blockers-only. Developer KPIs measure outcomes instead of update counts. Added Client Project Setup (Section 2B): one Basecamp project per client, internal #proj-[client] channel, whole team monitors client communication, Scope of Work document. Linked the Product Operations Manual.
   - v9.0: **OPERATIONAL COMPLETENESS - Team-Level Edge Cases:** Added 8 operational sections + fixed contradictions:
@@ -4612,4 +4524,4 @@ Before marking task **"Ready for Testing"**, developer MUST:
 
 ---
 
-© 2025 WBCOM DESIGNS. All Rights Reserved.
+© 2025-2026 WBCOM DESIGNS. All Rights Reserved.

@@ -42,9 +42,10 @@ Ready for Development
    ↓  Pre-commit gate → PR → CI green → code review  (D8)
 Ready for Testing   (only after your own browser check)
    ↓  QA verifies on the role ladder                 (D9)
-Done   (or back to Bugs with a reason)
-   ↓  Release QA + release, or client deploy         (D10)
-Released / Deployed → 24-48 h watch → customer/client told  (D12)
+Done (products)  |  Ready for Deployment → PM approval → Deployed → Done (client projects)
+   (or back to Bugs with a reason)
+   ↓  Release QA + release (products, D10)
+Released / Deployed → 48 h watch → customer/client told  (D12)
    ↓  Anything missed → new check added              (learning loop)
 ```
 
@@ -128,7 +129,7 @@ Search the board across **every** column, including cards already in testing. If
 - Same reporter again: `[Reminder #N] Same customer (...) reported this again. Please update on progress.`
 - New reporter: `[Priority Escalation] New customer (...) reported the same issue. Now affecting N customers.`
 
-**3 or more reporters = systemic. Escalate.**
+**3 or more reporters = systemic. Escalate.** After a release, 2 reports of the same new problem = hotfix (Product manual P7).
 
 ### Step 3: Triage on reach, impact and location
 
@@ -144,9 +145,9 @@ Search the board across **every** column, including cards already in testing. If
 | Site-specific, degraded | **P2** | **P3** |
 | Cosmetic | **P2** | **P3** |
 
-Response times for each level: Agency manual Section 9B.
+Response and fix times for each level: client projects, Agency manual Section 9B; products, Product manual P9. Who has the final say on the level: the PM (client projects) or the Product Owner (products).
 
-- **Product:** a paying customer's issue is at least P2, and P1 if they are fully blocked. A free user's real bug still gets a card. At the same level, paid reports are scheduled first. Only fatal issues (site down, data loss, payments, an active exploit) jump the queue.
+- **Product:** paying-customer and free-user priority rules are in Product manual P9.
 - "Site-specific" is a finding, not a dismissal.
 - Category (helps routing): Fatal, Data, Display, Logic, Permission, Performance, Integration, JavaScript, AJAX/Hooks, Silent Failure, Security.
 
@@ -175,7 +176,7 @@ Not a bug card if it is: by design, a server / host / config problem, a third-pa
 ### Step 7: File the card
 
 - Title: `[SUPPORT] <one concrete symptom>` for customer reports, or `<area>: <symptom>` otherwise.
-- Column: **Bugs**, or **Possible Bug** if not yet reproduced. When it is confirmed, root-caused, has a fix direction and an owner → **Ready for Development**.
+- Column: **Bugs**, or **Possible Bug** if not yet reproduced. When it is confirmed, root-caused, has a fix direction and an owner → **Ready for Development**. **Product:** who may move a card into each column is in Product manual P3.
 - The card body uses the **bug brief** (D4-F). Customer reports also include the customer's words verbatim with source and date, whether they are a paying customer, and 2-4 exact questions still needed from them ("ASK" for unknowns).
 - Add a private note on the support ticket: `Internal: <product> - <issue> - card <url> - <one-line answer for the agent>`. A card without this note is incomplete.
 - Assign to the product family's named owner (listed in the product README). Otherwise leave it unassigned for the lead to pick. Never guess an assignee.
@@ -336,8 +337,9 @@ Seven layers. Each layer may only depend on layers with a lower number:
 
 ### I. Never break live sites
 
-- Never remove a public function, hook, route, option, meta key, capability or template in the same release that deprecates it. Deprecate first, keep it for at least 2 major versions.
+- Never remove a public function, hook, route, option, meta key, capability or template in the same release that deprecates it. Deprecate first with `_deprecated_function()` / `_deprecated_hook()`.
 - Renames keep an alias for the old name. A change to default behaviour ships with a filter to restore the old behaviour.
+- How long deprecated and renamed items are kept: Product manual P5-E.
 - **Patch** releases are fixes only, with no schema changes. **Minor** releases add. **Major** releases may remove.
 - Supported PHP: what the product readme says (`Requires PHP`). A deprecation notice on any supported version is a bug.
 
@@ -358,7 +360,7 @@ Every user-facing string is translatable with the plugin slug as text domain, wi
 ### Breakpoints
 
 - Mobile ≤ 640px, tablet 641-1024px, desktop ≥ 1025px. Two media blocks, at the bottom of the file. `:hover` styles inside `@media (hover: hover)`.
-- Test at **390, 768, 1024 and 1440px**. Admin pages at 390px too. No horizontal scroll, no clipped controls.
+- Every card: test at **1440px and 390px** (D7-G). When the change touches layout or breakpoints, and in release Tier 1, also **768px and 1024px**. Admin pages at 390px too. No horizontal scroll, no clipped controls.
 - **Tap targets at least 40px** (34px only on dense admin list rows).
 
 ### Accessibility (WCAG 2.1 AA)
@@ -620,10 +622,10 @@ Check added: <new checklist line or test> | none (why)
 
 | Verdict | Move to |
 |---|---|
-| PASS | Done |
+| PASS | Done (products) / Ready for Deployment (client projects, Agency manual 4A) |
 | BOUNCE | Bugs, with repro steps |
 | NOT-A-BUG | Done (closed), with the evidence and the standard cited. Never trash it |
-| Partly done | Done for what shipped; new card in Scope for the rest |
+| Partly done | Done (Ready for Deployment on client projects) for what shipped; new card in Scope for the rest |
 | CANNOT-REPRO / NEEDS-INFO / BLOCKED | Stays, reporter @mentioned with the specific question |
 
 After moving, re-open the card and check it is really in the new column.
@@ -645,7 +647,7 @@ The browser tiers decide the release. Code checks never replace them: in one rel
 | Tier | Covers |
 |---|---|
 | **0 Boot** | Activates cleanly, assets built, migrations safe to run twice, debug.log clean for the whole run |
-| **1 Presentation & flow** (main gate) | Core flows per role, theme fit, every block renders and its settings change the output, server-rendered and JS-rendered items look identical, UI states, accessibility, zero console errors, 390px |
+| **1 Presentation & flow** (main gate) | Core flows per role, theme fit, every block renders and its settings change the output, server-rendered and JS-rendered items look identical, UI states, accessibility, zero console errors, at 1440, 1024, 768 and 390px |
 | **2 Completeness** | Click everything (no dead buttons or tabs), three entry points, Free-only and Free + Pro states, settings where owners expect them |
 | **3 Logic** | REST live, money exact to the cent, roles enforced, background jobs run, two users at once, scale, notifications fire exactly once, external API down handled, time zones |
 | **3E Environment** | Minimum WP/PHP, multisite, object cache, page cache, conflict plugins (Elementor, Yoast, Rank Math, LiteSpeed, WooCommerce, BuddyPress), Chrome / Firefox / Safari iOS |
@@ -663,7 +665,7 @@ A step marked SKIPPED without a written reason counts as **FAIL**. Every pass ne
 - **D Regression guards:** one row per customer-visible fix from earlier releases
 - **E Pro / add-on features**
 - **F Cross-browser:** 5 key pages on Chrome, Firefox, Safari iOS
-- **G First 24 hours** after release
+- **G First 48 hours** after release
 
 A full manual walk takes about 90 minutes, plus about 45 minutes for the release checklist.
 
@@ -681,7 +683,7 @@ A full manual walk takes about 90 minutes, plus about 45 minutes for the release
 
 ### D. Release steps (in order)
 
-1. **Branch:** release branch named for the version. `git status` clean, up to date, `main` merged in.
+1. **Branch:** `release/X.Y.Z`. `git status` clean, up to date, `main` merged in.
 2. **CI green** on the PR into `main` (or the local check run for private repos).
 3. **Pre-release gates:** Gate 4 battery (D8), wiring + contract check, REST routes return no 5xx and all have permission checks, a security sweep compared with the last tag (findings written to `audit/security/<version>.md`), docs truth.
 4. **Version bump: every location must match**, or WordPress loops on updates:
@@ -689,7 +691,7 @@ A full manual walk takes about 90 minutes, plus about 45 minutes for the release
    - the version constant / property in the main file
    - `readme.txt` `Stable tag:`
    - `package.json` and `composer.json` `version` (if present)
-   - Pro's version constant (same version as Free)
+   - Pro's version constant (same version as Free, Product manual P7)
    - any product-specific config holding the version
 
    Never downgrade a version.
@@ -701,12 +703,13 @@ A full manual walk takes about 90 minutes, plus about 45 minutes for the release
    - The zip extracts to a folder named exactly `<slug>/`. Investigate if it is more than twice the size of the last zip.
 7. **Plugin Check on the built zip:** `wp plugin check <zip> --severity=error`. No new errors in our code.
 8. **Clean install test on a fresh WordPress (never skipped, not even for hotfixes):** activates with the new version, home page loads, no fatal or text-domain notices in debug.log, plugins page + one admin screen + one frontend screen look right. Pairs: deactivate Free, and Pro shows a "requires Free" notice instead of crashing.
-9. **Merge** the release PR after CI is green again. Never push to `main` directly.
-10. **Tag** `vX.Y.Z` (annotated) on `main` after the merge, and only when `main` is green.
-11. **GitHub release:** attach the zip. Title `Product X.Y.Z - one-line summary`. Body = the readme changelog bullets.
-12. **Free/Pro lockstep:** same version, released together, each release links the other.
-13. **Announce** in the releases channel. A version counts as available to customers only after the release lead confirms it there.
-14. **First 24-48 hours:** debug.log clean on the test site, scheduled jobs present, no "broke after update" tickets. Each Feature Owner watches their feature.
+9. **Go / No-go:** written Go from the Product Owner on the Basecamp release card (Product manual P7). No Go, no merge or tag. Release timing rules (no Friday after 3 PM, no open P0/P1) are in P7.
+10. **Merge** the release PR after CI is green again. Never push to `main` directly.
+11. **Tag** `vX.Y.Z` (annotated) on `main` after the merge, and only when `main` is green. Then merge `main` back into `develop` through a PR.
+12. **GitHub release:** attach the zip. Title `Product X.Y.Z - one-line summary`. Body = the readme changelog bullets.
+13. **Free/Pro lockstep** (rule: Product manual P7): same version, released together, each release links the other.
+14. **Announce** in `#releases`. A version counts as available to customers only after the release lead confirms it there.
+15. **First 48 hours:** debug.log clean on the test site, scheduled jobs present, no "broke after update" tickets. Each Feature Owner watches their feature.
 
 ---
 
@@ -726,15 +729,15 @@ A full manual walk takes about 90 minutes, plus about 45 minutes for the release
 | **In Development** | Being built |
 | **Ready for Testing** | Merged, self-checked, browser-checked, handover comment posted |
 | **In Testing** | QA working on it |
-| **Done** | Verified (or closed as not-a-bug with evidence) |
+| **Done** | Products: verified by QA (or closed as not-a-bug with evidence). Client projects: client confirmed it on live |
 
-- **Client project:** add **Ready for Deployment** and **Deployed** after In Testing (Agency manual Section 16).
+- **Client project:** In Testing → **Ready for Deployment** → **Deployed** → Done (Agency manual Section 4A).
 - **Blocked** cards stay in their column and are put **On Hold** with a comment saying what they are waiting for and from whom.
 - Released / deployed version numbers are recorded in a card comment.
 
 ### How we write on cards
 
-- **Nothing is done until it is on the card.** Coordinate on the card, not in chat. Chat is for quick questions.
+- **Nothing is done until it is on the card.** Coordinate on the card, not in Slack. Slack is for quick questions and internal discussion (client projects: `#proj-[client]`).
 - **Every comment stands on its own** for someone picking it up cold: steps, role, configuration, evidence, what remains.
 - Basecamp comments render HTML, not Markdown. Use `<strong>` and `<br>`.
 - Developer handover comment: commits, retest steps, surfaces, roles and viewports covered, not covered.
@@ -756,8 +759,8 @@ A full manual walk takes about 90 minutes, plus about 45 minutes for the release
 **Client project:** the PM replies to the client (Agency manual 2B). Developers give the PM the facts below.
 
 - **Reproduce before replying.** A draft written before reproducing is thrown away.
-- **Target 48 hours for a useful first reply:** reproduced, a workaround, an honest next step. That is time to a useful answer, not time to fix.
-- Fixes ship in the regular maintenance cycle (about every 7-10 days). Fatal issues ship in 1-2 days. **Never promise a date.** Say "in the next update."
+- **Reply and fix targets:** Product manual P9 and the release cadence in P7 (products); Agency manual Sections 2B and 9B (client projects). A useful reply means reproduced, a workaround, an honest next step. It is not time to fix.
+- **Never promise a date.** Say "in the next update."
 - **Structure:** greeting → one line naming their exact issue → the fix or numbered next steps → one detail that prevents the next back-and-forth → what happens next.
 - Confirmed bug: *"Thanks for the detailed report - I've reproduced [issue] and logged it for a fix. For now, [workaround]. I'll follow up here once the fix ships."* If it was our regression, start with a short apology.
 - Rate your own confidence 1-10 in the internal note: 9-10 = reproduced on released code, cause confirmed. 5-6 = add caveats or ask for the missing detail. **1-4 = don't send.**
@@ -769,7 +772,7 @@ A full manual walk takes about 90 minutes, plus about 45 minutes for the release
   - send placeholders, dev jargon or code to a non-developer
   - offer free custom work
 - When the fix ships: reply "fixed in vX, please update", add a private note, close the ticket.
-- **Aging:** a card with no useful reply 48 hours after carding is stale (waiting in the normal release cycle is not stale). Post an aging alert on the card and in the team channel, at most once a day: `[Aging Alert - Day N] Priority / Customer / Product / ticket #... - please update or pick this up.`
+- **Aging:** a card with no useful reply 48 hours after carding is stale (waiting in the normal release cycle is not stale). Post an aging alert on the card and in the product channel (`#prod-[product]`), at most once a day: `[Aging Alert - Day N] Priority / Customer / Product / ticket #... - please update or pick this up.`
 
 ---
 
