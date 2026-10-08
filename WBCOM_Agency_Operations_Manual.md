@@ -194,6 +194,8 @@ When PM is unavailable (sick/leave/meeting/off-hours), the following backup prot
 - Monday 11:00 AM: Attend weekly planning meeting
 - Technical planning for complex features
 - Review git branches and merge requests
+- Wednesday 12:00 PM: Attend the QA Review (Section 8H)
+- Thursday 12:00 PM: Attend the Product Review for that week's product family (Section 8I)
 - Friday 6:00 PM: Attend weekly review
 
 **Monthly Activities:**
@@ -233,6 +235,7 @@ When PM is unavailable (sick/leave/meeting/off-hours), the following backup prot
 **Weekly Activities:**
 - Participate in Monday weekly planning
 - Participate in Friday weekly review
+- Attend the Product Review for that week's product family (Section 8I); act as competitor scout when it is your turn
 
 **Reports To:** Lead Developer
 **Reports From:** May mentor junior developers (informal)
@@ -261,6 +264,7 @@ When PM is unavailable (sick/leave/meeting/off-hours), the following backup prot
 **Weekly Activities:**
 - Participate in Monday weekly planning (listen and learn)
 - Participate in Friday weekly review
+- Attend the Product Review for that week's product family (Section 8I); act as competitor scout when it is your turn
 
 **Reports To:** Lead Developer or Senior Developer (assigned mentor)
 **Reports From:** None
@@ -289,7 +293,8 @@ When PM is unavailable (sick/leave/meeting/off-hours), the following backup prot
 **Weekly Activities:**
 - Monday 11:00 AM: Attend weekly planning
 - Friday 6:00 PM: Attend weekly review
-- Provide QA summary (bugs found, fixed, pass rate)
+- Wednesday 12:00 PM: Run the QA Review and post its inputs by Tuesday evening (Section 8H)
+- Bring the quality summary to each Product Review (Section 8I)
 
 **Reports To:** PM (or QA Lead if structure exists)
 **Reports From:** None (unless QA Lead with team)
@@ -1796,6 +1801,9 @@ Developers use idle time for:
 | **Monday Weekly Planning** | Monday (11:00 AM) | PM + Lead Dev + Developers + QA + BA | 30-45 min | PROJECT-level planning for the week |
 | **Friday Weekly Review** | Friday (6:00 PM) | PM + Lead Dev + Developers + QA + BA | 45-50 min | PROJECT-level progress review |
 | **Client Meeting** | Weekly (3-6 PM) | PM + Assigned Dev | 30-60 min | Client progress & feedback |
+| **QA Review** | Weekly (Wednesday 12:00 PM) | QA Lead + Lead Devs + Support Lead + PM | 30 min | Quality patterns: bounces, escaped bugs, aging bugs, new checks (H) |
+| **Product Review** | Monthly per product family (Thursday 12:00 PM, one family per week) | Whole team | 60 min | Customer pain points, competitors, quality, roadmap decisions (I) |
+| **1:1 with Lead** | Weekly, fixed slot | Developer + Lead Dev | 15 min | Quality, growth, unspoken issues (Section 2C) |
 
 ---
 
@@ -2173,6 +2181,77 @@ Nothing to raise → say "No blockers" and pass. A standup with no blockers shou
 
 ---
 
+### H. Weekly QA Review (Wednesday, 12:00 PM - 12:30 PM)
+
+**Purpose:** Look at quality **patterns**, not single cards, so the same kind of problem does not keep coming back. Covers client projects and products.
+
+**Attendees:** QA Lead (runs it), Lead Devs, Support Lead, PM. Developers join when their area is on the agenda.
+
+**Inputs (QA Lead posts them in the meeting's Basecamp doc by Tuesday evening):**
+- Cards bounced this week and the reason for each bounce
+- Bugs found by clients or customers that QA missed (escaped bugs)
+- Bugs older than 30 days and cards with aging alerts
+- Checks added to QA checklists or check scripts this week (Developer Playbook D8-E)
+- Any hotfix this week, and its cause
+
+**Agenda (30 min):**
+1. **Repeat patterns (10 min):** which kind of bug bounced or escaped more than once? Example: "three cards missed the second-member role check."
+2. **Escaped bugs (10 min):** for each one, why we missed it and which check would have caught it.
+3. **Aging bugs (5 min):** each gets an owner and a target date, or moves to Not now with a reply to the customer or client.
+4. **Actions (5 min):** confirm owners and dates.
+
+**Output:** every pattern leaves with an **owner** and a **new check** (a QA checklist line, a test or a check script, Developer Playbook D8-E). Notes go in the internal QA Review doc in Basecamp within 2 hours. Product items also feed the monthly Product Review (I).
+
+**What NOT to discuss:** individual blame or performance (that's the weekly 1:1), or how to fix one specific bug (take it to the card).
+
+---
+
+### I. Monthly Product Review (one product family per week, Thursday 12:00 PM - 1:00 PM)
+
+**Purpose:** Improve our products from real evidence: customer pain points, what competitors are doing, and our own quality data. Each product family meets once a month. Rotating families across Thursdays spreads the load, for example week 1 BuddyPress add-ons, week 2 themes, week 3 LMS, week 4 other plugins.
+
+**Attendees:** the whole team. Everyone hears customer pain first-hand, which is the point of the Feature Owner model (Section 2C). The Product Owner of that family runs it.
+
+**Inputs (posted in the product's internal Basecamp project 2 working days before):**
+
+| Input | Brought by | What it contains |
+|-------|------------|------------------|
+| **Customer pain points** | Support Lead | Top 5 ticket themes this month, with ticket counts and 1-2 real customer quotes each |
+| **Reviews and forums** | Support Lead | New WordPress.org reviews (especially 1-3 stars) and recurring forum threads |
+| **Competitor Watch** | This month's **competitor scout** (rotating developer) | See below |
+| **Quality summary** | QA Lead | Escaped bugs, hotfixes and repeat patterns from the weekly QA Reviews |
+| **Suggestions column** | Product Owner | Feature requests and ideas waiting for a decision |
+| **Product metrics** | Product Owner | Product manual P11 numbers for the month |
+
+**Competitor scout (rotating developer):**
+- The Product Owner sets a rotation, so each month a different developer scouts each product family.
+- The scout updates the product's **"Competitor Watch"** document (Basecamp → product project → Docs & Files) one week before the meeting. For each of 3-5 main competitors:
+  - releases and new features this month (from their changelogs)
+  - pricing or plan changes
+  - what their users praise or complain about (reviews, forums, social)
+  - one thing they do better than us, and one thing we do better
+- The scout presents it in 10 minutes. The Product Owner reviews the document for accuracy.
+- Facts only, with links to the source. Never copy competitor code or copy text.
+
+**Agenda (60 min):**
+1. **Customer pain points (15 min):** the top 5 themes. For each one: a bug, a missing feature, a docs gap, or a UX problem?
+2. **Competitor Watch (10 min):** what changed, and does any of it matter to our customers?
+3. **Quality summary (10 min):** what customers caught that we didn't, and the checks added.
+4. **Suggestions and ideas (15 min):** go through the Suggestions column and ideas from the team.
+5. **Decisions (10 min):** confirm each decision and its owner.
+
+**Output: every item leaves with a decision, not just discussion:**
+- **Scope:** we will build it. A card is created with an owner and a target release.
+- **Not now:** a written reason on the card.
+- **Docs / FAQ:** the pain point is a docs gap. The Docs Owner gets a card.
+- **Reply:** customers who asked are told the outcome (Support Lead).
+
+The Product Owner posts notes in the product's internal Basecamp project within 2 hours. Roadmap changes follow Product manual P4.
+
+**What NOT to discuss:** individual bug fixing (that's the card), client project work (that's Monday and Friday), or blame.
+
+---
+
 ### G. Meeting Documentation Summary
 
 | Meeting | MOM Required? | Where to Post | When to Post |
@@ -2181,6 +2260,9 @@ Nothing to raise → say "No blockers" and pass. A standup with no blockers shou
 | Monday Planning | ✅ Yes | Basecamp (each project) | Within 2 hours |
 | Friday Review | ✅ Yes | Basecamp (each project) | Within 2 hours |
 | Client Meeting | ✅ Yes | Basecamp (client-visible) | Same day |
+| QA Review | ✅ Yes | Internal QA Review doc in Basecamp | Within 2 hours |
+| Product Review | ✅ Yes | Product's internal Basecamp project | Within 2 hours |
+| 1:1 with Lead | Private note only | Lead's private note (Section 2C) | N/A |
 
 ---
 
@@ -4484,11 +4566,12 @@ All response times live in one table: **Section 2B, "Communication Response Time
 ## 24. Document Control
 
 - **Owner:** HR & Project Management Team
-- **Version:** 10.2 - Consistency pass across all four documents
+- **Version:** 10.3 - Weekly QA Review and monthly Product Review
 - **Last Updated:** October 2026
 - **Next Review:** January 2027
 - **Status:** ✅ Complete - All essential sections + operational edge case handling
 - **Changelog:**
+  - v10.3: Added the Weekly QA Review (8H) and the Monthly Product Review per product family with a rotating competitor scout (8I). The Product Review replaces the monthly product retro.
   - v10.2: Consistency pass. One rule per topic, with the owner listed in README.md. Every production deploy needs PM approval (fast-track for small fixes). Staging needs PR review. All code review and merges go through GitHub pull requests. PM answers client questions. Internal talk only in Slack project channels. One response-time table (2B) and one bug-timing table (9B). One credentials document. Fixed wrong section references, old status names and HR wording.
   - v10.1: Linked the Developer Playbook. Client projects use the standard card table (Section 4A). Task priority labels (High/Medium/Low) separated from bug severity (P0-P3). Definition of Done and QA results use the new column names.
   - v10.0: Added Section 2C (Feature Owner model, async daily update in project channels, weekly 1:1, 50% checkpoint, ownership measures). Standup is blockers-only. Developer KPIs measure outcomes instead of update counts. Added Client Project Setup (Section 2B): one Basecamp project per client, internal #proj-[client] channel, whole team monitors client communication, Scope of Work document. Linked the Product Operations Manual.

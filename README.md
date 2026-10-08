@@ -24,7 +24,7 @@ Each topic is written in **one** place. Other documents only link to it. If two 
 | Feature Owner model, daily update, weekly 1:1, 50% checkpoint, ownership measures | Agency 2C |
 | Attendance, leave, HR, KPIs, evaluations | Agency 3, 14 |
 | Task priority (High / Medium / Low), task assignment | Agency 4, 4A |
-| Meetings, standup, MOM | Agency 8 |
+| Meetings, standup, MOM, QA Review, Product Review | Agency 8 |
 | Decision authority, escalation timeline | Agency 9A, 22 |
 | Client-project bug timings by severity | Agency 9B (Quick Reference table) |
 | Client deployment approval and timing, git branches, commit format | Agency 16, 19 |
