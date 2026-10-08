@@ -51,7 +51,7 @@ Each topic is written in **one** place. Other documents only link to it. If two 
 
 ## Changing these documents
 
-- **No names in this repo.** It is public and the team changes over time. Never write a client name, client site, or team member's name. Use roles (PM, Lead Dev, Feature Owner, Support Lead) and placeholders (`[Name]`, `[client]`, `[product]`). Who holds each role lives in Basecamp and Slack, not here.
+- **No real names in this repo.** It is public and the team changes over time. Never write a real client name, client site, or team member's name. Use roles (PM, Lead Dev, Feature Owner, Support Lead) and placeholders (`[Name]`, `[client]`, `[product]`). Made-up example names ("John is fixing the header bug", `clientxyz`) are fine. Who holds each role lives in Basecamp and Slack, not here.
 
 - Change the rule in its **owner** document, then update any summary that repeats it (usually the Quick Reference Card).
 - Make changes through a pull request, never directly on `main`.
