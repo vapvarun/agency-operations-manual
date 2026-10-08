@@ -31,7 +31,7 @@ Every product has one named owner for each role below. The owners are listed in 
 | Role | Responsibility | Typical person |
 |------|----------------|----------------|
 | **Product Owner** | Roadmap, priorities, Free vs Pro decisions, final call on "is this release ready" | PM or Management |
-| **Lead Developer** | Architecture, code review approval, release branch, tagging | Lead / Senior Dev |
+| **Lead Developer** | Architecture, code review (accountable; a Senior Dev may approve, Agency manual 21A), release branch, tagging | Lead / Senior Dev |
 | **Feature Owner** | One developer per feature or plugin area: plan, build, tests, docs, QA fixes, release watch and bugs after release (Agency manual Section 2C) | Developers |
 | **QA** | Pre-release smoke, card verification, regression | QA team |
 | **Support Lead** | Ticket triage, turning tickets into cards, replying to customers when fixed | Support team |
@@ -44,7 +44,7 @@ Every product has one named owner for each role below. The owners are listed in 
 | Roadmap and priorities | **A/R** | C | I | I | C |
 | Free vs Pro placement | **A/R** | C | I | - | C |
 | Feature / fix build (Feature Owner) | I | A | **R** | C | - |
-| Code review | - | **A/R** | C | - | - |
+| Code review | - | **A** (Senior Dev may be R) | C | - | - |
 | Pre-release QA | I | C | C | **A/R** | - |
 | Release go / no-go | **A** | R | I | C | I |
 | Changelog + release notes | A | **R** | C | C | I |
@@ -75,7 +75,7 @@ Tag + publish → Changelog → Support notified → Customers told
 
 ### Basecamp Card Table
 
-Every product board uses the **standard card table** in the [Developer Playbook D11](DEVELOPER_PLAYBOOK.md#d11-basecamp-conventions--evidence) (Triage, Not now, Scope, Suggestions, Possible Bug, Bugs, Ready for Development, In Development, Ready for Testing, In Testing, Done). Client projects use the same table.
+Every product board uses the **standard card table** in the [Developer Playbook D11](DEVELOPER_PLAYBOOK.md#d11-basecamp-conventions--evidence) (Triage, Not now, Scope, Suggestions, Possible Bug, Bugs, Ready for Development, In Development, Ready for Testing, In Testing, Done). Client projects use the same table plus Ready for Deployment and Deployed (Agency manual 4A).
 
 | Who moves cards into | Column |
 |----------------------|--------|
@@ -164,7 +164,7 @@ Every UI change works at 390px, in dark mode and RTL, is accessible, handles emp
 ### E. Never break existing sites
 
 - [ ] Database changes run through a versioned upgrade routine that is safe to run twice. No data is dropped. No schema changes in patch releases.
-- [ ] Renamed options, hooks or meta keys keep the old name working (read old, write new) for at least two releases.
+- [ ] Renamed options, hooks or meta keys keep the old name working (read old, write new) for at least 2 major versions.
 - [ ] Removed hooks or functions are deprecated first (`_deprecated_function()`) and kept for at least 2 major versions.
 - [ ] A change to default behaviour ships with a filter that restores the old behaviour.
 - [ ] Free and Pro: Pro checks the Free version it needs and shows a clear notice if Free is too old.
@@ -180,7 +180,7 @@ Every UI change works at 390px, in dark mode and RTL, is accessible, handles emp
 - [ ] Self-checks done for what changed: wiring, contract, security, performance (Playbook D7)
 - [ ] Regression guard added in the same commit (test or QA checklist line)
 - [ ] Large-site checklist (P5-C) done for every list / query touched
-- [ ] Browser-checked on the role ladder (logged out, owner, second member, moderator, admin) at desktop and 390px, light and dark
+- [ ] Browser-checked on the role ladder (logged out, owner, second member, moderator, admin) at 1440px and 390px, light and dark
 - [ ] Screenshots attached to the card, each labelled with **viewport + role**
 - [ ] All three entry points work (P5-B)
 - [ ] Manifest updated if a hook / endpoint / option was added
@@ -212,9 +212,11 @@ Every UI change works at 390px, in dark mode and RTL, is accessible, handles emp
 
 ### Release branch
 
-1. Lead Dev creates the release branch (named for the version) when the cards planned for this release are Done.
+1. Lead Dev creates `release/X.Y.Z` when the cards planned for this release are Done.
 2. Only fixes for problems found during the release QA go into the release branch after that.
 3. Merge into `main` through a PR once CI is green, then tag `vX.Y.Z` on `main`. Merge back into the development branch.
+
+**Free / Pro lockstep:** when either changes, Free and Pro ship with the same version number on the same day. Pro must still run on the oldest Free version it declares. Never release one half of a pair alone.
 
 Full step-by-step release QA and release steps: Playbook D10.
 
@@ -222,7 +224,7 @@ Full step-by-step release QA and release steps: Playbook D10.
 
 - [ ] Every card planned for this release is in Done
 - [ ] Full gate battery passed; build script produced the zip with no bypasses (Playbook D8 Gate 4)
-- [ ] Full smoke run of the product's core paths, per role, at desktop and 390px
+- [ ] Full smoke run of the product's core paths, per role, at 1440px and 390px, plus 768px and 1024px (Playbook D6)
 - [ ] Contract check: every saved setting is actually read and applied; every hook fired is consumed
 - [ ] Upgrade test: install the **previous** released version with data, then update. Nothing lost, no errors
 - [ ] Fresh install test on a clean site
@@ -237,7 +239,7 @@ Full step-by-step release QA and release steps: Playbook D10.
 
 ### Go / No-go
 
-The Product Owner gives a written "Go" in the Basecamp release card. **No Go, no tag.**
+The Product Owner gives a written "Go" in the Basecamp release card. **No Go, no merge or tag.**
 
 **Do not release:**
 - on Friday after 3 PM or before a public holiday
@@ -248,7 +250,7 @@ The Product Owner gives a written "Go" in the Basecamp release card. **No Go, no
 
 - [ ] GitHub release published (P8 format)
 - [ ] Version number added as a comment on every card in the release
-- [ ] Release confirmed in the releases channel. Only then do customers get told to update
+- [ ] Release confirmed in `#releases`. Only then do customers get told to update
 - [ ] Support team told what changed and which tickets it fixes
 - [ ] Each Feature Owner watches support and errors for their feature
 - [ ] Support replies to every customer whose ticket was fixed
@@ -288,7 +290,7 @@ One-line summary. Skip if the bullets speak for themselves.
 4. Written for the site owner, not for us. No ticket IDs, branch names or commit hashes.
 5. No marketing intros, no feature-themed subheadings, no emoji, no em-dashes.
 6. Release title: `Plugin X.Y.Z - one-line summary`.
-7. Free and Pro released together link to each other's release.
+7. Free and Pro (always released together, P7) link to each other's release.
 
 ---
 
@@ -321,6 +323,8 @@ Full card format and steps: Playbook D3 and D4-F.
 
 ### Response targets
 
+Levels are set with the triage grid in Playbook D3 (reach × impact × location). The Product Owner has the final say.
+
 | Severity | First useful reply to customer | Fix shipped |
 |----------|-------------------------------|-------------|
 | P0 - site broken / data loss / payments / security | Same day | Hotfix within 1-2 days |
@@ -329,6 +333,8 @@ Full card format and steps: Playbook D3 and D4-F.
 | P3 - cosmetic / edge case | Within 48 hours | When scheduled |
 
 "A useful reply" means reproduced, a workaround if there is one, and an honest next step. Reply rules: Playbook D12.
+
+**Paying customers:** a paying customer's issue is at least P2, and P1 if they are fully blocked. A free user's real bug still gets a card. At the same level, paid reports are scheduled first. Only fatal issues (site down, data loss, payments, an active exploit) jump the queue.
 
 ### Aging
 
@@ -373,22 +379,13 @@ Per-developer ownership measures (escaped bugs in owned work, reopen rate, risks
 - All product docs live in the product's GitHub repo under `docs/website/`, written in Markdown and committed with the code.
 - Images go in `docs/website/images/` next to the Markdown.
 - The developer who changes behaviour updates the docs in the same PR. The Docs Owner reviews.
-- Folder shape (same for every product):
-
-```
-docs/website/
-├── docs_config.json
-├── images/
-├── getting-started/
-├── settings/
-└── developer-guide/
-```
+- Folder shape, page order, required `faq/` and `troubleshooting/` sections and image rules: Playbook D13.
 
 ---
 
 ## P13. AI-Assisted Development
 
-AI coding tools (Claude Code and similar) are allowed for product work, with these rules:
+AI coding tools are allowed for product and client work, with these rules (client projects add one more rule, Agency manual Section 9):
 
 - **Same bar as human code.** AI-written code goes through the same PR review, CI and Definition of Done. "The AI wrote it" is never a reason to skip a check.
 - **You own it.** You must understand and be able to explain every line you submit.
@@ -421,7 +418,7 @@ AI coding tools (Claude Code and similar) are allowed for product work, with the
 ## Document Control
 
 - **Owner:** Product Owners + Lead Developers
-- **Version:** 1.1 - aligned with the Developer Playbook
+- **Version:** 1.2 - consistency pass across all four documents
 - **Last Updated:** October 2026
 - **Next Review:** January 2027
 

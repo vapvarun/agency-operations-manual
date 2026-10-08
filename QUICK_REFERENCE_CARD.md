@@ -30,17 +30,16 @@
 
 ### Rule 1: What "Done" Means
 
-**Developer:**
-- WPCS passes (0 errors)
-- Tested + screenshot attached
-- Time logged
+**Developer** (before Ready for Testing):
+- PR approved + checks green + merged
+- Browser-checked at 1440 + 390px, light + dark, on the role ladder; screenshots on the card
+- Regression guard + handover comment + time logged
 
-**QA:**
-- No critical bugs
-- Screenshots attached
+**QA:** verdict PASS posted (Playbook D9-F), screenshots attached
 
-**PM:**
-- Client approved
+**PM:** deployed with approval, client confirmed on live
+
+Full lists: Agency manual 21, Product manual P6, Playbook D7-D8.
 
 ### Rule 2: When Stuck
 
@@ -62,8 +61,11 @@ Post in the project channel: "Stuck on [X], tried [Y], need help with [Z]"
 | Client question | Same day (4 hrs) |
 | Help request | Same day (2 hrs) |
 | Code review | 24 hours |
-| QA testing | 24 hours |
-| Urgent/Security | Immediately |
+| QA testing start | 24 hours |
+| P0 bug / site down | Acknowledge 15 min |
+| P1 bug | Acknowledge 1 hr, start within 2 hrs |
+
+Source: Agency manual 2B (response times) and 9B (bug timings). Products: Product manual P9.
 
 ---
 
@@ -123,7 +125,7 @@ Post in the project channel: "Stuck on [X], tried [Y], need help with [Z]"
 | **1:1 with Lead** | Weekly, fixed slot | 15 min | Quality, growth, unspoken issues |
 | **Monday Planning** | Mon 11:00 AM | 30-45 min | PROJECT goals for the week |
 | **Friday Review** | Fri 6:00 PM | 45-50 min | PROJECT progress review |
-| **Client Meetings** | 3-6 PM | As needed | Client updates |
+| **Client Meeting** | Weekly, 3-6 PM | 30-60 min | Client updates |
 
 **Meeting Focus:**
 - **Daily Standup:** Blockers and risks only (Done/Next are in the async update)
@@ -173,14 +175,14 @@ Post in the project channel: "Stuck on [X], tried [Y], need help with [Z]"
 **Daily Attendance:**
 - In: Post by 10:15 AM in #attendance
 - Out: Post after 7:00 PM in #attendance
-- Late >3 times/month = warning
+- 3 late arrivals in a month = written warning
 
-**Leave Request (Must Request 1 Day in Advance):**
+**Leave Request (1 day ahead; 2+ days: 3 days ahead; more than 5 days: 15 days ahead):**
 ```
 📅 Leave Request
 Name: [Your Name]
 Date(s): [DD/MM/YYYY]
-Type: [Casual/Sick/Annual]
+Type: [Casual/Sick/Emergency/Unpaid]
 Reason: [Brief]
 Backup: [Name]
 ```
@@ -211,8 +213,9 @@ Backup: [Name]
 | **Basecamp** | Tasks, client communication |
 | **Slack** | Daily updates (project channels), team chat |
 | **Time Tracker** | Log hours |
-| **WPCS** | Code quality (run before commit) |
-| **Plugin Checker** | Plugin standards |
+| **WPCS** | Code quality (pre-commit hook + CI) |
+| **Plugin Check** | Plugin standards (run on the built zip) |
+| **GitHub** | Pull requests, code review, CI |
 
 **Slack Channels:**
 - **#dailymeeting** - General team chat, cross-project technical questions
@@ -220,6 +223,8 @@ Backup: [Name]
 - **#emergencies** - Site down, critical bugs
 - **#wbcomers** - Team announcements, company updates
 - **#proj-[client]** - Internal channel per client project (client never added)
+- **#prod-[product]** - Internal channel per product
+- **#releases** - Release confirmations
 
 ---
 
@@ -251,20 +256,24 @@ Backup: [Name]
 ```
 Stuck (30 min)
     ↓
-Ask in Slack
+Ask in project channel (Senior / Lead Dev)
     ↓
 Still stuck (2 hrs)
     ↓
-PM adjusts timeline
+Lead Dev takes it (up to 4 hrs)
+    ↓
+Lead escalates to PM (timeline)
+
+Deadline at risk? Raise it the same day (2C-D)
 ```
 
 **Client complaint:**
 ```
 Client complaint
     ↓
-Tell PM immediately
+Tell PM immediately (project channel)
     ↓
-PM responds (4 hrs)
+PM acknowledges (1 hr), resolution plan (4 hrs)
 ```
 
 ---
@@ -272,21 +281,21 @@ PM responds (4 hrs)
 ## QUICK TIPS
 
 **For Developers:**
-- Run WPCS before committing: `phpcs --standard=WordPress file.php`
+- WPCS: `vendor/bin/phpcs` (the pre-commit hook runs it, Playbook D8)
 - Never respond to client directly
-- Commit format: `[Fix] Description` or `[Feature] Description`
+- Commit format: `[Type] Description` (types in Section 19)
 - Post daily update by 6:30 PM in each project channel
 - You own your feature: plan, risks, QA fixes, release, bugs after release
 
 **For QA:**
-- Start testing within 24 hrs of "QA Ready"
-- Clear bug reports: Steps + screenshot
+- Start testing within 24 hrs of "Ready for Testing"
+- Verdict format: Playbook D9-F. Bug format: Playbook D4-F
 - Test on staging, not production
 
 **For PM:**
 - Review daily updates in project channels at 6:45 PM; answer every Risk/Need
 - Do project board check after standup
-- Client reports every Friday
+- Weekly client report (Friday summary)
 - Keep Basecamp client-friendly
 
 ---
@@ -338,7 +347,7 @@ Working on our own plugins/themes? Follow the **Product Operations Manual** (`PR
 - Stuck >2 hours on urgent task
 - Missing credentials to start work
 
-**After hours:** Message PM on Slack/WhatsApp, if no response in 15 min → Message Lead Dev
+**After hours:** post in #emergencies → no reply in 15 min: WhatsApp/call PM and Lead Dev → 30 min: Management (Section 2B)
 
 ---
 
@@ -391,6 +400,8 @@ Working on our own plugins/themes? Follow the **Product Operations Manual** (`PR
 
 ---
 
-**Questions? Ask PM or check full manual in Basecamp.**
+**Questions? Ask PM or read the full manuals in the `agency-operations-manual` repo (start with README.md).**
 
-© 2025 WBCOM DESIGNS
+*This card only summarises. If it ever disagrees with a manual, the manual wins. See README.md for which document owns each topic.*
+
+© 2025-2026 WBCOM DESIGNS
